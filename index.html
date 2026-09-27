@@ -2,540 +2,562 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover" />
-<title>Snoweey ✧ Custom A4 Frames & Luxury Gift Hampers</title>
-<meta name="description" content="Snoweey creates exquisite custom A4 photo frames and curated gift hampers — handcrafted in South Africa." />
-<meta name="author" content="Snoweey" />
-<meta name="theme-color" content="#fbf8f5" />
-<meta property="og:title" content="Snoweey ✧ Custom A4 Frames & Luxury Gift Hampers" />
-<meta property="og:description" content="Every memory, artfully framed ✧" />
-<meta property="og:type" content="website" />
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Admin · Snoweey</title>
+<meta name="robots" content="noindex, nofollow" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="preconnect" href="https://firestore.googleapis.com" />
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet" />
-
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <style>
   *{margin:0;padding:0;box-sizing:border-box}
   :root{
     --bg:#fbf8f5;--card:#fff;--line:#efdfd4;--line-strong:#e0cbbc;
     --brown:#7f5d4a;--brown-dark:#5f4333;--brown-deep:#4e3a2e;
-    --muted:#b3927f;--soft:#f7ede5;--text:#3e332b;
-    --radius:52px;--radius-md:30px;--radius-sm:24px;
-    --shadow:0 32px 48px -22px rgba(110,65,40,.15);
-    --shadow-sm:0 12px 22px -12px rgba(120,75,50,.07);
-    --shadow-hover:0 28px 36px -18px rgba(140,80,45,.18);
+    --muted:#b3927f;--soft:#f7ede5;--ok:#4a7c59;--err:#c0392b;
+    --radius:38px;--radius-sm:24px;
+    --shadow:0 28px 48px -20px rgba(110,65,40,.18);
+    --shadow-sm:0 8px 18px -8px rgba(120,75,50,.08);
   }
-  html{scroll-behavior:smooth}
-  body{background:var(--bg);font-family:'Quicksand',sans-serif;color:var(--text);line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-  ::-webkit-scrollbar{width:6px}
-  ::-webkit-scrollbar-track{background:#f3e7df}
-  ::-webkit-scrollbar-thumb{background:#cbb09b;border-radius:10px}
-  img{display:block;max-width:100%}
-  .container{max-width:1350px;margin:0 auto;padding:0 35px}
+  body{background:var(--bg);font-family:'Quicksand',sans-serif;color:#3e332b;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;-webkit-font-smoothing:antialiased}
+  .hidden{display:none!important}
 
-  /* ---------- NAVBAR ---------- */
-  .navbar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;padding:22px 0 16px;border-bottom:1.5px solid rgba(188,149,128,.25);position:sticky;top:0;background:rgba(251,248,245,.85);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);z-index:100;transition:.3s}
-  .navbar.scrolled{padding:14px 0 12px;box-shadow:0 8px 24px -18px rgba(110,65,40,.25)}
-  .logo{font-family:'Cormorant Garamond',serif;font-size:2.6rem;font-weight:600;color:#5e4638;display:flex;align-items:baseline;gap:6px;cursor:default;user-select:none;transition:.3s}
-  .logo:hover{color:var(--brown)}
-  .logo span{font-size:.9rem;font-weight:400;color:var(--muted);margin-left:4px}
-  .nav-links{display:flex;gap:36px;align-items:center;flex-wrap:wrap}
-  .nav-links a{text-decoration:none;font-weight:500;color:#6b5848;font-size:.85rem;text-transform:uppercase;letter-spacing:1.6px;padding-bottom:4px;border-bottom:2px solid transparent;transition:.2s}
-  .nav-links a:hover{color:#b4856b;border-bottom-color:#dbb094}
-  .nav-links a.active{color:var(--brown);border-bottom-color:var(--brown)}
+  /* -------- AUTH -------- */
+  .auth-card{background:var(--card);border-radius:var(--radius);padding:50px 42px;max-width:440px;width:100%;box-shadow:var(--shadow);border:1px solid var(--line);text-align:center;animation:fadeUp .5s ease both}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+  .auth-card h1{font-family:'Cormorant Garamond',serif;font-size:2.6rem;font-weight:600;color:#5e4638;margin-bottom:6px}
+  .auth-card .sub{color:var(--muted);font-size:.9rem;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:32px}
+  .auth-card input{width:100%;padding:15px 20px;margin-bottom:16px;border:1.5px solid var(--line-strong);border-radius:50px;font-family:inherit;font-size:.95rem;background:var(--bg);outline:none;transition:.2s}
+  .auth-card input:focus{border-color:#b4856b;background:#fff;box-shadow:0 0 0 4px rgba(180,133,107,.1)}
+  .auth-card button.primary{width:100%;padding:15px;border-radius:50px;border:none;background:var(--brown);color:#fff;font-weight:600;font-size:1rem;cursor:pointer;margin-top:8px;font-family:inherit;transition:.2s}
+  .auth-card button.primary:hover:not(:disabled){background:var(--brown-dark);transform:translateY(-1px)}
+  .auth-card button.primary:disabled{opacity:.6;cursor:wait}
+  .auth-card .link{display:inline-block;margin-top:16px;color:#a06e58;font-size:.85rem;cursor:pointer;text-decoration:underline;background:none;border:none;font-family:inherit;padding:4px}
+  .auth-card .tabs{display:flex;gap:8px;margin-bottom:24px;background:var(--soft);padding:5px;border-radius:50px}
+  .auth-card .tabs button{flex:1;padding:10px;border-radius:50px;border:none;background:transparent;color:#8b6b57;font-weight:600;cursor:pointer;font-family:inherit;font-size:.9rem;transition:.2s}
+  .auth-card .tabs button.active{background:#fff;color:#5e4638;box-shadow:0 4px 10px rgba(110,65,40,.08)}
+  .msg{font-size:.85rem;margin-top:14px;min-height:20px}
+  .error-msg{color:var(--err)}.success-msg{color:var(--ok)}
 
-  /* ---------- HERO ---------- */
-  .hero-slideshow{width:100%;margin:36px 0 42px;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);background:#f7ede5;border:1px solid #e7cfbf;position:relative;animation:fadeUp .6s ease both}
-  @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
-  .slideshow-container{position:relative;width:100%;aspect-ratio:16 / 9}
-  .slide{position:absolute;inset:0;opacity:0;transition:opacity .9s cubic-bezier(.23,1,.32,1);pointer-events:none}
-  .slide.active{opacity:1;pointer-events:auto}
-  .slide-img{width:100%;height:100%;object-fit:cover;will-change:transform}
-  .slide.active .slide-img{animation:kenburns 6s ease-out both}
-  @keyframes kenburns{from{transform:scale(1)}to{transform:scale(1.05)}}
-  .prev,.next{cursor:pointer;position:absolute;top:50%;transform:translateY(-50%);width:48px;height:48px;background:rgba(255,250,248,.75);backdrop-filter:blur(12px);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.4rem;color:#7e5d4e;z-index:10;border:1px solid #ddc0ad;transition:.25s}
-  .prev:hover,.next:hover{background:#fffaf6;color:#b08164;transform:translateY(-50%) scale(1.08)}
-  .prev{left:22px}.next{right:22px}
-  .dots{position:absolute;bottom:22px;left:0;right:0;display:flex;justify-content:center;gap:10px;z-index:10;flex-wrap:wrap;padding:0 16px}
-  .dot{width:8px;height:8px;background:rgba(170,130,105,.5);border-radius:10px;cursor:pointer;transition:.3s}
-  .dot.active-dot{background:#b18364;width:28px}
+  /* -------- DASHBOARD -------- */
+  .dashboard{display:none;max-width:900px;width:100%;animation:fadeUp .5s ease both}
+  .dash-header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;margin-bottom:36px}
+  .dash-header h1{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:600;color:#5e4638}
+  .dash-header button{padding:10px 26px;border-radius:50px;border:1.5px solid #c9ab97;background:transparent;color:#6b4f40;font-weight:600;cursor:pointer;font-family:inherit;font-size:.9rem;transition:.2s}
+  .dash-header button:hover{background:#f3e7df}
 
-  /* ---------- SECTION TITLES ---------- */
-  .section-title{font-size:2.4rem;font-weight:500;font-family:'Cormorant Garamond',serif;margin:70px 0 8px;text-align:center;color:#6b4f40;letter-spacing:.5px}
-  .section-title:after{content:'';display:block;width:55px;height:2px;background:#cfb6a3;margin:14px auto 0;border-radius:4px}
-  .subhead{text-align:center;color:#9c8577;margin-bottom:38px;font-size:1rem;font-style:italic}
+  .add-form{background:#fff;border-radius:32px;padding:34px;border:1px solid var(--line);margin-bottom:40px;box-shadow:var(--shadow-sm)}
+  .add-form h2{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:600;color:#5e4638;margin-bottom:22px}
+  .add-form label{display:block;text-align:left;font-size:.85rem;font-weight:600;color:#7f6860;margin-bottom:6px;letter-spacing:.5px;text-transform:uppercase}
+  .add-form input{width:100%;padding:13px 18px;margin-bottom:18px;border:1.5px solid var(--line-strong);border-radius:50px;font-family:inherit;font-size:.95rem;background:var(--bg);outline:none;transition:.2s}
+  .add-form input:focus{border-color:#b4856b;background:#fff;box-shadow:0 0 0 4px rgba(180,133,107,.1)}
+  .add-form input[type="file"]{padding:10px 18px;cursor:pointer}
+  .add-form .btn-row{display:flex;gap:12px;flex-wrap:wrap}
+  .add-form button{padding:14px 38px;border-radius:50px;border:none;background:var(--brown);color:#fff;font-weight:600;font-size:.95rem;cursor:pointer;font-family:inherit;transition:.2s}
+  .add-form button:hover:not(:disabled){background:var(--brown-dark);transform:translateY(-1px)}
+  .add-form button:disabled{opacity:.6;cursor:wait}
+  .add-form button.cancel-btn{background:transparent;border:1.5px solid #c9ab97;color:#6b4f40}
+  .add-form button.cancel-btn:hover{background:#f3e7df}
+  .form-note{font-size:.8rem;color:var(--muted);margin-top:12px;font-style:italic}
+  .preview-wrap{margin:8px 0 18px;display:none}
+  .preview-img{max-width:140px;border-radius:16px;border:1px solid var(--line);display:block}
+  .upload-bar{height:6px;background:var(--soft);border-radius:10px;overflow:hidden;margin-top:10px;display:none}
+  .upload-bar.show{display:block}
+  .upload-bar-fill{height:100%;background:linear-gradient(90deg,#b4856b,#7f5d4a);width:0%;transition:width .25s ease}
+  .status-msg{margin-top:14px;font-size:.9rem;min-height:22px}
+  .status-msg.ok{color:var(--ok)}.status-msg.err{color:var(--err)}
+  .edit-banner{background:var(--soft);padding:12px 20px;border-radius:20px;margin-bottom:18px;color:var(--brown);font-size:.9rem;display:none;align-items:center;gap:10px}
+  .edit-banner.show{display:flex}
 
-  /* ---------- NEW PRODUCTS ---------- */
-  .new-products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:26px;margin:15px 0 40px}
-  .new-product-card{background:#fff;border-radius:var(--radius-md);overflow:hidden;border:1px solid #f0e2d7;box-shadow:var(--shadow-sm);transition:.3s cubic-bezier(.23,1,.32,1);cursor:pointer;position:relative}
-  .new-product-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-hover);border-color:#dbb59a}
-  .new-product-img{width:100%;aspect-ratio:1/1;object-fit:cover;background:#faf2ed;display:block;transition:transform .5s cubic-bezier(.23,1,.32,1)}
-  .new-product-card:hover .new-product-img{transform:scale(1.06)}
-  .new-product-info{padding:18px 16px 20px}
-  .new-product-name{font-weight:600;font-size:1.1rem;color:var(--brown-deep);font-family:'Cormorant Garamond',serif}
-  .new-product-tag{background:var(--soft);color:#8b6b57;font-size:.7rem;text-transform:uppercase;letter-spacing:1px;padding:4px 12px;border-radius:30px;display:inline-block;font-weight:600;margin-top:8px}
+  .products-list h2{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:600;color:#5e4638;margin-bottom:22px}
+  .product-row{display:flex;align-items:center;gap:18px;background:#fff;border-radius:var(--radius-sm);padding:14px 20px;margin-bottom:12px;border:1px solid var(--line);transition:.25s;animation:fadeUp .35s ease both}
+  .product-row:hover{border-color:#dbb59a;box-shadow:var(--shadow-sm);transform:translateY(-1px)}
+  .product-row.removing{opacity:.4;pointer-events:none;transform:scale(.97)}
+  .product-row img{width:54px;height:54px;border-radius:16px;object-fit:cover;background:#faf2ed;flex-shrink:0}
+  .product-row .info{flex:1;text-align:left;min-width:0}
+  .product-row .info .name{font-weight:600;color:var(--brown-deep);font-family:'Cormorant Garamond',serif;font-size:1.1rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .product-row .info .tag{font-size:.7rem;text-transform:uppercase;letter-spacing:1px;color:#8b6b57;background:var(--soft);padding:3px 10px;border-radius:20px;display:inline-block;margin-top:4px}
+  .product-row .actions{display:flex;gap:8px}
+  .product-row .actions button{background:transparent;border:1.5px solid var(--line-strong);color:#a06e58;width:38px;height:38px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.2s;font-size:.95rem}
+  .product-row .actions button.edit{color:var(--brown)}
+  .product-row .actions button.edit:hover{background:var(--soft)}
+  .product-row .actions button.del:hover{background:#fce8e0;color:#c0392b;border-color:#e8b9a8}
+  .product-row .actions button:disabled{opacity:.5;cursor:wait}
 
-  /* ---------- GALLERY + HAMPERS ---------- */
-  .gallery-grid,.hampers-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:30px;margin:15px 0 50px;content-visibility:auto;contain-intrinsic-size:800px}
-  .gallery-item,.hamper-card{border-radius:var(--radius-md);overflow:hidden;cursor:pointer;transition:.35s cubic-bezier(.23,1,.32,1);background:#fff;box-shadow:var(--shadow-sm);border:1px solid var(--line);position:relative;aspect-ratio:1/1}
-  .gallery-item:hover,.hamper-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-hover);border-color:#dbb59a}
-  .gallery-img,.hamper-img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .55s cubic-bezier(.23,1,.32,1);background:#faf2ed}
-  .gallery-item:hover .gallery-img,.hamper-card:hover .hamper-img{transform:scale(1.06)}
+  /* -------- MODAL -------- */
+  .modal-backdrop{position:fixed;inset:0;background:rgba(22,16,12,.6);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;z-index:2000;padding:20px;opacity:0;transition:opacity .2s}
+  .modal-backdrop.show{display:flex;opacity:1}
+  .modal{background:#fff;border-radius:32px;padding:34px 32px;max-width:420px;width:100%;text-align:center;box-shadow:0 30px 60px -20px rgba(60,30,10,.35);border:1px solid var(--line);animation:pop .3s cubic-bezier(.23,1,.32,1) both}
+  @keyframes pop{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:scale(1)}}
+  .modal h3{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:#5e4638;margin-bottom:10px}
+  .modal p{color:#7f6860;font-size:.9rem;margin-bottom:22px;line-height:1.5}
+  .modal .modal-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+  .modal button{padding:12px 28px;border-radius:50px;border:none;font-family:inherit;font-weight:600;font-size:.9rem;cursor:pointer;transition:.2s}
+  .modal button.danger{background:#c0392b;color:#fff}
+  .modal button.danger:hover{background:#a02e22}
+  .modal button.ghost{background:transparent;border:1.5px solid #c9ab97;color:#6b4f40}
+  .modal button.ghost:hover{background:#f3e7df}
 
-  /* ---------- CTA ---------- */
-  .cta-section{background:linear-gradient(105deg,#f9f0e9 0%,#f3e2d7 100%);border-radius:48px;margin:45px 0 55px;padding:54px 38px;text-align:center;border:1px solid #e3cdbb;position:relative;overflow:hidden}
-  .cta-section h3{font-size:2rem;margin-bottom:12px;font-weight:500;color:#5b4336;font-family:'Cormorant Garamond',serif}
-  .wa-button{background:var(--brown);color:#fff;display:inline-flex;align-items:center;gap:14px;padding:18px 50px;border-radius:60px;font-weight:600;text-decoration:none;font-size:1.05rem;margin-top:20px;box-shadow:0 12px 22px -10px rgba(110,65,35,.3);transition:.25s}
-  .wa-button:hover{background:var(--brown-dark);transform:translateY(-2px)}
+  /* -------- TOASTS -------- */
+  .toast-wrap{position:fixed;top:20px;right:20px;z-index:3000;display:flex;flex-direction:column;gap:10px;pointer-events:none}
+  .toast{background:#4e3a2e;color:#fff;padding:12px 20px;border-radius:50px;font-size:.9rem;font-weight:500;box-shadow:0 10px 24px -8px rgba(60,30,10,.4);display:flex;align-items:center;gap:10px;opacity:0;transform:translateX(20px);transition:.25s;pointer-events:auto;max-width:340px}
+  .toast.show{opacity:1;transform:none}
+  .toast.ok{background:#4a7c59}
+  .toast.err{background:#c0392b}
 
-  /* ---------- SOCIAL ---------- */
-  .social-row{display:flex;justify-content:center;gap:22px;flex-wrap:wrap;margin:30px 0 40px}
-  .social-icon-link{display:flex;align-items:center;gap:10px;text-decoration:none;background:#fff;padding:12px 28px;border-radius:50px;border:1px solid var(--line-strong);font-weight:500;color:#6f5342;font-size:.95rem;transition:.25s}
-  .social-icon-link svg{width:20px;height:20px;fill:#b5846b;transition:.25s}
-  .social-icon-link:hover{background:#fefbf8;border-color:#c79d83;color:#ab7055;transform:translateY(-3px)}
-  .social-icon-link:hover svg{transform:scale(1.15)}
-
-  footer{background:#f2e7de;color:#8b7365;padding:40px 20px;text-align:center;border-radius:48px 48px 0 0;margin-top:30px}
-
-  /* ---------- LIGHTBOX ---------- */
-  .lightbox-modal{display:none;position:fixed;inset:0;background:rgba(22,16,12,.93);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);justify-content:center;align-items:center;z-index:1000;cursor:zoom-out;opacity:0;transition:opacity .25s}
-  .lightbox-modal.show{display:flex;opacity:1}
-  .lightbox-img-full{max-width:86%;max-height:86%;border-radius:32px;object-fit:contain;animation:zoomIn .35s cubic-bezier(.23,1,.32,1) both}
-  @keyframes zoomIn{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:scale(1)}}
-  .close-lightbox{position:absolute;top:24px;right:36px;font-size:2.6rem;color:#f0dbce;cursor:pointer;line-height:1;transition:.2s;user-select:none}
-  .close-lightbox:hover{color:#fff;transform:rotate(90deg)}
-
-  /* ---------- SCROLL TOP ---------- */
-  .scroll-top{position:fixed;bottom:28px;right:28px;width:48px;height:48px;border-radius:50%;background:var(--brown);color:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.1rem;box-shadow:0 12px 22px -10px rgba(110,65,35,.4);opacity:0;pointer-events:none;transition:.3s;z-index:99}
-  .scroll-top.show{opacity:1;pointer-events:auto}
-  .scroll-top:hover{background:var(--brown-dark);transform:translateY(-3px)}
-
-  /* ---------- REVEAL ---------- */
-  .reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s cubic-bezier(.23,1,.32,1)}
-  .reveal.visible{opacity:1;transform:none}
-
-  /* ---------- SKELETON ---------- */
-  .skeleton{background:linear-gradient(90deg,#f3e7df 0%,#faf2ed 50%,#f3e7df 100%);background-size:200% 100%;animation:shimmer 1.4s infinite;border-radius:var(--radius-md);aspect-ratio:1/1}
-  @keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
-  .loading-text{text-align:center;color:var(--muted);padding:40px;font-style:italic;grid-column:1/-1}
-
-  /* ---------- RESPONSIVE ---------- */
-  @media(max-width:760px){
-    .container{padding:0 18px}
-    .navbar{flex-direction:column;gap:14px;padding:18px 0 14px}
-    .nav-links{gap:20px}
-    .nav-links a{font-size:.78rem;letter-spacing:1.2px}
-    .section-title{font-size:2rem;margin:50px 0 6px}
-    .gallery-grid,.hampers-grid,.new-products-grid{grid-template-columns:1fr 1fr;gap:16px}
-    .hero-slideshow{border-radius:32px;margin:24px 0 30px}
-    .slideshow-container{aspect-ratio:4/5}
-    .prev,.next{width:38px;height:38px;font-size:1.1rem}
-    .prev{left:12px}.next{right:12px}
-    .cta-section{padding:36px 22px;border-radius:36px}
-    .wa-button{padding:15px 30px;font-size:.95rem}
-    .scroll-top{bottom:18px;right:18px;width:42px;height:42px}
-  }
-  @media(max-width:480px){
-    .gallery-grid,.hampers-grid,.new-products-grid{grid-template-columns:1fr}
-    .social-icon-link{width:100%;justify-content:center}
-    .logo{font-size:2.1rem}
-  }
-  @media(prefers-reduced-motion:reduce){
-    *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  @media(max-width:600px){
+    .auth-card{padding:36px 24px}
+    .add-form{padding:24px 20px}
+    .dash-header h1{font-size:1.9rem}
+    .toast-wrap{left:16px;right:16px;top:16px}
+    .toast{max-width:none}
   }
 </style>
 </head>
 <body>
-<div class="container">
-  <header class="navbar" id="navbar">
-    <div class="logo" id="logo">snoweey<span>✧ frames &amp; hampers</span></div>
-    <nav class="nav-links">
-      <a href="#gallery">gallery</a>
-      <a href="#hampers">hampers</a>
-      <a href="#new">new</a>
-      <a href="#connect">connect</a>
-      <a href="#order">custom</a>
-    </nav>
-  </header>
 
-  <main>
-    <section class="hero-slideshow">
-      <div class="slideshow-container" id="slideshowContainer"></div>
-    </section>
+<!-- ============ AUTH ============ -->
+<div class="auth-card" id="authCard">
+  <h1>snoweey</h1>
+  <div class="sub">admin access</div>
+  <div class="tabs">
+    <button id="tabSignIn" class="active">sign in</button>
+    <button id="tabSignUp">sign up</button>
+  </div>
 
-    <div id="new"></div>
-    <h2 class="section-title reveal">✨ new products</h2>
-    <p class="subhead reveal">freshly dropped · curated by snoweey</p>
-    <div class="new-products-grid" id="newProductsGrid">
-      <div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div>
-    </div>
+  <div id="signInForm">
+    <input type="email" id="signInEmail" placeholder="email" autocomplete="email" />
+    <input type="password" id="signInPassword" placeholder="password" autocomplete="current-password" />
+    <button class="primary" id="signInBtn">sign in</button>
+    <button class="link" id="forgotBtn">forgot password?</button>
+    <div class="error-msg msg" id="signInMsg"></div>
+  </div>
 
-    <div id="gallery"></div>
-    <h2 class="section-title reveal">✧ curated portfolio ✧</h2>
-    <p class="subhead reveal">distinctive designs · timeless artistry</p>
-    <div class="gallery-grid" id="galleryGrid"></div>
+  <div id="signUpForm" class="hidden">
+    <input type="email" id="signUpEmail" placeholder="email" autocomplete="email" />
+    <input type="password" id="signUpPassword" placeholder="password (min 6 chars)" autocomplete="new-password" />
+    <input type="password" id="signUpPassword2" placeholder="confirm password" autocomplete="new-password" />
+    <button class="primary" id="signUpBtn">create account</button>
+    <div class="error-msg msg" id="signUpMsg"></div>
+  </div>
 
-    <div id="hampers"></div>
-    <h2 class="section-title reveal">🎁 signature box hampers</h2>
-    <p class="subhead reveal">thoughtfully composed gift sets</p>
-    <div class="hampers-grid" id="hampersGrid"></div>
-
-    <section id="order" class="cta-section reveal">
-      <h3>design your own keepsake</h3>
-      <p style="margin-bottom:20px;color:#7e6558">themes, names, colour stories — crafted into an exquisite A4 frame or hamper.</p>
-      <a href="https://wa.me/27764261311?text=Hello%20Snoweey!%20I'd%20love%20a%20custom%20frame%20or%20hamper%20%F0%9F%8E%80" target="_blank" rel="noopener noreferrer" class="wa-button">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg> Chat on WhatsApp · +27 76 426 1311
-      </a>
-      <p style="margin-top:24px;font-size:.85rem;color:#aa8e7c">✨ personal quotes · rush orders · gift-ready wrapping ✨</p>
-    </section>
-
-    <div id="connect"></div>
-    <h2 class="section-title reveal">✧ stay inspired ✧</h2>
-    <div class="social-row reveal">
-      <a href="https://www.instagram.com/sinokubonga_snoweey?igsh=MXcya2cwMGJpdW9rdw==" target="_blank" rel="noopener noreferrer" class="social-icon-link">
-        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg> Instagram
-      </a>
-      <a href="https://www.facebook.com/sinokubonga.nkosi.2025" target="_blank" rel="noopener noreferrer" class="social-icon-link">
-        <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg> Facebook
-      </a>
-      <a href="https://www.tiktok.com/@sinokubongasnoweey?_r=1&_t=ZS-96Ke8N2ZnLJ" target="_blank" rel="noopener noreferrer" class="social-icon-link">
-        <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg> TikTok
-      </a>
-    </div>
-  </main>
+  <div id="forgotForm" class="hidden">
+    <p style="color:#7f6860;font-size:.9rem;margin-bottom:18px;">enter your email and we'll send a reset link.</p>
+    <input type="email" id="forgotEmail" placeholder="email" autocomplete="email" />
+    <button class="primary" id="forgotSendBtn">send reset link</button>
+    <button class="link" id="backToSignIn">← back to sign in</button>
+    <div class="success-msg msg" id="forgotMsg"></div>
+  </div>
 </div>
 
-<footer>
-  <p style="font-weight:500">snoweey · custom A4 frames &amp; hampers</p>
-  <p style="margin-top:8px;font-style:italic">every memory, artfully framed ✧</p>
-</footer>
+<!-- ============ DASHBOARD ============ -->
+<div class="dashboard" id="dashboard">
+  <div class="dash-header">
+    <h1>dashboard</h1>
+    <button id="logoutBtn">sign out</button>
+  </div>
 
-<button class="scroll-top" id="scrollTop" aria-label="back to top">↑</button>
+  <div class="add-form">
+    <div class="edit-banner" id="editBanner">
+      <span>✎ editing: <strong id="editName"></strong></span>
+    </div>
+    <h2 id="formTitle">add new product</h2>
+    <label>Product name</label>
+    <input type="text" id="pName" placeholder="e.g. Midnight Bloom Frame" />
+    <label>Photo <span style="text-transform:none;font-weight:400;color:var(--muted);">(required for new, optional for edit)</span></label>
+    <input type="file" id="pFile" accept="image/*" />
+    <div class="preview-wrap" id="previewWrap">
+      <img id="preview" class="preview-img" alt="preview" />
+      <div class="upload-bar" id="uploadBar"><div class="upload-bar-fill" id="uploadFill"></div></div>
+    </div>
+    <label>Tag</label>
+    <input type="text" id="pTag" placeholder="e.g. new, limited, bestseller" />
+    <div class="btn-row">
+      <button id="addBtn">+ add product</button>
+      <button id="cancelEditBtn" class="cancel-btn hidden">cancel edit</button>
+    </div>
+    <div class="status-msg" id="statusMsg"></div>
+    <div class="form-note">images are auto-compressed &amp; stored in Firestore · appears on homepage instantly.</div>
+  </div>
 
-<div id="lightboxModal" class="lightbox-modal">
-  <span class="close-lightbox">&times;</span>
-  <img class="lightbox-img-full" id="lightboxImage" alt="enlarged view" loading="lazy" />
+  <div class="products-list">
+    <h2>current products</h2>
+    <div id="productsList"></div>
+  </div>
 </div>
 
-<script>
-/* ---------- NETLIFY IMAGE CDN HELPER ---------- */
-/**
- * Generates a Netlify Image CDN URL for a given local image.
- * Automatically resizes, converts to WebP, and compresses.
- * Falls back to original URL if Image CDN not available.
- */
-function imgUrl(file, width = 800, quality = 75){
-  // Netlify Image CDN: /.netlify/images?url=<path>&w=<width>&q=<quality>&fm=webp
-  return `/.netlify/images?url=${encodeURIComponent('/' + file)}&w=${width}&q=${quality}&fm=webp`;
-}
+<!-- ============ CONFIRM MODAL ============ -->
+<div class="modal-backdrop" id="confirmModal">
+  <div class="modal">
+    <h3 id="confirmTitle">remove this product?</h3>
+    <p id="confirmText">This cannot be undone.</p>
+    <div class="modal-btns">
+      <button class="ghost" id="confirmCancel">cancel</button>
+      <button class="danger" id="confirmOk">delete</button>
+    </div>
+  </div>
+</div>
 
-/* ---------- STATIC IMAGE POOLS ---------- */
-const slideFiles = [
-  "IMG-20260513-WA0013.jpg","IMG-20260513-WA0022.jpg","IMG-20260513-WA0023.jpg",
-  "IMG-20260513-WA0026.jpg","IMG-20260513-WA0029.jpg","IMG-20260513-WA0032.jpg",
-  "IMG-20260513-WA0035.jpg","IMG-20260513-WA0036.jpg","IMG-20260513-WA0037.jpg",
-  "IMG-20260513-WA0038.jpg","IMG-20260513-WA0039.jpg","IMG-20260513-WA0040.jpg",
-  "IMG-20260513-WA0041.jpg","IMG-20260513-WA0044.jpg","IMG-20260513-WA0047.jpg",
-  "IMG-20260513-WA0067.jpg","IMG-20260513-WA0082.jpg","IMG-20260513-WA0083.jpg",
-  "IMG-20260513-WA0087.jpg","IMG-20260513-WA0088.jpg","spongebob.jpg",
-  "blackheartdesign.jpg","cartoon.jpg","heartdesign.jpg"
-];
-const hamperFiles = ["IMG-20260513-WA0088.jpg","IMG-20260513-WA0082.jpg","IMG-20260513-WA0067.jpg"];
-const PLACEHOLDER = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 600'><rect width='600' height='600' fill='%23F3E7DF'/><text x='50%' y='50%' font-family='serif' font-size='42' fill='%23B39283' text-anchor='middle' dominant-baseline='middle'>Snoweey</text></svg>";
+<!-- ============ TOASTS ============ -->
+<div class="toast-wrap" id="toastWrap"></div>
 
-/* ---------- LAZY LOADING OBSERVER ---------- */
-const imgObserver = 'IntersectionObserver' in window
-  ? new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting){
-          const img = e.target;
-          if (img.dataset.src){ img.src = img.dataset.src; delete img.dataset.src; }
-          imgObserver.unobserve(img);
-        }
-      });
-    }, { rootMargin: '300px' })
-  : null;
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import {
+  getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword,
+  sendPasswordResetEmail, onAuthStateChanged, signOut
+} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+import {
+  getFirestore, collection, addDoc, deleteDoc, doc,
+  getDocs, orderBy, query, serverTimestamp, updateDoc
+} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-function lazyLoad(img, src){
-  img.src = PLACEHOLDER;
-  if (imgObserver){ img.dataset.src = src; imgObserver.observe(img); }
-  else img.src = src;
-  img.onerror = function(){ this.onerror = null; this.src = PLACEHOLDER; };
-}
-
-/* ---------- SLIDESHOW (only loads on demand) ---------- */
-let currentSlide = 0, slideTimer = null;
-const slideEls = [];
-
-function buildSlideshow(){
-  const c = document.getElementById('slideshowContainer');
-  if (!c) return;
-  c.innerHTML = '';
-  slideEls.length = 0;
-
-  // Create all slide wrappers, but only give the first one a real image
-  slideFiles.forEach((file, i) => {
-    const s = document.createElement('div');
-    s.className = 'slide' + (i === 0 ? ' active' : '');
-    const img = document.createElement('img');
-    img.className = 'slide-img';
-    img.alt = 'Snoweey design ' + (i + 1);
-    // Use srcset for responsive: 600px on mobile, 1200px on desktop
-    img.srcset = `${imgUrl(file, 600)} 600w, ${imgUrl(file, 1200)} 1200w`;
-    img.sizes = '(max-width: 760px) 100vw, 1350px';
-    if (i === 0){
-      img.src = imgUrl(file, 1200);
-      img.fetchPriority = 'high';
-      img.loading = 'eager';
-    } else {
-      // Placeholder; real src set when slide becomes active
-      img.src = PLACEHOLDER;
-      img.dataset.file = file;
-      img.loading = 'lazy';
-    }
-    s.appendChild(img); c.appendChild(s);
-    slideEls.push(s);
-  });
-
-  const prev = document.createElement('button'); prev.className = 'prev'; prev.innerHTML = '❮'; prev.setAttribute('aria-label','previous');
-  const next = document.createElement('button'); next.className = 'next'; next.innerHTML = '❯'; next.setAttribute('aria-label','next');
-  c.appendChild(prev); c.appendChild(next);
-  const dots = document.createElement('div'); dots.className = 'dots';
-  slideFiles.forEach((_, i) => {
-    const d = document.createElement('span');
-    d.className = 'dot' + (i === 0 ? ' active-dot' : '');
-    d.dataset.i = i;
-    dots.appendChild(d);
-  });
-  c.appendChild(dots);
-  prev.onclick = () => changeSlide(-1);
-  next.onclick = () => changeSlide(1);
-  dots.querySelectorAll('.dot').forEach(d => { d.onclick = () => goToSlide(+d.dataset.i); });
-
-  // Swipe
-  let startX = 0;
-  c.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
-  c.addEventListener('touchend', e => {
-    const dx = e.changedTouches[0].clientX - startX;
-    if (Math.abs(dx) > 50) changeSlide(dx > 0 ? -1 : 1);
-  }, { passive: true });
-
-  // Preload slide 2 for smooth first transition
-  preloadSlide(1);
-  startAuto();
-}
-
-function preloadSlide(index){
-  const s = slideEls[index];
-  if (!s) return;
-  const img = s.querySelector('img');
-  if (img && img.dataset.file && img.src === PLACEHOLDER){
-    img.src = imgUrl(img.dataset.file, 1200);
-    img.removeAttribute('data-file');
-  }
-}
-
-function changeSlide(dir){
-  const s = slideEls; if (!s.length) return;
-  s[currentSlide].classList.remove('active');
-  currentSlide = (currentSlide + dir + s.length) % s.length;
-  s[currentSlide].classList.add('active');
-  updateDots(); resetAuto();
-  preloadSlide((currentSlide + 1) % s.length);
-}
-function goToSlide(i){
-  const s = slideEls; if (!s.length) return;
-  s[currentSlide].classList.remove('active');
-  currentSlide = i;
-  s[currentSlide].classList.add('active');
-  updateDots(); resetAuto();
-  preloadSlide((currentSlide + 1) % s.length);
-}
-function updateDots(){ document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active-dot', i === currentSlide)); }
-function startAuto(){ if (slideTimer) clearInterval(slideTimer); slideTimer = setInterval(() => changeSlide(1), 5000); }
-function resetAuto(){ if (slideTimer) clearInterval(slideTimer); slideTimer = setInterval(() => changeSlide(1), 5000); }
-
-/* ---------- GALLERY ---------- */
-function renderGallery(){
-  const g = document.getElementById('galleryGrid'); if (!g) return;
-  g.innerHTML = '';
-  slideFiles.forEach((file, i) => {
-    const item = document.createElement('div');
-    item.className = 'gallery-item reveal';
-    const img = document.createElement('img');
-    img.className = 'gallery-img';
-    img.alt = 'Snoweey design';
-    // srcset for responsive loading
-    img.dataset.srcset = `${imgUrl(file, 400)} 400w, ${imgUrl(file, 800)} 800w`;
-    img.sizes = '(max-width: 480px) 100vw, (max-width: 760px) 50vw, 300px';
-    lazyLoad(img, imgUrl(file, 800));
-    img.onerror = function(){ this.onerror = null; this.src = PLACEHOLDER; };
-    item.appendChild(img);
-    item.onclick = () => openLightbox(imgUrl(file, 1600));
-    g.appendChild(item);
-  });
-  // Apply srcset after lazyLoad sets src
-  g.querySelectorAll('.gallery-img').forEach(img => {
-    if (img.dataset.srcset) img.srcset = img.dataset.srcset;
-  });
-}
-
-/* ---------- HAMPERS ---------- */
-function renderHampers(){
-  const g = document.getElementById('hampersGrid'); if (!g) return;
-  g.innerHTML = '';
-  hamperFiles.forEach((file) => {
-    const c = document.createElement('div');
-    c.className = 'hamper-card reveal';
-    const img = document.createElement('img');
-    img.className = 'hamper-img';
-    img.alt = 'Snoweey hamper';
-    img.dataset.srcset = `${imgUrl(file, 400)} 400w, ${imgUrl(file, 800)} 800w`;
-    img.sizes = '(max-width: 480px) 100vw, (max-width: 760px) 50vw, 300px';
-    lazyLoad(img, imgUrl(file, 800));
-    img.onerror = function(){ this.onerror = null; this.src = PLACEHOLDER; };
-    c.appendChild(img);
-    c.onclick = () => openLightbox(imgUrl(file, 1600));
-    g.appendChild(c);
-  });
-  g.querySelectorAll('.hamper-img').forEach(img => {
-    if (img.dataset.srcset) img.srcset = img.dataset.srcset;
-  });
-}
-
-/* ---------- FIREBASE (loaded lazily) ---------- */
-let db = null;
-async function initFirebase(){
-  if (db) return db;
-  try {
-    const { initializeApp } = await import("https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js");
-    const { getFirestore } = await import("https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js");
-    const firebaseConfig = {
-      apiKey: "AIzaSyDeIlLNMRkPLqFFSpxn10-mOLidmEWp4tU",
-      authDomain: "makeitsoapplication.firebaseapp.com",
-      projectId: "makeitsoapplication",
-      storageBucket: "makeitsoapplication.firebasestorage.app",
-      messagingSenderId: "563193624067",
-      appId: "1:563193624067:web:2408edc09167099cc28036"
-    };
-    const app = initializeApp(firebaseConfig);
-    db = getFirestore(app);
-    return db;
-  } catch (e){ console.error('Firebase init failed', e); return null; }
-}
-
-/* ---------- NEW PRODUCTS ---------- */
-async function renderNewProducts(){
-  const g = document.getElementById('newProductsGrid'); if (!g) return;
-  try {
-    const database = await initFirebase();
-    if (!database){ g.innerHTML = '<p class="loading-text">could not load products.</p>'; return; }
-    const { collection, getDocs, orderBy, query } = await import("https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js");
-    const q = query(collection(database, 'products'), orderBy('createdAt', 'desc'));
-    const snap = await getDocs(q);
-    g.innerHTML = '';
-    if (snap.empty){
-      g.innerHTML = '<p class="loading-text">✨ new drops coming soon — stay tuned!</p>';
-      return;
-    }
-    snap.forEach((d) => {
-      const p = d.data();
-      const card = document.createElement('div');
-      card.className = 'new-product-card';
-      const img = document.createElement('img');
-      img.className = 'new-product-img';
-      img.alt = p.name || 'Snoweey product';
-      img.loading = 'lazy';
-      img.src = p.imageData || PLACEHOLDER;
-      img.onerror = function(){ this.onerror = null; this.src = PLACEHOLDER; };
-      const info = document.createElement('div'); info.className = 'new-product-info';
-      const n = document.createElement('div'); n.className = 'new-product-name'; n.textContent = p.name || 'Untitled';
-      const t = document.createElement('span'); t.className = 'new-product-tag'; t.textContent = p.tag || 'new';
-      info.appendChild(n); info.appendChild(t);
-      card.appendChild(img); card.appendChild(info);
-      card.onclick = () => openLightbox(p.imageData);
-      g.appendChild(card);
-    });
-  } catch (err){
-    console.error(err);
-    g.innerHTML = '<p class="loading-text">could not load products right now.</p>';
-  }
-}
-
-/* ---------- LIGHTBOX ---------- */
-const modal = document.getElementById('lightboxModal');
-const lbImg = document.getElementById('lightboxImage');
-function openLightbox(src){
-  if (!modal || !lbImg || !src) return;
-  lbImg.src = src;
-  modal.classList.add('show');
-  document.body.style.overflow = 'hidden';
-}
-function closeLb(){
-  if (!modal) return;
-  modal.classList.remove('show');
-  document.body.style.overflow = '';
-}
-document.querySelector('.close-lightbox').onclick = closeLb;
-if (modal) modal.onclick = (e) => { if (e.target === modal) closeLb(); };
-document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLb(); });
-
-/* ---------- HIDDEN ADMIN ---------- */
-let taps = 0, tapT;
-const logo = document.getElementById('logo');
-if (logo) logo.onclick = () => {
-  taps++; clearTimeout(tapT);
-  if (taps >= 3){ taps = 0; window.location.href = 'admin.html'; }
-  tapT = setTimeout(() => { taps = 0; }, 600);
+const firebaseConfig = {
+  apiKey: "AIzaSyDeIlLNMRkPLqFFSpxn10-mOLidmEWp4tU",
+  authDomain: "makeitsoapplication.firebaseapp.com",
+  projectId: "makeitsoapplication",
+  storageBucket: "makeitsoapplication.firebasestorage.app",
+  messagingSenderId: "563193624067",
+  appId: "1:563193624067:web:2408edc09167099cc28036"
 };
-document.addEventListener('keydown', (e) => {
-  if (e.ctrlKey && e.shiftKey && e.altKey && e.key === 'A') window.location.href = 'admin.html';
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+const $ = (id) => document.getElementById(id);
+
+/* ---------- TOASTS ---------- */
+const toastWrap = $('toastWrap');
+function toast(msg, type = 'ok'){
+  const el = document.createElement('div');
+  el.className = 'toast ' + type;
+  el.textContent = msg;
+  toastWrap.appendChild(el);
+  requestAnimationFrame(() => el.classList.add('show'));
+  setTimeout(() => {
+    el.classList.remove('show');
+    setTimeout(() => el.remove(), 300);
+  }, 2800);
+}
+
+/* ---------- CONFIRM MODAL ---------- */
+const confirmModal = $('confirmModal');
+let confirmResolve = null;
+function askConfirm(title, text){
+  $('confirmTitle').textContent = title;
+  $('confirmText').textContent = text;
+  confirmModal.classList.add('show');
+  return new Promise((resolve) => { confirmResolve = resolve; });
+}
+$('confirmOk').onclick = () => { confirmModal.classList.remove('show'); confirmResolve && confirmResolve(true); confirmResolve = null; };
+$('confirmCancel').onclick = () => { confirmModal.classList.remove('show'); confirmResolve && confirmResolve(false); confirmResolve = null; };
+confirmModal.onclick = (e) => { if (e.target === confirmModal){ confirmModal.classList.remove('show'); confirmResolve && confirmResolve(false); confirmResolve = null; } };
+
+/* ---------- AUTH SCREENS ---------- */
+const authCard = $('authCard'), dashboard = $('dashboard');
+const signInForm = $('signInForm'), signUpForm = $('signUpForm'), forgotForm = $('forgotForm');
+const tabSignIn = $('tabSignIn'), tabSignUp = $('tabSignUp');
+
+function showSignIn(){signInForm.classList.remove('hidden');signUpForm.classList.add('hidden');forgotForm.classList.add('hidden');tabSignIn.classList.add('active');tabSignUp.classList.remove('active');}
+function showSignUp(){signUpForm.classList.remove('hidden');signInForm.classList.add('hidden');forgotForm.classList.add('hidden');tabSignUp.classList.add('active');tabSignIn.classList.remove('active');}
+function showForgot(){forgotForm.classList.remove('hidden');signInForm.classList.add('hidden');signUpForm.classList.add('hidden');}
+tabSignIn.onclick = showSignIn;
+tabSignUp.onclick = showSignUp;
+$('forgotBtn').onclick = showForgot;
+$('backToSignIn').onclick = showSignIn;
+
+$('signInBtn').onclick = async () => {
+  const email = $('signInEmail').value.trim(), pass = $('signInPassword').value;
+  const msg = $('signInMsg'); msg.textContent = '';
+  if (!email || !pass){ msg.textContent = 'enter email and password.'; return; }
+  const btn = $('signInBtn'); btn.disabled = true; btn.textContent = 'signing in…';
+  try { await signInWithEmailAndPassword(auth, email, pass); }
+  catch (e){ msg.textContent = friendlyError(e.code); btn.disabled = false; btn.textContent = 'sign in'; }
+};
+$('signInPassword').onkeydown = (e) => { if (e.key === 'Enter') $('signInBtn').click(); };
+
+$('signUpBtn').onclick = async () => {
+  const email = $('signUpEmail').value.trim(), p1 = $('signUpPassword').value, p2 = $('signUpPassword2').value;
+  const msg = $('signUpMsg'); msg.textContent = '';
+  if (!email || !p1 || !p2){ msg.textContent = 'fill in all fields.'; return; }
+  if (p1.length < 6){ msg.textContent = 'password must be at least 6 characters.'; return; }
+  if (p1 !== p2){ msg.textContent = 'passwords do not match.'; return; }
+  const btn = $('signUpBtn'); btn.disabled = true; btn.textContent = 'creating…';
+  try { await createUserWithEmailAndPassword(auth, email, p1); }
+  catch (e){ msg.textContent = friendlyError(e.code); btn.disabled = false; btn.textContent = 'create account'; }
+};
+
+$('forgotSendBtn').onclick = async () => {
+  const email = $('forgotEmail').value.trim();
+  const msg = $('forgotMsg'); msg.textContent = ''; msg.className = 'success-msg msg';
+  if (!email){ msg.className = 'error-msg msg'; msg.textContent = 'enter your email.'; return; }
+  const btn = $('forgotSendBtn'); btn.disabled = true; btn.textContent = 'sending…';
+  try { await sendPasswordResetEmail(auth, email); msg.textContent = '✨ reset link sent — check your inbox.'; }
+  catch (e){ msg.className = 'error-msg msg'; msg.textContent = friendlyError(e.code); }
+  finally { btn.disabled = false; btn.textContent = 'send reset link'; }
+};
+
+onAuthStateChanged(auth, (user) => {
+  if (user){
+    authCard.style.display = 'none';
+    dashboard.style.display = 'block';
+    renderProductsList();
+  } else {
+    authCard.style.display = 'block';
+    dashboard.style.display = 'none';
+    cancelEdit(); showSignIn();
+    ['signInEmail','signInPassword','signUpEmail','signUpPassword','signUpPassword2','forgotEmail']
+      .forEach(id => { const el = $(id); if (el) el.value = ''; });
+    $('signInBtn').disabled = false; $('signInBtn').textContent = 'sign in';
+    $('signUpBtn').disabled = false; $('signUpBtn').textContent = 'create account';
+    $('forgotSendBtn').disabled = false; $('forgotSendBtn').textContent = 'send reset link';
+  }
 });
 
-/* ---------- SCROLL EFFECTS ---------- */
-const navbar = document.getElementById('navbar');
-const scrollTopBtn = document.getElementById('scrollTop');
-let ticking = false;
-window.addEventListener('scroll', () => {
-  if (!ticking){
-    requestAnimationFrame(() => {
-      const y = window.scrollY;
-      if (navbar) navbar.classList.toggle('scrolled', y > 30);
-      if (scrollTopBtn) scrollTopBtn.classList.toggle('show', y > 500);
-      ticking = false;
-    });
-    ticking = true;
-  }
-}, { passive: true });
-if (scrollTopBtn) scrollTopBtn.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+$('logoutBtn').onclick = () => signOut(auth);
 
-/* ---------- REVEAL ---------- */
-if ('IntersectionObserver' in window){
-  const revealObs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting){
-        e.target.classList.add('visible');
-        revealObs.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
-} else {
-  document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+function friendlyError(code){
+  const map = {
+    'auth/invalid-email':'that email looks invalid.',
+    'auth/user-not-found':'no account with that email.',
+    'auth/wrong-password':'incorrect password.',
+    'auth/invalid-credential':'email or password is incorrect.',
+    'auth/email-already-in-use':'that email is already registered.',
+    'auth/weak-password':'password too weak (min 6 chars).',
+    'auth/too-many-requests':'too many attempts — try again later.',
+    'auth/network-request-failed':'network error.',
+    'permission-denied':'permission denied — check Firestore rules.'
+  };
+  return map[code] || 'something went wrong. try again.';
 }
 
-/* ---------- BOOT ---------- */
-buildSlideshow();
-renderGallery();
-renderHampers();
+/* ---------- IMAGE COMPRESSION ---------- */
+async function compressImage(file, maxDim = 1200, initialQ = 0.78){
+  const img = await loadImage(file);
+  let { width, height } = img;
+  if (width > height && width > maxDim){ height = Math.round(height * (maxDim / width)); width = maxDim; }
+  else if (height > maxDim){ width = Math.round(width * (maxDim / height)); height = maxDim; }
 
-// Load Firebase + products AFTER page has painted
-if ('requestIdleCallback' in window){
-  requestIdleCallback(() => renderNewProducts(), { timeout: 2000 });
-} else {
-  setTimeout(renderNewProducts, 800);
+  const canvas = document.createElement('canvas');
+  canvas.width = width; canvas.height = height;
+  const ctx = canvas.getContext('2d');
+  ctx.imageSmoothingEnabled = true;
+  ctx.imageSmoothingQuality = 'high';
+  ctx.drawImage(img, 0, 0, width, height);
+
+  let quality = initialQ;
+  let dataUrl = canvas.toDataURL('image/jpeg', quality);
+  const TARGET = 650 * 1024; // ~650 KB → safely under Firestore 1 MB doc limit
+
+  let tries = 0;
+  while (dataUrl.length > TARGET && tries < 8){
+    quality -= 0.1;
+    if (quality < 0.4){
+      // Shrink and retry
+      const small = document.createElement('canvas');
+      small.width = Math.max(400, Math.round(canvas.width * 0.75));
+      small.height = Math.max(400, Math.round(canvas.height * 0.75));
+      const sctx = small.getContext('2d');
+      sctx.imageSmoothingQuality = 'high';
+      sctx.drawImage(img, 0, 0, small.width, small.height);
+      canvas.width = small.width; canvas.height = small.height;
+      ctx.drawImage(small, 0, 0);
+      dataUrl = canvas.toDataURL('image/jpeg', 0.72);
+      quality = 0.72;
+    } else {
+      dataUrl = canvas.toDataURL('image/jpeg', quality);
+    }
+    tries++;
+  }
+  if (img.src && img.src.startsWith('blob:')) URL.revokeObjectURL(img.src);
+  return dataUrl;
+}
+
+function loadImage(file){
+  return new Promise((resolve, reject) => {
+    const url = URL.createObjectURL(file);
+    const img = new Image();
+    img.onload = () => resolve(img);
+    img.onerror = (e) => { URL.revokeObjectURL(url); reject(e); };
+    img.src = url;
+  });
+}
+
+/* ---------- PRODUCT EDITOR ---------- */
+let editingId = null, editingImageData = null;
+const formTitle = $('formTitle'), editBanner = $('editBanner'), editName = $('editName');
+const cancelEditBtn = $('cancelEditBtn'), addBtn = $('addBtn');
+const pName = $('pName'), pTag = $('pTag'), pFile = $('pFile');
+const preview = $('preview'), previewWrap = $('previewWrap');
+const uploadBar = $('uploadBar'), uploadFill = $('uploadFill');
+const statusMsg = $('statusMsg');
+
+function enterEditMode(id, data){
+  editingId = id;
+  editingImageData = data.imageData || null;
+  formTitle.textContent = 'edit product';
+  addBtn.textContent = '✓ save changes';
+  cancelEditBtn.classList.remove('hidden');
+  editBanner.classList.add('show');
+  editName.textContent = data.name || 'untitled';
+  pName.value = data.name || ''; pTag.value = data.tag || ''; pFile.value = '';
+  if (data.imageData){ preview.src = data.imageData; previewWrap.style.display = 'block'; }
+  else previewWrap.style.display = 'none';
+  statusMsg.textContent = ''; statusMsg.className = 'status-msg';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+function cancelEdit(){
+  editingId = null; editingImageData = null;
+  formTitle.textContent = 'add new product'; addBtn.textContent = '+ add product';
+  cancelEditBtn.classList.add('hidden'); editBanner.classList.remove('show'); editName.textContent = '';
+  pName.value = ''; pTag.value = ''; pFile.value = '';
+  preview.src = ''; previewWrap.style.display = 'none';
+  uploadBar.classList.remove('show'); uploadFill.style.width = '0%';
+  statusMsg.textContent = ''; statusMsg.className = 'status-msg';
+}
+cancelEditBtn.onclick = cancelEdit;
+
+pFile.onchange = (e) => {
+  const file = e.target.files[0];
+  if (file){
+    preview.src = URL.createObjectURL(file);
+    previewWrap.style.display = 'block';
+  } else if (editingImageData){
+    preview.src = editingImageData;
+    previewWrap.style.display = 'block';
+  } else {
+    previewWrap.style.display = 'none';
+  }
+};
+
+addBtn.onclick = async () => {
+  const name = pName.value.trim(), tag = pTag.value.trim(), file = pFile.files[0];
+  statusMsg.className = 'status-msg'; statusMsg.textContent = '';
+  if (!name){ statusMsg.className = 'status-msg err'; statusMsg.textContent = 'enter a product name.'; return; }
+  if (!editingId && !file){ statusMsg.className = 'status-msg err'; statusMsg.textContent = 'choose a photo.'; return; }
+
+  const btn = addBtn; btn.disabled = true; btn.textContent = editingId ? 'saving…' : 'processing…';
+  try {
+    let imageData = editingImageData;
+    if (file){
+      uploadBar.classList.add('show');
+      uploadFill.style.width = '30%';
+      imageData = await compressImage(file);
+      uploadFill.style.width = '75%';
+      if (imageData.length > 950000) throw new Error('image too large after compression — try a smaller photo.');
+      uploadFill.style.width = '95%';
+    }
+
+    if (editingId){
+      await updateDoc(doc(db, 'products', editingId), { name, tag: tag || 'new', imageData });
+      toast('✨ changes saved!', 'ok');
+      cancelEdit();
+    } else {
+      await addDoc(collection(db, 'products'), {
+        name, tag: tag || 'new', imageData, createdAt: serverTimestamp()
+      });
+      toast('✨ product added!', 'ok');
+      pName.value = ''; pTag.value = ''; pFile.value = '';
+      previewWrap.style.display = 'none';
+      uploadBar.classList.remove('show');
+    }
+    uploadFill.style.width = '100%';
+    renderProductsList();
+  } catch (err){
+    console.error(err);
+    const msg = err.code === 'permission-denied'
+      ? 'permission denied — check Firestore rules.'
+      : (err.message || 'unknown error');
+    statusMsg.className = 'status-msg err';
+    statusMsg.textContent = 'something went wrong: ' + msg;
+    toast('❌ ' + msg, 'err');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = editingId ? '✓ save changes' : '+ add product';
+    setTimeout(() => { uploadBar.classList.remove('show'); uploadFill.style.width = '0%'; }, 800);
+  }
+};
+
+/* ---------- PRODUCTS LIST ---------- */
+async function renderProductsList(){
+  const list = $('productsList');
+  if (!list) return;
+  list.innerHTML = '<p style="color:#9c8577;font-style:italic;">loading…</p>';
+  try {
+    const q = query(collection(db, 'products'), orderBy('createdAt', 'desc'));
+    const snap = await getDocs(q);
+    list.innerHTML = '';
+    if (snap.empty){ list.innerHTML = '<p style="color:#9c8577;font-style:italic;">no products yet.</p>'; return; }
+
+    snap.forEach(d => {
+      const p = d.data(), id = d.id;
+      const row = document.createElement('div'); row.className = 'product-row';
+      row.dataset.id = id;
+
+      const img = document.createElement('img');
+      img.src = p.imageData || 'https://placehold.co/100x100/F3E7DF/B39283?text=S';
+      img.alt = p.name || 'product';
+      img.loading = 'lazy';
+      img.onerror = function(){ this.onerror = null; this.src = 'https://placehold.co/100x100/F3E7DF/B39283?text=S'; };
+
+      const info = document.createElement('div'); info.className = 'info';
+      info.innerHTML = '<div class="name"></div><span class="tag"></span>';
+      info.querySelector('.name').textContent = p.name || 'Untitled';
+      info.querySelector('.tag').textContent = p.tag || 'new';
+
+      const actions = document.createElement('div'); actions.className = 'actions';
+
+      const editBtn = document.createElement('button');
+      editBtn.className = 'edit'; editBtn.type = 'button';
+      editBtn.innerHTML = '✎'; editBtn.title = 'edit';
+      editBtn.onclick = () => enterEditMode(id, p);
+
+      const delBtn = document.createElement('button');
+      delBtn.className = 'del'; delBtn.type = 'button';
+      delBtn.innerHTML = '🗑'; delBtn.title = 'delete';
+      delBtn.onclick = async () => {
+        const ok = await askConfirm(
+          'remove this product?',
+          `"${p.name || 'Untitled'}" will be permanently deleted from your shop.`
+        );
+        if (!ok) return;
+
+        delBtn.disabled = true;
+        row.classList.add('removing');
+
+        try {
+          console.log('[DELETE] attempting to delete', id);
+          await deleteDoc(doc(db, 'products', id));
+          console.log('[DELETE] success', id);
+          toast('🗑 product deleted', 'ok');
+          row.remove();
+          // If we were editing this one, cancel the edit
+          if (editingId === id) cancelEdit();
+          // If list becomes empty, show empty state
+          if (!list.querySelector('.product-row')){
+            list.innerHTML = '<p style="color:#9c8577;font-style:italic;">no products yet.</p>';
+          }
+        } catch (err){
+          console.error('[DELETE] failed', err);
+          row.classList.remove('removing');
+          delBtn.disabled = false;
+          const msg = err.code === 'permission-denied'
+            ? 'permission denied — check Firestore rules.'
+            : (err.message || 'unknown error');
+          toast('❌ delete failed: ' + msg, 'err');
+        }
+      };
+
+      actions.appendChild(editBtn); actions.appendChild(delBtn);
+      row.appendChild(img); row.appendChild(info); row.appendChild(actions);
+      list.appendChild(row);
+    });
+  } catch (e){
+    console.error('renderProductsList error:', e);
+    const msg = e.code === 'permission-denied'
+      ? 'permission denied — check Firestore rules.'
+      : 'could not load products.';
+    list.innerHTML = `<p style="color:#c0392b;">${msg}</p>`;
+  }
 }
 </script>
 </body>
