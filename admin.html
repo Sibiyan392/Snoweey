@@ -1,70 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Admin · Snoweey</title>
-  <meta name="robots" content="noindex, nofollow" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { background: #fbf8f5; font-family: 'Quicksand', sans-serif; color: #3e332b; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; }
-    .auth-card { background: #fff; border-radius: 38px; padding: 50px 42px; max-width: 440px; width: 100%; box-shadow: 0 28px 48px -20px rgba(110, 65, 40, 0.18); border: 1px solid #efdfd4; text-align: center; }
-    .auth-card h1 { font-family: 'Cormorant Garamond', serif; font-size: 2.6rem; font-weight: 600; color: #5e4638; margin-bottom: 6px; }
-    .auth-card .sub { color: #b3927f; font-size: 0.9rem; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 32px; }
-    .auth-card input { width: 100%; padding: 15px 20px; margin-bottom: 16px; border: 1.5px solid #e0cbbc; border-radius: 50px; font-family: 'Quicksand', sans-serif; font-size: 0.95rem; background: #fbf8f5; outline: none; transition: 0.2s; }
-    .auth-card input:focus { border-color: #b4856b; background: #fff; }
-    .auth-card button.primary { width: 100%; padding: 15px; border-radius: 50px; border: none; background: #7f5d4a; color: #fff; font-weight: 600; font-size: 1rem; cursor: pointer; margin-top: 8px; font-family: 'Quicksand', sans-serif; }
-    .auth-card button.primary:hover { background: #5f4333; }
-    .auth-card button.primary:disabled { opacity: 0.6; cursor: wait; }
-    .auth-card .link { display: inline-block; margin-top: 16px; color: #a06e58; font-size: 0.85rem; cursor: pointer; text-decoration: underline; background: none; border: none; font-family: 'Quicksand', sans-serif; padding: 4px; }
-    .auth-card .tabs { display: flex; gap: 8px; margin-bottom: 24px; background: #f7ede5; padding: 5px; border-radius: 50px; }
-    .auth-card .tabs button { flex: 1; padding: 10px; border-radius: 50px; border: none; background: transparent; color: #8b6b57; font-weight: 600; cursor: pointer; font-family: 'Quicksand', sans-serif; font-size: 0.9rem; }
-    .auth-card .tabs button.active { background: #fff; color: #5e4638; box-shadow: 0 4px 10px rgba(110, 65, 40, 0.08); }
-    .error-msg { color: #c0392b; font-size: 0.85rem; margin-top: 14px; min-height: 20px; }
-    .success-msg { color: #4a7c59; font-size: 0.85rem; margin-top: 14px; min-height: 20px; }
-    .hidden { display: none !important; }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Admin · Snoweey</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --bg:#fbf8f5;--card:#fff;--line:#efdfd4;--line-strong:#e0cbbc;
+    --brown:#7f5d4a;--brown-dark:#5f4333;--brown-deep:#4e3a2e;
+    --muted:#b3927f;--soft:#f7ede5;--ok:#4a7c59;--err:#c0392b;
+    --radius:38px;--radius-sm:24px;
+    --shadow:0 28px 48px -20px rgba(110,65,40,.18);
+    --shadow-sm:0 8px 18px -8px rgba(120,75,50,.08);
+  }
+  body{background:var(--bg);font-family:'Quicksand',sans-serif;color:#3e332b;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;-webkit-font-smoothing:antialiased}
+  .auth-card{background:var(--card);border-radius:var(--radius);padding:50px 42px;max-width:440px;width:100%;box-shadow:var(--shadow);border:1px solid var(--line);text-align:center;animation:fadeUp .5s ease both}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+  .auth-card h1{font-family:'Cormorant Garamond',serif;font-size:2.6rem;font-weight:600;color:#5e4638;margin-bottom:6px}
+  .auth-card .sub{color:var(--muted);font-size:.9rem;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:32px}
+  .auth-card input{width:100%;padding:15px 20px;margin-bottom:16px;border:1.5px solid var(--line-strong);border-radius:50px;font-family:inherit;font-size:.95rem;background:var(--bg);outline:none;transition:.2s}
+  .auth-card input:focus{border-color:#b4856b;background:#fff;box-shadow:0 0 0 4px rgba(180,133,107,.1)}
+  .auth-card button.primary{width:100%;padding:15px;border-radius:50px;border:none;background:var(--brown);color:#fff;font-weight:600;font-size:1rem;cursor:pointer;margin-top:8px;font-family:inherit;transition:.2s}
+  .auth-card button.primary:hover:not(:disabled){background:var(--brown-dark);transform:translateY(-1px)}
+  .auth-card button.primary:disabled{opacity:.6;cursor:wait}
+  .auth-card .link{display:inline-block;margin-top:16px;color:#a06e58;font-size:.85rem;cursor:pointer;text-decoration:underline;background:none;border:none;font-family:inherit;padding:4px}
+  .auth-card .tabs{display:flex;gap:8px;margin-bottom:24px;background:var(--soft);padding:5px;border-radius:50px}
+  .auth-card .tabs button{flex:1;padding:10px;border-radius:50px;border:none;background:transparent;color:#8b6b57;font-weight:600;cursor:pointer;font-family:inherit;font-size:.9rem;transition:.2s}
+  .auth-card .tabs button.active{background:#fff;color:#5e4638;box-shadow:0 4px 10px rgba(110,65,40,.08)}
+  .msg{font-size:.85rem;margin-top:14px;min-height:20px}
+  .error-msg{color:var(--err)}.success-msg{color:var(--ok)}
+  .hidden{display:none!important}
 
-    .dashboard { display: none; max-width: 900px; width: 100%; }
-    .dash-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; margin-bottom: 36px; }
-    .dash-header h1 { font-family: 'Cormorant Garamond', serif; font-size: 2.4rem; font-weight: 600; color: #5e4638; }
-    .dash-header button { padding: 10px 26px; border-radius: 50px; border: 1.5px solid #c9ab97; background: transparent; color: #6b4f40; font-weight: 600; cursor: pointer; font-family: 'Quicksand', sans-serif; font-size: 0.9rem; }
-    .dash-header button:hover { background: #f3e7df; }
-    .add-form { background: #fff; border-radius: 32px; padding: 34px; border: 1px solid #efdfd4; margin-bottom: 40px; }
-    .add-form h2 { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 600; color: #5e4638; margin-bottom: 22px; }
-    .add-form label { display: block; text-align: left; font-size: 0.85rem; font-weight: 600; color: #7f6860; margin-bottom: 6px; letter-spacing: 0.5px; text-transform: uppercase; }
-    .add-form input { width: 100%; padding: 13px 18px; margin-bottom: 18px; border: 1.5px solid #e0cbbc; border-radius: 50px; font-family: 'Quicksand', sans-serif; font-size: 0.95rem; background: #fbf8f5; outline: none; }
-    .add-form input:focus { border-color: #b4856b; background: #fff; }
-    .add-form input[type="file"] { padding: 10px 18px; cursor: pointer; }
-    .add-form .btn-row { display: flex; gap: 12px; flex-wrap: wrap; }
-    .add-form button { padding: 14px 38px; border-radius: 50px; border: none; background: #7f5d4a; color: #fff; font-weight: 600; font-size: 0.95rem; cursor: pointer; font-family: 'Quicksand', sans-serif; }
-    .add-form button:hover { background: #5f4333; }
-    .add-form button:disabled { opacity: 0.6; cursor: wait; }
-    .add-form button.cancel-btn { background: transparent; border: 1.5px solid #c9ab97; color: #6b4f40; }
-    .add-form button.cancel-btn:hover { background: #f3e7df; }
-    .form-note { font-size: 0.8rem; color: #b3927f; margin-top: 12px; font-style: italic; }
-    .preview-img { max-width: 120px; border-radius: 16px; margin-top: 8px; display: none; border: 1px solid #efdfd4; }
-    .status-msg { margin-top: 14px; font-size: 0.9rem; min-height: 22px; }
-    .status-msg.ok { color: #4a7c59; }
-    .status-msg.err { color: #c0392b; }
-    .edit-banner { background: #f7ede5; padding: 12px 20px; border-radius: 20px; margin-bottom: 18px; color: #7f5d4a; font-size: 0.9rem; display: none; align-items: center; gap: 10px; }
-    .edit-banner.show { display: flex; }
-    .products-list h2 { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 600; color: #5e4638; margin-bottom: 22px; }
-    .product-row { display: flex; align-items: center; gap: 18px; background: #fff; border-radius: 24px; padding: 14px 20px; margin-bottom: 12px; border: 1px solid #efdfd4; }
-    .product-row img { width: 54px; height: 54px; border-radius: 16px; object-fit: cover; background: #faf2ed; flex-shrink: 0; }
-    .product-row .info { flex: 1; text-align: left; }
-    .product-row .info .name { font-weight: 600; color: #4e3a2e; font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; }
-    .product-row .info .tag { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: #8b6b57; background: #f7ede5; padding: 3px 10px; border-radius: 20px; display: inline-block; margin-top: 4px; }
-    .product-row .actions { display: flex; gap: 8px; }
-    .product-row .actions button { background: transparent; border: 1.5px solid #e0cbbc; color: #a06e58; width: 38px; height: 38px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; }
-    .product-row .actions button.edit { color: #7f5d4a; }
-    .product-row .actions button.edit:hover { background: #f7ede5; }
-    .product-row .actions button.del:hover { background: #fce8e0; }
-    @media (max-width: 600px) { .auth-card { padding: 36px 24px; } .add-form { padding: 24px 20px; } .dash-header h1 { font-size: 1.9rem; } }
-  </style>
+  .dashboard{display:none;max-width:900px;width:100%;animation:fadeUp .5s ease both}
+  .dash-header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;margin-bottom:36px}
+  .dash-header h1{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:600;color:#5e4638}
+  .dash-header button{padding:10px 26px;border-radius:50px;border:1.5px solid #c9ab97;background:transparent;color:#6b4f40;font-weight:600;cursor:pointer;font-family:inherit;font-size:.9rem;transition:.2s}
+  .dash-header button:hover{background:#f3e7df}
+  .add-form{background:#fff;border-radius:32px;padding:34px;border:1px solid var(--line);margin-bottom:40px;box-shadow:var(--shadow-sm)}
+  .add-form h2{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:600;color:#5e4638;margin-bottom:22px}
+  .add-form label{display:block;text-align:left;font-size:.85rem;font-weight:600;color:#7f6860;margin-bottom:6px;letter-spacing:.5px;text-transform:uppercase}
+  .add-form input{width:100%;padding:13px 18px;margin-bottom:18px;border:1.5px solid var(--line-strong);border-radius:50px;font-family:inherit;font-size:.95rem;background:var(--bg);outline:none;transition:.2s}
+  .add-form input:focus{border-color:#b4856b;background:#fff;box-shadow:0 0 0 4px rgba(180,133,107,.1)}
+  .add-form input[type="file"]{padding:10px 18px;cursor:pointer}
+  .add-form .btn-row{display:flex;gap:12px;flex-wrap:wrap}
+  .add-form button{padding:14px 38px;border-radius:50px;border:none;background:var(--brown);color:#fff;font-weight:600;font-size:.95rem;cursor:pointer;font-family:inherit;transition:.2s}
+  .add-form button:hover:not(:disabled){background:var(--brown-dark);transform:translateY(-1px)}
+  .add-form button:disabled{opacity:.6;cursor:wait}
+  .add-form button.cancel-btn{background:transparent;border:1.5px solid #c9ab97;color:#6b4f40}
+  .add-form button.cancel-btn:hover{background:#f3e7df}
+  .form-note{font-size:.8rem;color:var(--muted);margin-top:12px;font-style:italic}
+  .preview-wrap{margin:8px 0 18px;display:none}
+  .preview-img{max-width:140px;border-radius:16px;border:1px solid var(--line);display:block}
+  .upload-bar{height:6px;background:var(--soft);border-radius:10px;overflow:hidden;margin-top:10px;display:none}
+  .upload-bar.show{display:block}
+  .upload-bar-fill{height:100%;background:linear-gradient(90deg,#b4856b,#7f5d4a);width:0%;transition:width .25s ease}
+  .status-msg{margin-top:14px;font-size:.9rem;min-height:22px}
+  .status-msg.ok{color:var(--ok)}.status-msg.err{color:var(--err)}
+  .edit-banner{background:var(--soft);padding:12px 20px;border-radius:20px;margin-bottom:18px;color:var(--brown);font-size:.9rem;display:none;align-items:center;gap:10px}
+  .edit-banner.show{display:flex}
+  .products-list h2{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:600;color:#5e4638;margin-bottom:22px}
+  .product-row{display:flex;align-items:center;gap:18px;background:#fff;border-radius:var(--radius-sm);padding:14px 20px;margin-bottom:12px;border:1px solid var(--line);transition:.2s;animation:fadeUp .35s ease both}
+  .product-row:hover{border-color:#dbb59a;box-shadow:var(--shadow-sm);transform:translateY(-1px)}
+  .product-row img{width:54px;height:54px;border-radius:16px;object-fit:cover;background:#faf2ed;flex-shrink:0}
+  .product-row .info{flex:1;text-align:left;min-width:0}
+  .product-row .info .name{font-weight:600;color:var(--brown-deep);font-family:'Cormorant Garamond',serif;font-size:1.1rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .product-row .info .tag{font-size:.7rem;text-transform:uppercase;letter-spacing:1px;color:#8b6b57;background:var(--soft);padding:3px 10px;border-radius:20px;display:inline-block;margin-top:4px}
+  .product-row .actions{display:flex;gap:8px}
+  .product-row .actions button{background:transparent;border:1.5px solid var(--line-strong);color:#a06e58;width:38px;height:38px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.2s}
+  .product-row .actions button.edit{color:var(--brown)}
+  .product-row .actions button.edit:hover{background:var(--soft)}
+  .product-row .actions button.del:hover{background:#fce8e0;color:#c0392b;border-color:#e8b9a8}
+  @media(max-width:600px){.auth-card{padding:36px 24px}.add-form{padding:24px 20px}.dash-header h1{font-size:1.9rem}}
+</style>
 </head>
 <body>
 
@@ -81,7 +94,7 @@
     <input type="password" id="signInPassword" placeholder="password" autocomplete="current-password" />
     <button class="primary" id="signInBtn">sign in</button>
     <button class="link" id="forgotBtn">forgot password?</button>
-    <div class="error-msg" id="signInMsg"></div>
+    <div class="error-msg msg" id="signInMsg"></div>
   </div>
 
   <div id="signUpForm" class="hidden">
@@ -89,15 +102,15 @@
     <input type="password" id="signUpPassword" placeholder="password (min 6 chars)" autocomplete="new-password" />
     <input type="password" id="signUpPassword2" placeholder="confirm password" autocomplete="new-password" />
     <button class="primary" id="signUpBtn">create account</button>
-    <div class="error-msg" id="signUpMsg"></div>
+    <div class="error-msg msg" id="signUpMsg"></div>
   </div>
 
   <div id="forgotForm" class="hidden">
-    <p style="color:#7f6860; font-size:0.9rem; margin-bottom:18px;">enter your email and we'll send a reset link.</p>
+    <p style="color:#7f6860;font-size:.9rem;margin-bottom:18px;">enter your email and we'll send a reset link.</p>
     <input type="email" id="forgotEmail" placeholder="email" autocomplete="email" />
     <button class="primary" id="forgotSendBtn">send reset link</button>
     <button class="link" id="backToSignIn">← back to sign in</button>
-    <div class="success-msg" id="forgotMsg"></div>
+    <div class="success-msg msg" id="forgotMsg"></div>
   </div>
 </div>
 
@@ -114,9 +127,12 @@
     <h2 id="formTitle">add new product</h2>
     <label>Product name</label>
     <input type="text" id="pName" placeholder="e.g. Midnight Bloom Frame" />
-    <label>Photo <span style="text-transform:none; font-weight:400; color:#b3927f;">(required for new, optional for edit)</span></label>
+    <label>Photo <span style="text-transform:none;font-weight:400;color:var(--muted);">(required for new, optional for edit)</span></label>
     <input type="file" id="pFile" accept="image/*" />
-    <img id="preview" class="preview-img" alt="preview" />
+    <div class="preview-wrap" id="previewWrap">
+      <img id="preview" class="preview-img" alt="preview" />
+      <div class="upload-bar" id="uploadBar"><div class="upload-bar-fill" id="uploadFill"></div></div>
+    </div>
     <label>Tag</label>
     <input type="text" id="pTag" placeholder="e.g. new, limited, bestseller" />
     <div class="btn-row">
@@ -124,7 +140,7 @@
       <button id="cancelEditBtn" class="cancel-btn hidden">cancel edit</button>
     </div>
     <div class="status-msg" id="statusMsg"></div>
-    <div class="form-note">photo uploads via Netlify — free, fast, appears on homepage instantly.</div>
+    <div class="form-note">images are auto-compressed &amp; stored in Firestore · appears on homepage instantly.</div>
   </div>
 
   <div class="products-list">
@@ -134,245 +150,314 @@
 </div>
 
 <script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-  import {
-    getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword,
-    sendPasswordResetEmail, onAuthStateChanged, signOut
-  } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
-  import {
-    getFirestore, collection, addDoc, deleteDoc, doc,
-    getDocs, orderBy, query, serverTimestamp, updateDoc
-  } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import {
+  getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword,
+  sendPasswordResetEmail, onAuthStateChanged, signOut
+} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+import {
+  getFirestore, collection, addDoc, deleteDoc, doc,
+  getDocs, orderBy, query, serverTimestamp, updateDoc
+} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyDeIlLNMRkPLqFFSpxn10-mOLidmEWp4tU",
-    authDomain: "makeitsoapplication.firebaseapp.com",
-    projectId: "makeitsoapplication",
-    storageBucket: "makeitsoapplication.firebasestorage.app",
-    messagingSenderId: "563193624067",
-    appId: "1:563193624067:web:2408edc09167099cc28036"
-  };
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
-  const db = getFirestore(app);
+const firebaseConfig = {
+  apiKey: "AIzaSyDeIlLNMRkPLqFFSpxn10-mOLidmEWp4tU",
+  authDomain: "makeitsoapplication.firebaseapp.com",
+  projectId: "makeitsoapplication",
+  storageBucket: "makeitsoapplication.firebasestorage.app",
+  messagingSenderId: "563193624067",
+  appId: "1:563193624067:web:2408edc09167099cc28036"
+};
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
 
-  const authCard = document.getElementById('authCard');
-  const dashboard = document.getElementById('dashboard');
-  const signInForm = document.getElementById('signInForm');
-  const signUpForm = document.getElementById('signUpForm');
-  const forgotForm = document.getElementById('forgotForm');
-  const tabSignIn = document.getElementById('tabSignIn');
-  const tabSignUp = document.getElementById('tabSignUp');
-  const signInMsg = document.getElementById('signInMsg');
-  const signUpMsg = document.getElementById('signUpMsg');
-  const forgotMsg = document.getElementById('forgotMsg');
+const $ = (id) => document.getElementById(id);
+const authCard = $('authCard'), dashboard = $('dashboard');
+const signInForm = $('signInForm'), signUpForm = $('signUpForm'), forgotForm = $('forgotForm');
+const tabSignIn = $('tabSignIn'), tabSignUp = $('tabSignUp');
 
-  function showSignIn() {
-    signInForm.classList.remove('hidden'); signUpForm.classList.add('hidden'); forgotForm.classList.add('hidden');
-    tabSignIn.classList.add('active'); tabSignUp.classList.remove('active');
-    signInMsg.textContent = ''; signUpMsg.textContent = ''; forgotMsg.textContent = '';
+function showSignIn(){signInForm.classList.remove('hidden');signUpForm.classList.add('hidden');forgotForm.classList.add('hidden');tabSignIn.classList.add('active');tabSignUp.classList.remove('active');}
+function showSignUp(){signUpForm.classList.remove('hidden');signInForm.classList.add('hidden');forgotForm.classList.add('hidden');tabSignUp.classList.add('active');tabSignIn.classList.remove('active');}
+function showForgot(){forgotForm.classList.remove('hidden');signInForm.classList.add('hidden');signUpForm.classList.add('hidden');}
+tabSignIn.onclick = showSignIn;
+tabSignUp.onclick = showSignUp;
+$('forgotBtn').onclick = showForgot;
+$('backToSignIn').onclick = showSignIn;
+
+$('signInBtn').onclick = async () => {
+  const email = $('signInEmail').value.trim(), pass = $('signInPassword').value;
+  const msg = $('signInMsg'); msg.textContent = '';
+  if (!email || !pass){msg.textContent = 'enter email and password.';return;}
+  const btn = $('signInBtn'); btn.disabled = true; btn.textContent = 'signing in…';
+  try { await signInWithEmailAndPassword(auth, email, pass); }
+  catch (e){msg.textContent = friendlyError(e.code);btn.disabled = false;btn.textContent = 'sign in';}
+};
+$('signInPassword').onkeydown = (e) => { if (e.key === 'Enter') $('signInBtn').click(); };
+
+$('signUpBtn').onclick = async () => {
+  const email = $('signUpEmail').value.trim(), p1 = $('signUpPassword').value, p2 = $('signUpPassword2').value;
+  const msg = $('signUpMsg'); msg.textContent = '';
+  if (!email || !p1 || !p2){msg.textContent = 'fill in all fields.';return;}
+  if (p1.length < 6){msg.textContent = 'password must be at least 6 characters.';return;}
+  if (p1 !== p2){msg.textContent = 'passwords do not match.';return;}
+  const btn = $('signUpBtn'); btn.disabled = true; btn.textContent = 'creating…';
+  try { await createUserWithEmailAndPassword(auth, email, p1); }
+  catch (e){msg.textContent = friendlyError(e.code);btn.disabled = false;btn.textContent = 'create account';}
+};
+
+$('forgotSendBtn').onclick = async () => {
+  const email = $('forgotEmail').value.trim();
+  const msg = $('forgotMsg'); msg.textContent = ''; msg.className = 'success-msg msg';
+  if (!email){msg.className = 'error-msg msg'; msg.textContent = 'enter your email.'; return;}
+  const btn = $('forgotSendBtn'); btn.disabled = true; btn.textContent = 'sending…';
+  try { await sendPasswordResetEmail(auth, email); msg.textContent = '✨ reset link sent — check your inbox.'; }
+  catch (e){msg.className = 'error-msg msg'; msg.textContent = friendlyError(e.code); }
+  finally { btn.disabled = false; btn.textContent = 'send reset link'; }
+};
+
+onAuthStateChanged(auth, (user) => {
+  if (user){
+    authCard.style.display = 'none';
+    dashboard.style.display = 'block';
+    renderProductsList();
+  } else {
+    authCard.style.display = 'block';
+    dashboard.style.display = 'none';
+    cancelEdit(); showSignIn();
+    ['signInEmail','signInPassword','signUpEmail','signUpPassword','signUpPassword2','forgotEmail']
+      .forEach(id => { const el = $(id); if (el) el.value = ''; });
+    $('signInBtn').disabled = false; $('signInBtn').textContent = 'sign in';
+    $('signUpBtn').disabled = false; $('signUpBtn').textContent = 'create account';
+    $('forgotSendBtn').disabled = false; $('forgotSendBtn').textContent = 'send reset link';
   }
-  function showSignUp() {
-    signUpForm.classList.remove('hidden'); signInForm.classList.add('hidden'); forgotForm.classList.add('hidden');
-    tabSignUp.classList.add('active'); tabSignIn.classList.remove('active');
-    signInMsg.textContent = ''; signUpMsg.textContent = ''; forgotMsg.textContent = '';
+});
+
+$('logoutBtn').onclick = () => signOut(auth);
+
+function friendlyError(code){
+  const map = {
+    'auth/invalid-email':'that email looks invalid.',
+    'auth/user-not-found':'no account with that email.',
+    'auth/wrong-password':'incorrect password.',
+    'auth/invalid-credential':'email or password is incorrect.',
+    'auth/email-already-in-use':'that email is already registered.',
+    'auth/weak-password':'password too weak (min 6 chars).',
+    'auth/too-many-requests':'too many attempts — try again later.',
+    'auth/network-request-failed':'network error.'
+  };
+  return map[code] || 'something went wrong. try again.';
+}
+
+/* ---------- IMAGE COMPRESSION ---------- */
+/**
+ * Compress an image file to a base64 JPEG data URL, targeting < 700 KB.
+ * Iteratively lowers quality if needed, and shrinks dimensions as a fallback.
+ */
+async function compressImage(file, maxDimension = 1400, initialQuality = 0.82){
+  const bitmap = await loadImage(file);
+  let { width, height } = bitmap;
+
+  // Fit inside maxDimension while preserving aspect ratio
+  if (width > height && width > maxDimension){
+    height = Math.round(height * (maxDimension / width));
+    width = maxDimension;
+  } else if (height > maxDimension){
+    width = Math.round(width * (maxDimension / height));
+    height = maxDimension;
   }
-  function showForgot() {
-    forgotForm.classList.remove('hidden'); signInForm.classList.add('hidden'); signUpForm.classList.add('hidden');
-    forgotMsg.textContent = '';
-  }
-  tabSignIn.onclick = showSignIn;
-  tabSignUp.onclick = showSignUp;
-  document.getElementById('forgotBtn').onclick = showForgot;
-  document.getElementById('backToSignIn').onclick = showSignIn;
 
-  document.getElementById('signInBtn').onclick = async () => {
-    const email = document.getElementById('signInEmail').value.trim();
-    const pass = document.getElementById('signInPassword').value;
-    signInMsg.textContent = '';
-    if (!email || !pass) { signInMsg.textContent = 'enter email and password.'; return; }
-    const btn = document.getElementById('signInBtn'); btn.disabled = true; btn.textContent = 'signing in…';
-    try { await signInWithEmailAndPassword(auth, email, pass); }
-    catch (e) { signInMsg.textContent = friendlyError(e.code); btn.disabled = false; btn.textContent = 'sign in'; }
-  };
-  document.getElementById('signInPassword').onkeydown = (e) => { if (e.key === 'Enter') document.getElementById('signInBtn').click(); };
+  const canvas = document.createElement('canvas');
+  canvas.width = width; canvas.height = height;
+  const ctx = canvas.getContext('2d');
+  ctx.imageSmoothingEnabled = true;
+  ctx.imageSmoothingQuality = 'high';
+  ctx.drawImage(bitmap, 0, 0, width, height);
 
-  document.getElementById('signUpBtn').onclick = async () => {
-    const email = document.getElementById('signUpEmail').value.trim();
-    const p1 = document.getElementById('signUpPassword').value;
-    const p2 = document.getElementById('signUpPassword2').value;
-    signUpMsg.textContent = '';
-    if (!email || !p1 || !p2) { signUpMsg.textContent = 'fill in all fields.'; return; }
-    if (p1.length < 6) { signUpMsg.textContent = 'password must be at least 6 characters.'; return; }
-    if (p1 !== p2) { signUpMsg.textContent = 'passwords do not match.'; return; }
-    const btn = document.getElementById('signUpBtn'); btn.disabled = true; btn.textContent = 'creating…';
-    try { await createUserWithEmailAndPassword(auth, email, p1); }
-    catch (e) { signUpMsg.textContent = friendlyError(e.code); btn.disabled = false; btn.textContent = 'create account'; }
-  };
+  let quality = initialQuality;
+  let dataUrl = canvas.toDataURL('image/jpeg', quality);
 
-  document.getElementById('forgotSendBtn').onclick = async () => {
-    const email = document.getElementById('forgotEmail').value.trim();
-    forgotMsg.textContent = ''; forgotMsg.className = 'success-msg';
-    if (!email) { forgotMsg.className = 'error-msg'; forgotMsg.textContent = 'enter your email.'; return; }
-    const btn = document.getElementById('forgotSendBtn'); btn.disabled = true; btn.textContent = 'sending…';
-    try { await sendPasswordResetEmail(auth, email); forgotMsg.textContent = '✨ reset link sent — check your inbox.'; }
-    catch (e) { forgotMsg.className = 'error-msg'; forgotMsg.textContent = friendlyError(e.code); }
-    finally { btn.disabled = false; btn.textContent = 'send reset link'; }
-  };
-
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      authCard.style.display = 'none';
-      dashboard.style.display = 'block';
-      renderProductsList();
+  // Firestore doc limit ~1MB. Base64 adds ~33%. Target < 700KB raw.
+  const TARGET = 700 * 1024;
+  let tries = 0;
+  while (dataUrl.length > TARGET && tries < 6){
+    quality -= 0.12;
+    if (quality < 0.35){
+      // Shrink dimensions instead of going below usable quality
+      canvas.width = Math.round(canvas.width * 0.8);
+      canvas.height = Math.round(canvas.height * 0.8);
+      const tmp = ctx.canvas;
+      // Redraw scaled
+      const small = document.createElement('canvas');
+      small.width = canvas.width; small.height = canvas.height;
+      const sctx = small.getContext('2d');
+      sctx.imageSmoothingQuality = 'high';
+      sctx.drawImage(bitmap, 0, 0, small.width, small.height);
+      dataUrl = small.toDataURL('image/jpeg', 0.75);
+      quality = 0.75;
     } else {
-      authCard.style.display = 'block';
-      dashboard.style.display = 'none';
-      cancelEdit(); showSignIn();
-      ['signInEmail','signInPassword','signUpEmail','signUpPassword','signUpPassword2','forgotEmail'].forEach(id => {
-        const el = document.getElementById(id); if (el) el.value = '';
-      });
-      document.getElementById('signInBtn').disabled = false; document.getElementById('signInBtn').textContent = 'sign in';
-      document.getElementById('signUpBtn').disabled = false; document.getElementById('signUpBtn').textContent = 'create account';
-      document.getElementById('forgotSendBtn').disabled = false; document.getElementById('forgotSendBtn').textContent = 'send reset link';
+      dataUrl = canvas.toDataURL('image/jpeg', quality);
     }
+    tries++;
+  }
+
+  // Revoke object URL to free memory
+  if (bitmap.src && bitmap.src.startsWith('blob:')) URL.revokeObjectURL(bitmap.src);
+
+  return dataUrl;
+}
+
+function loadImage(file){
+  return new Promise((resolve, reject) => {
+    const url = URL.createObjectURL(file);
+    const img = new Image();
+    img.onload = () => resolve(img);
+    img.onerror = (e) => { URL.revokeObjectURL(url); reject(e); };
+    img.src = url;
   });
+}
 
-  document.getElementById('logoutBtn').onclick = () => signOut(auth);
+/* ---------- PRODUCT EDITOR ---------- */
+let editingId = null, editingImageData = null;
+const formTitle = $('formTitle'), editBanner = $('editBanner'), editName = $('editName');
+const cancelEditBtn = $('cancelEditBtn'), addBtn = $('addBtn');
+const pName = $('pName'), pTag = $('pTag'), pFile = $('pFile');
+const preview = $('preview'), previewWrap = $('previewWrap');
+const uploadBar = $('uploadBar'), uploadFill = $('uploadFill');
+const statusMsg = $('statusMsg');
 
-  function friendlyError(code) {
-    const map = {
-      'auth/invalid-email': 'that email looks invalid.',
-      'auth/user-not-found': 'no account with that email.',
-      'auth/wrong-password': 'incorrect password.',
-      'auth/invalid-credential': 'email or password is incorrect.',
-      'auth/email-already-in-use': 'that email is already registered.',
-      'auth/weak-password': 'password too weak (min 6 chars).',
-      'auth/too-many-requests': 'too many attempts — try again later.',
-      'auth/network-request-failed': 'network error.'
-    };
-    return map[code] || 'something went wrong. try again.';
+function enterEditMode(id, data){
+  editingId = id;
+  editingImageData = data.imageData || null;
+  formTitle.textContent = 'edit product';
+  addBtn.textContent = '✓ save changes';
+  cancelEditBtn.classList.remove('hidden');
+  editBanner.classList.add('show');
+  editName.textContent = data.name || 'untitled';
+  pName.value = data.name || ''; pTag.value = data.tag || ''; pFile.value = '';
+  if (data.imageData){ preview.src = data.imageData; previewWrap.style.display = 'block'; }
+  else previewWrap.style.display = 'none';
+  statusMsg.textContent = ''; statusMsg.className = 'status-msg';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+function cancelEdit(){
+  editingId = null; editingImageData = null;
+  formTitle.textContent = 'add new product'; addBtn.textContent = '+ add product';
+  cancelEditBtn.classList.add('hidden'); editBanner.classList.remove('show'); editName.textContent = '';
+  pName.value = ''; pTag.value = ''; pFile.value = '';
+  preview.src = ''; previewWrap.style.display = 'none';
+  uploadBar.classList.remove('show'); uploadFill.style.width = '0%';
+  statusMsg.textContent = ''; statusMsg.className = 'status-msg';
+}
+cancelEditBtn.onclick = cancelEdit;
+
+pFile.onchange = (e) => {
+  const file = e.target.files[0];
+  if (file){
+    preview.src = URL.createObjectURL(file);
+    previewWrap.style.display = 'block';
+  } else if (editingImageData){
+    preview.src = editingImageData;
+    previewWrap.style.display = 'block';
+  } else {
+    previewWrap.style.display = 'none';
   }
+};
 
-  let editingId = null, editingImageUrl = null;
-  const formTitle = document.getElementById('formTitle');
-  const editBanner = document.getElementById('editBanner');
-  const editName = document.getElementById('editName');
-  const cancelEditBtn = document.getElementById('cancelEditBtn');
-  const addBtn = document.getElementById('addBtn');
-  const pName = document.getElementById('pName');
-  const pTag = document.getElementById('pTag');
-  const pFile = document.getElementById('pFile');
-  const preview = document.getElementById('preview');
-  const statusMsg = document.getElementById('statusMsg');
+addBtn.onclick = async () => {
+  const name = pName.value.trim(), tag = pTag.value.trim(), file = pFile.files[0];
+  statusMsg.className = 'status-msg'; statusMsg.textContent = '';
+  if (!name){ statusMsg.className = 'status-msg err'; statusMsg.textContent = 'enter a product name.'; return; }
+  if (!editingId && !file){ statusMsg.className = 'status-msg err'; statusMsg.textContent = 'choose a photo.'; return; }
 
-  function enterEditMode(id, data) {
-    editingId = id; editingImageUrl = data.imageUrl || null;
-    formTitle.textContent = 'edit product';
-    addBtn.textContent = '✓ save changes';
-    cancelEditBtn.classList.remove('hidden');
-    editBanner.classList.add('show');
-    editName.textContent = data.name || 'untitled';
-    pName.value = data.name || ''; pTag.value = data.tag || ''; pFile.value = '';
-    if (data.imageUrl) { preview.src = data.imageUrl; preview.style.display = 'block'; }
-    else preview.style.display = 'none';
-    statusMsg.textContent = ''; statusMsg.className = 'status-msg';
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-  function cancelEdit() {
-    editingId = null; editingImageUrl = null;
-    formTitle.textContent = 'add new product'; addBtn.textContent = '+ add product';
-    cancelEditBtn.classList.add('hidden'); editBanner.classList.remove('show'); editName.textContent = '';
-    pName.value = ''; pTag.value = ''; pFile.value = '';
-    preview.src = ''; preview.style.display = 'none';
-    statusMsg.textContent = ''; statusMsg.className = 'status-msg';
-  }
-  cancelEditBtn.onclick = cancelEdit;
+  const btn = addBtn; btn.disabled = true; btn.textContent = editingId ? 'saving…' : 'processing…';
+  try {
+    let imageData = editingImageData;
 
-  pFile.onchange = (e) => {
-    const file = e.target.files[0];
-    if (file) { preview.src = URL.createObjectURL(file); preview.style.display = 'block'; }
-    else if (editingImageUrl) { preview.src = editingImageUrl; preview.style.display = 'block'; }
-    else preview.style.display = 'none';
-  };
-
-  addBtn.onclick = async () => {
-    const name = pName.value.trim();
-    const tag = pTag.value.trim();
-    const file = pFile.files[0];
-    statusMsg.className = 'status-msg'; statusMsg.textContent = '';
-    if (!name) { statusMsg.className = 'status-msg err'; statusMsg.textContent = 'enter a product name.'; return; }
-    if (!editingId && !file) { statusMsg.className = 'status-msg err'; statusMsg.textContent = 'choose a photo.'; return; }
-
-    const btn = addBtn; btn.disabled = true; btn.textContent = editingId ? 'saving…' : 'uploading…';
-    try {
-      let imageUrl = editingImageUrl;
-      if (file) {
-        // Upload to Netlify Blobs via serverless function
-        const formData = new FormData();
-        formData.append('file', file);
-        const res = await fetch('/api/upload', { method: 'POST', body: formData });
-        if (!res.ok) throw new Error('upload failed (' + res.status + ')');
-        const data = await res.json();
-        if (!data.url) throw new Error('no url returned');
-        imageUrl = data.url;
+    if (file){
+      uploadBar.classList.add('show');
+      uploadFill.style.width = '20%';
+      // Compress
+      imageData = await compressImage(file);
+      uploadFill.style.width = '70%';
+      // Safety check
+      if (imageData.length > 950000){
+        throw new Error('image too large after compression — try a smaller photo.');
       }
-      if (editingId) {
-        await updateDoc(doc(db, 'products', editingId), { name, tag: tag || 'new', imageUrl });
-        statusMsg.className = 'status-msg ok'; statusMsg.textContent = '✨ changes saved!';
-        cancelEdit();
-      } else {
-        await addDoc(collection(db, 'products'), { name, tag: tag || 'new', imageUrl, createdAt: serverTimestamp() });
-        statusMsg.className = 'status-msg ok'; statusMsg.textContent = '✨ product added!';
-        pName.value = ''; pTag.value = ''; pFile.value = '';
-        preview.style.display = 'none';
-      }
-      renderProductsList();
-    } catch (err) {
-      console.error(err);
-      statusMsg.className = 'status-msg err'; statusMsg.textContent = 'something went wrong: ' + err.message;
-    } finally {
-      btn.disabled = false;
-      btn.textContent = editingId ? '✓ save changes' : '+ add product';
+      uploadFill.style.width = '90%';
     }
-  };
 
-  async function renderProductsList() {
-    const list = document.getElementById('productsList');
-    if (!list) return;
-    list.innerHTML = '<p style="color:#9c8577;font-style:italic;">loading…</p>';
-    try {
-      const q = query(collection(db, 'products'), orderBy('createdAt', 'desc'));
-      const snap = await getDocs(q);
-      list.innerHTML = '';
-      if (snap.empty) { list.innerHTML = '<p style="color:#9c8577;font-style:italic;">no products yet.</p>'; return; }
-      snap.forEach(d => {
-        const p = d.data(); const id = d.id;
-        const row = document.createElement('div'); row.className = 'product-row';
-        const img = document.createElement('img');
-        img.src = p.imageUrl || 'https://placehold.co/100x100/F3E7DF/B39283?text=S'; img.alt = p.name;
-        img.onerror = function() { this.src = 'https://placehold.co/100x100/F3E7DF/B39283?text=S'; };
-        const info = document.createElement('div'); info.className = 'info';
-        info.innerHTML = '<div class="name"></div><span class="tag"></span>';
-        info.querySelector('.name').textContent = p.name;
-        info.querySelector('.tag').textContent = p.tag || 'new';
-        const actions = document.createElement('div'); actions.className = 'actions';
-        const editBtn = document.createElement('button'); editBtn.className = 'edit'; editBtn.innerHTML = '<i class="fas fa-pen"></i>';
-        editBtn.onclick = () => enterEditMode(id, p);
-        const delBtn = document.createElement('button'); delBtn.className = 'del'; delBtn.innerHTML = '<i class="fas fa-trash-alt"></i>';
-        delBtn.onclick = async () => {
-          if (!confirm('remove this product?')) return;
-          try { await deleteDoc(doc(db, 'products', id)); if (editingId === id) cancelEdit(); renderProductsList(); }
-          catch (e) { alert('could not delete.'); }
-        };
-        actions.appendChild(editBtn); actions.appendChild(delBtn);
-        row.appendChild(img); row.appendChild(info); row.appendChild(actions);
-        list.appendChild(row);
+    if (editingId){
+      await updateDoc(doc(db, 'products', editingId), { name, tag: tag || 'new', imageData });
+      statusMsg.className = 'status-msg ok'; statusMsg.textContent = '✨ changes saved!';
+      cancelEdit();
+    } else {
+      await addDoc(collection(db, 'products'), {
+        name, tag: tag || 'new', imageData, createdAt: serverTimestamp()
       });
-    } catch (e) {
-      console.error(e); list.innerHTML = '<p style="color:#c0392b;">could not load products.</p>';
+      statusMsg.className = 'status-msg ok'; statusMsg.textContent = '✨ product added!';
+      pName.value = ''; pTag.value = ''; pFile.value = '';
+      previewWrap.style.display = 'none';
+      uploadBar.classList.remove('show');
     }
+    uploadFill.style.width = '100%';
+    renderProductsList();
+  } catch (err){
+    console.error(err);
+    statusMsg.className = 'status-msg err';
+    statusMsg.textContent = 'something went wrong: ' + (err.message || 'unknown error');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = editingId ? '✓ save changes' : '+ add product';
+    setTimeout(() => { uploadBar.classList.remove('show'); uploadFill.style.width = '0%'; }, 800);
   }
+};
+
+async function renderProductsList(){
+  const list = $('productsList');
+  if (!list) return;
+  list.innerHTML = '<p style="color:#9c8577;font-style:italic;">loading…</p>';
+  try {
+    const q = query(collection(db, 'products'), orderBy('createdAt', 'desc'));
+    const snap = await getDocs(q);
+    list.innerHTML = '';
+    if (snap.empty){ list.innerHTML = '<p style="color:#9c8577;font-style:italic;">no products yet.</p>'; return; }
+
+    snap.forEach(d => {
+      const p = d.data(), id = d.id;
+      const row = document.createElement('div'); row.className = 'product-row';
+      const img = document.createElement('img');
+      img.src = p.imageData || 'https://placehold.co/100x100/F3E7DF/B39283?text=S';
+      img.alt = p.name;
+      img.loading = 'lazy';
+      img.onerror = function(){ this.src = 'https://placehold.co/100x100/F3E7DF/B39283?text=S'; };
+      const info = document.createElement('div'); info.className = 'info';
+      info.innerHTML = '<div class="name"></div><span class="tag"></span>';
+      info.querySelector('.name').textContent = p.name;
+      info.querySelector('.tag').textContent = p.tag || 'new';
+      const actions = document.createElement('div'); actions.className = 'actions';
+      const editBtn = document.createElement('button'); editBtn.className = 'edit';
+      editBtn.innerHTML = '<i class="fas fa-pen"></i>';
+      editBtn.onclick = () => enterEditMode(id, p);
+      const delBtn = document.createElement('button'); delBtn.className = 'del';
+      delBtn.innerHTML = '<i class="fas fa-trash-alt"></i>';
+      delBtn.onclick = async () => {
+        if (!confirm('remove this product?')) return;
+        try {
+          await deleteDoc(doc(db, 'products', id));
+          if (editingId === id) cancelEdit();
+          renderProductsList();
+        } catch (e){ alert('could not delete.'); }
+      };
+      actions.appendChild(editBtn); actions.appendChild(delBtn);
+      row.appendChild(img); row.appendChild(info); row.appendChild(actions);
+      list.appendChild(row);
+    });
+  } catch (e){
+    console.error(e);
+    list.innerHTML = '<p style="color:#c0392b;">could not load products.</p>';
+  }
+}
 </script>
 </body>
 </html>
