@@ -3,451 +3,97 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover" />
-  
-  <!-- ⭐️ Comprehensive SEO & Meta Tags -->
-  <title>Snoweey ✧ Custom A4 Photo Frames & Luxury Gift Hampers | Handcrafted Art</title>
-  <meta name="description" content="Snoweey creates exquisite custom A4 photo frames and curated gift hampers. Handcrafted designs for birthdays, anniversaries & special moments. Bespoke themes, names & colors. WhatsApp orders available." />
-  <meta name="keywords" content="custom A4 frames, photo frames, gift hampers, personalized frames, handmade frames, Snoweey, custom hampers, birthday gifts, anniversary gifts, South Africa frames, bespoke photo frames, luxury hampers" />
+  <title>Snoweey ✧ Custom A4 Frames & Luxury Gift Hampers</title>
+  <meta name="description" content="Snoweey creates exquisite custom A4 photo frames and curated gift hampers." />
   <meta name="author" content="Snoweey" />
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://snoweey.netlify.app" />
-  
-  <!-- Open Graph / Social -->
-  <meta property="og:title" content="Snoweey · Custom A4 Frames & Luxe Hampers" />
-  <meta property="og:description" content="Handcrafted custom A4 photo frames and elegant gift hampers. Every piece is a unique celebration." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://snoweey.netlify.app" />
-  <meta property="og:image" content="https://placehold.co/1200x630/F3E7DF/7B5B4A?text=Snoweey+Frames+%26+Hampers" />
-  <meta property="og:image:alt" content="Snoweey custom frame and hamper collection" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Snoweey · Custom Frames & Hampers" />
-  <meta name="twitter:description" content="Bespoke A4 frames and curated gift hampers, made with love." />
-  
-  <!-- Fonts & Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-  
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #fbf8f5; font-family: 'Quicksand', sans-serif; color: #3e332b; line-height: 1.5; scroll-behavior: smooth; }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #f3e7df; }
+    ::-webkit-scrollbar-thumb { background: #cbb09b; border-radius: 10px; }
+    .container { max-width: 1350px; margin: 0 auto; padding: 0 35px; }
+    .navbar { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; padding: 22px 0 16px; border-bottom: 1.5px solid rgba(188, 149, 128, 0.25); position: sticky; top: 0; background: rgba(251, 248, 245, 0.85); backdrop-filter: blur(12px); z-index: 100; }
+    .logo { font-family: 'Cormorant Garamond', serif; font-size: 2.6rem; font-weight: 600; color: #5e4638; display: flex; align-items: baseline; gap: 6px; cursor: default; }
+    .logo span { font-size: 0.9rem; font-weight: 400; color: #b3927f; margin-left: 4px; }
+    .nav-links { display: flex; gap: 36px; align-items: center; flex-wrap: wrap; }
+    .nav-links a { text-decoration: none; font-weight: 500; color: #6b5848; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1.6px; padding-bottom: 4px; border-bottom: 2px solid transparent; transition: 0.2s; }
+    .nav-links a:hover { color: #b4856b; border-bottom-color: #dbb094; }
 
-    body {
-      background: #fbf8f5;
-      font-family: 'Quicksand', sans-serif;
-      color: #3e332b;
-      scroll-behavior: smooth;
-      line-height: 1.5;
-      letter-spacing: 0.2px;
-    }
+    .hero-slideshow { width: 100%; margin: 36px 0 42px; border-radius: 52px; overflow: hidden; box-shadow: 0 32px 48px -22px rgba(110, 65, 40, 0.15); background: #f7ede5; border: 1px solid #e7cfbf; }
+    .slideshow-container { position: relative; width: 100%; aspect-ratio: 16 / 9; }
+    .slide { position: absolute; inset: 0; opacity: 0; transition: opacity 0.9s cubic-bezier(0.23, 1, 0.32, 1); }
+    .slide.active { opacity: 1; z-index: 1; }
+    .slide-img { width: 100%; height: 100%; object-fit: cover; }
+    .prev, .next { cursor: pointer; position: absolute; top: 50%; transform: translateY(-50%); width: 46px; height: 46px; background: rgba(255, 250, 248, 0.75); backdrop-filter: blur(12px); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: #7e5d4e; z-index: 10; border: 1px solid #ddc0ad; transition: 0.25s; }
+    .prev:hover, .next:hover { background: #fffaf6; color: #b08164; }
+    .prev { left: 22px; } .next { right: 22px; }
+    .dots { position: absolute; bottom: 22px; left: 0; right: 0; display: flex; justify-content: center; gap: 14px; z-index: 10; }
+    .dot { width: 8px; height: 8px; background: rgba(170, 130, 105, 0.5); border-radius: 10px; cursor: pointer; transition: 0.3s; }
+    .dot.active-dot { background: #b18364; width: 28px; }
 
-    ::-webkit-scrollbar {
-      width: 6px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #f3e7df;
-      border-radius: 10px;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #cbb09b;
-      border-radius: 10px;
-    }
+    .section-title { font-size: 2.4rem; font-weight: 500; font-family: 'Cormorant Garamond', serif; margin: 70px 0 8px; text-align: center; color: #6b4f40; }
+    .section-title:after { content: ''; display: block; width: 55px; height: 2px; background: #cfb6a3; margin: 14px auto 0; border-radius: 4px; }
+    .subhead { text-align: center; color: #9c8577; margin-bottom: 38px; font-size: 1rem; }
 
-    .container {
-      max-width: 1350px;
-      margin: 0 auto;
-      padding: 0 35px;
-    }
+    .new-products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 26px; margin: 15px 0 40px; }
+    .new-product-card { background: #fff; border-radius: 28px; overflow: hidden; border: 1px solid #f0e2d7; box-shadow: 0 8px 18px -8px rgba(120, 75, 50, 0.06); transition: 0.25s; cursor: pointer; }
+    .new-product-card:hover { transform: translateY(-6px); box-shadow: 0 24px 30px -14px rgba(140, 80, 45, 0.15); border-color: #dbb59a; }
+    .new-product-img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; background: #faf2ed; display: block; }
+    .new-product-info { padding: 18px 16px 20px; }
+    .new-product-name { font-weight: 600; font-size: 1.1rem; color: #4e3a2e; font-family: 'Cormorant Garamond', serif; }
+    .new-product-tag { background: #f7ede5; color: #8b6b57; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; padding: 4px 12px; border-radius: 30px; display: inline-block; font-weight: 600; margin-top: 8px; }
 
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      padding: 26px 0 18px;
-      border-bottom: 1.5px solid rgba(188, 149, 128, 0.35);
-    }
-    .logo {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2.8rem;
-      font-weight: 600;
-      letter-spacing: 1.2px;
-      color: #5e4638;
-      display: flex;
-      align-items: baseline;
-      gap: 6px;
-    }
-    .logo span {
-      font-size: 1rem;
-      font-weight: 400;
-      font-family: 'Quicksand', sans-serif;
-      color: #b3927f;
-      letter-spacing: 0.3px;
-      margin-left: 4px;
-    }
-    .nav-links {
-      display: flex;
-      gap: 40px;
-      align-items: center;
-    }
-    .nav-links a {
-      text-decoration: none;
-      font-weight: 500;
-      color: #6b5848;
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 1.8px;
-      transition: 0.25s ease;
-      padding-bottom: 6px;
-      border-bottom: 2px solid transparent;
-    }
-    .nav-links a:hover {
-      color: #b4856b;
-      border-bottom-color: #dbb094;
-    }
+    .gallery-grid, .hampers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 30px; margin: 15px 0 50px; }
+    .gallery-item, .hamper-card { border-radius: 30px; overflow: hidden; cursor: pointer; transition: 0.3s; background: #fff; box-shadow: 0 12px 22px -12px rgba(120, 75, 50, 0.07); border: 1px solid #efdfd4; }
+    .gallery-item:hover, .hamper-card:hover { transform: translateY(-8px); box-shadow: 0 28px 36px -18px rgba(140, 80, 45, 0.16); border-color: #dbb59a; }
+    .gallery-img, .hamper-img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block; }
+    .loading-text { text-align: center; color: #b3927f; padding: 40px; font-style: italic; grid-column: 1 / -1; }
 
-    .hero-slideshow {
-      width: 100%;
-      margin: 36px 0 42px;
-      border-radius: 52px;
-      overflow: hidden;
-      box-shadow: 0 32px 48px -22px rgba(110, 65, 40, 0.15);
-      background: #f7ede5;
-      border: 1px solid #e7cfbf;
-    }
-    .slideshow-container {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 16 / 9;
-    }
-    .slide {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      opacity: 0;
-      transition: opacity 0.9s cubic-bezier(0.23, 1, 0.32, 1);
-      border-radius: 52px;
-    }
-    .slide.active {
-      opacity: 1;
-      z-index: 1;
-    }
-    .slide-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 52px;
-    }
-    .prev, .next {
-      cursor: pointer;
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 46px;
-      height: 46px;
-      background: rgba(255, 250, 248, 0.75);
-      backdrop-filter: blur(12px);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-      color: #7e5d4e;
-      z-index: 10;
-      transition: 0.25s;
-      border: 1px solid #ddc0ad;
-      box-shadow: 0 8px 16px rgba(80, 50, 30, 0.08);
-    }
-    .prev:hover, .next:hover {
-      background: #fffaf6;
-      color: #b08164;
-      border-color: #c99f86;
-    }
-    .prev { left: 22px; }
-    .next { right: 22px; }
-    .dots {
-      position: absolute;
-      bottom: 22px;
-      left: 0;
-      right: 0;
-      display: flex;
-      justify-content: center;
-      gap: 14px;
-      z-index: 10;
-    }
-    .dot {
-      width: 8px;
-      height: 8px;
-      background: rgba(170, 130, 105, 0.5);
-      border-radius: 10px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-    .dot.active-dot {
-      background: #b18364;
-      width: 28px;
-      border-radius: 10px;
-    }
+    .cta-section { background: linear-gradient(105deg, #f9f0e9 0%, #f3e2d7 100%); border-radius: 48px; margin: 45px 0 55px; padding: 54px 38px; text-align: center; border: 1px solid #e3cdbb; }
+    .cta-section h3 { font-size: 2rem; margin-bottom: 12px; font-weight: 500; color: #5b4336; font-family: 'Cormorant Garamond', serif; }
+    .wa-button { background: #7f5d4a; color: white; display: inline-flex; align-items: center; gap: 14px; padding: 18px 50px; border-radius: 60px; font-weight: 600; text-decoration: none; font-size: 1.05rem; margin-top: 20px; box-shadow: 0 12px 22px -10px rgba(110, 65, 35, 0.25); transition: 0.25s; }
+    .wa-button:hover { background: #5f4333; }
 
-    .intro-text {
-      text-align: center;
-      max-width: 700px;
-      margin: 15px auto 50px;
-    }
-    .intro-text h1 {
-      font-size: 3.5rem;
-      font-weight: 500;
-      font-family: 'Cormorant Garamond', serif;
-      margin-bottom: 18px;
-      color: #5b4236;
-      letter-spacing: -0.3px;
-    }
-    .intro-text p {
-      font-size: 1.15rem;
-      color: #7f6860;
-      font-weight: 400;
-    }
-
-    .section-title {
-      font-size: 2.5rem;
-      font-weight: 500;
-      font-family: 'Cormorant Garamond', serif;
-      margin: 70px 0 10px;
-      text-align: center;
-      color: #6b4f40;
-      letter-spacing: 0.8px;
-    }
-    .section-title:after {
-      content: '';
-      display: block;
-      width: 65px;
-      height: 2px;
-      background: #cfb6a3;
-      margin: 14px auto 0;
-      border-radius: 4px;
-    }
-    .subhead {
-      text-align: center;
-      color: #9c8577;
-      margin-bottom: 45px;
-      font-size: 1rem;
-      font-weight: 400;
-    }
-
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-      gap: 30px;
-      margin: 15px 0 50px;
-    }
-    .gallery-item {
-      border-radius: 34px;
-      overflow: hidden;
-      cursor: pointer;
-      transition: all 0.35s ease;
-      background: #ffffff;
-      box-shadow: 0 16px 28px -14px rgba(120, 75, 50, 0.08);
-      border: 1px solid #efdfd4;
-      position: relative;
-    }
-    .gallery-item::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, transparent 60%, rgba(100, 70, 50, 0.03));
-      pointer-events: none;
-    }
-    .gallery-item:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 34px 40px -18px rgba(140, 80, 45, 0.18);
-      border-color: #dbb59a;
-    }
-    .gallery-img {
-      width: 100%;
-      aspect-ratio: 1 / 1;
-      object-fit: cover;
-      display: block;
-    }
-
-    .hampers-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 38px;
-      margin: 15px 0 65px;
-    }
-    .hamper-card {
-      background: #ffffff;
-      border-radius: 38px;
-      overflow: hidden;
-      transition: 0.3s ease;
-      border: 1px solid #eddbcf;
-      box-shadow: 0 14px 24px -12px rgba(90, 55, 30, 0.06);
-      cursor: pointer;
-      position: relative;
-    }
-    .hamper-card::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 80% 20%, rgba(245, 225, 210, 0.2), transparent 70%);
-      pointer-events: none;
-    }
-    .hamper-card:hover {
-      transform: translateY(-7px);
-      box-shadow: 0 30px 38px -18px rgba(140, 80, 45, 0.16);
-      border-color: #cfaa8f;
-    }
-    .hamper-img {
-      width: 100%;
-      aspect-ratio: 1 / 1;
-      object-fit: cover;
-      background: #faf2ed;
-    }
-
-    .cta-section {
-      background: linear-gradient(105deg, #f9f0e9 0%, #f3e2d7 100%);
-      border-radius: 58px;
-      margin: 45px 0 55px;
-      padding: 58px 42px;
-      text-align: center;
-      border: 1px solid #e3cdbb;
-      box-shadow: 0 22px 32px -14px rgba(145, 90, 55, 0.1);
-    }
-    .wa-button {
-      background: #7f5d4a;
-      color: white;
-      display: inline-flex;
-      align-items: center;
-      gap: 14px;
-      padding: 18px 50px;
-      border-radius: 60px;
-      font-weight: 600;
-      text-decoration: none;
-      font-size: 1.05rem;
-      letter-spacing: 0.4px;
-      transition: 0.25s;
-      margin-top: 20px;
-      box-shadow: 0 12px 22px -10px rgba(110, 65, 35, 0.25);
-      border: none;
-    }
-    .wa-button:hover {
-      background: #5f4333;
-      transform: scale(0.97);
-      box-shadow: 0 6px 16px rgba(90, 50, 25, 0.28);
-    }
-
-    .social-row {
-      display: flex;
-      justify-content: center;
-      gap: 35px;
-      flex-wrap: wrap;
-      margin: 30px 0 50px;
-    }
-    .social-icon-link {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-      background: #ffffff;
-      padding: 13px 36px;
-      border-radius: 50px;
-      border: 1px solid #e0cbbc;
-      font-weight: 500;
-      color: #6f5342;
-      transition: 0.25s;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.02);
-    }
-    .social-icon-link i {
-      font-size: 1.6rem;
-    }
-    .social-icon-link:hover {
-      background: #fefbf8;
-      border-color: #c79d83;
-      color: #ab7055;
-      transform: translateY(-3px);
-    }
-
-    footer {
-      background: #f2e7de;
-      color: #8b7365;
-      padding: 40px 20px;
-      text-align: center;
-      border-radius: 48px 48px 0 0;
-      margin-top: 30px;
-      font-weight: 400;
-      letter-spacing: 0.3px;
-    }
-
-    .lightbox-modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(22, 16, 12, 0.93);
-      backdrop-filter: blur(7px);
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-      cursor: pointer;
-    }
-    .lightbox-img-full {
-      max-width: 86%;
-      max-height: 86%;
-      border-radius: 36px;
-      object-fit: contain;
-      box-shadow: 0 35px 50px rgba(0,0,0,0.4);
-    }
-    .close-lightbox {
-      position: absolute;
-      top: 28px;
-      right: 44px;
-      font-size: 2.8rem;
-      color: #f0dbce;
-      cursor: pointer;
-      font-weight: 300;
-      transition: 0.2s;
-    }
-    .close-lightbox:hover {
-      color: #fff;
-    }
-
-    @media (max-width: 760px) {
-      .container { padding: 0 18px; }
-      .navbar { flex-direction: column; gap: 16px; }
-      .intro-text h1 { font-size: 2.6rem; }
-      .prev, .next { width: 38px; height: 38px; }
-      .hampers-grid { grid-template-columns: 1fr; }
-    }
+    .social-row { display: flex; justify-content: center; gap: 28px; flex-wrap: wrap; margin: 30px 0 40px; }
+    .social-icon-link { display: flex; align-items: center; gap: 12px; text-decoration: none; background: #fff; padding: 12px 32px; border-radius: 50px; border: 1px solid #e0cbbc; font-weight: 500; color: #6f5342; font-size: 0.95rem; transition: 0.25s; }
+    .social-icon-link i { font-size: 1.5rem; }
+    .social-icon-link:hover { background: #fefbf8; border-color: #c79d83; color: #ab7055; transform: translateY(-3px); }
+    footer { background: #f2e7de; color: #8b7365; padding: 40px 20px; text-align: center; border-radius: 48px 48px 0 0; margin-top: 30px; }
+    .lightbox-modal { display: none; position: fixed; inset: 0; background: rgba(22, 16, 12, 0.93); backdrop-filter: blur(7px); justify-content: center; align-items: center; z-index: 1000; cursor: pointer; }
+    .lightbox-img-full { max-width: 86%; max-height: 86%; border-radius: 32px; object-fit: contain; }
+    .close-lightbox { position: absolute; top: 28px; right: 44px; font-size: 2.8rem; color: #f0dbce; cursor: pointer; }
+    @media (max-width: 760px) { .container { padding: 0 18px; } .navbar { flex-direction: column; gap: 14px; } .section-title { font-size: 2rem; } .gallery-grid, .hampers-grid, .new-products-grid { grid-template-columns: 1fr 1fr; gap: 18px; } }
+    @media (max-width: 480px) { .gallery-grid, .hampers-grid, .new-products-grid { grid-template-columns: 1fr; } .social-icon-link { width: 100%; justify-content: center; } }
   </style>
 </head>
 <body>
 <div class="container">
-  <header class="navbar" role="banner">
-    <div class="logo">snoweey<span>✧ frames & hampers</span></div>
-    <nav class="nav-links" aria-label="Main navigation">
+  <header class="navbar">
+    <div class="logo" id="logo">snoweey<span>✧ frames & hampers</span></div>
+    <nav class="nav-links">
       <a href="#gallery">gallery</a>
       <a href="#hampers">hampers</a>
+      <a href="#new">new</a>
       <a href="#connect">connect</a>
       <a href="#order">custom</a>
     </nav>
   </header>
 
   <main>
-    <section class="hero-slideshow" aria-label="Featured artwork slideshow">
+    <section class="hero-slideshow">
       <div class="slideshow-container" id="slideshowContainer"></div>
     </section>
 
-    <div class="intro-text">
-      <h1>snoweey · custom A4 frames</h1>
-      <p>handcrafted elegance for birthdays, anniversaries & every beautiful chapter.</p>
+    <div id="new"></div>
+    <h2 class="section-title">✨ new products</h2>
+    <p class="subhead">freshly dropped · curated by snoweey</p>
+    <div class="new-products-grid" id="newProductsGrid">
+      <p class="loading-text">loading…</p>
     </div>
 
     <div id="gallery"></div>
@@ -461,23 +107,20 @@
     <div class="hampers-grid" id="hampersGrid"></div>
 
     <section id="order" class="cta-section">
-      <h3 style="font-size: 2.1rem; margin-bottom: 12px; font-weight: 500; color: #5b4336; font-family: 'Cormorant Garamond', serif;">design your own keepsake</h3>
-      <p style="margin-bottom: 20px; color: #7e6558; font-weight: 400;">themes, names, colour stories — crafted into an exquisite A4 frame or hamper.</p>
-      <a href="https://wa.me/27764261311?text=Hello%20Snoweey!%20I'd%20love%20a%20custom%20A4%20frame%20or%20hamper%20%F0%9F%8E%80" target="_blank" rel="noopener noreferrer" class="wa-button">
+      <h3>design your own keepsake</h3>
+      <p style="margin-bottom: 20px; color: #7e6558;">themes, names, colour stories — crafted into an exquisite A4 frame or hamper.</p>
+      <a href="https://wa.me/27764261311?text=Hello%20Snoweey!%20I'd%20love%20a%20custom%20frame%20or%20hamper%20%F0%9F%8E%80" target="_blank" rel="noopener noreferrer" class="wa-button">
         <i class="fab fa-whatsapp" style="font-size: 1.5rem;"></i> Chat on WhatsApp · +27 76 426 1311
       </a>
       <p style="margin-top: 24px; font-size: 0.85rem; color: #aa8e7c;">✨ personal quotes · rush orders · gift-ready wrapping ✨</p>
     </section>
 
     <div id="connect"></div>
-    <h2 class="section-title" style="margin-bottom: 18px;">✧ stay inspired ✧</h2>
+    <h2 class="section-title">✧ stay inspired ✧</h2>
     <div class="social-row">
-      <a href="https://www.instagram.com/sinokubonga_snoweey?igsh=MXcya2cwMGJpdW9rdw==" target="_blank" rel="noopener noreferrer" class="social-icon-link"><i class="fab fa-instagram" style="color:#b5846b;"></i> Instagram · daily muse</a>
-      <a href="https://www.facebook.com/sinokubonga.nkosi.2025" target="_blank" rel="noopener noreferrer" class="social-icon-link"><i class="fab fa-facebook" style="color:#b5846b;"></i> Facebook · portfolio</a>
-      <a href="https://www.tiktok.com/@sinokubongasnoweey?_r=1&_t=ZS-96Ke8N2ZnLJ" target="_blank" rel="noopener noreferrer" class="social-icon-link"><i class="fab fa-tiktok"></i> TikTok · process</a>
-    </div>
-    <div style="text-align: center; margin-bottom: 30px;">
-      <span style="background: #f7ede5; padding: 8px 28px; border-radius: 60px; font-size: 0.9rem; font-weight: 500; color:#5e4537;"><i class="fab fa-whatsapp" style="color:#9b725b;"></i> direct orders · +27 76 426 1311</span>
+      <a href="https://www.instagram.com/sinokubonga_snoweey?igsh=MXcya2cwMGJpdW9rdw==" target="_blank" rel="noopener noreferrer" class="social-icon-link"><i class="fab fa-instagram" style="color:#b5846b;"></i> Instagram</a>
+      <a href="https://www.facebook.com/sinokubonga.nkosi.2025" target="_blank" rel="noopener noreferrer" class="social-icon-link"><i class="fab fa-facebook" style="color:#b5846b;"></i> Facebook</a>
+      <a href="https://www.tiktok.com/@sinokubongasnoweey?_r=1&_t=ZS-96Ke8N2ZnLJ" target="_blank" rel="noopener noreferrer" class="social-icon-link"><i class="fab fa-tiktok"></i> TikTok</a>
     </div>
   </main>
 </div>
@@ -487,205 +130,149 @@
   <p style="margin-top: 8px; font-style: italic;">every memory, artfully framed ✧</p>
 </footer>
 
-<div id="lightboxModal" class="lightbox-modal" role="dialog" aria-modal="true" aria-label="Image preview">
-  <span class="close-lightbox" aria-label="Close preview">&times;</span>
-  <img class="lightbox-img-full" id="lightboxImage" alt="enlarged elegant view" />
+<div id="lightboxModal" class="lightbox-modal">
+  <span class="close-lightbox">&times;</span>
+  <img class="lightbox-img-full" id="lightboxImage" alt="enlarged view" />
 </div>
 
-<script>
-  (function() {
-    const whatsappImages = [
-      "IMG-20260513-WA0013.jpg", "IMG-20260513-WA0022.jpg", "IMG-20260513-WA0023.jpg", "IMG-20260513-WA0026.jpg",
-      "IMG-20260513-WA0029.jpg", "IMG-20260513-WA0032.jpg", "IMG-20260513-WA0035.jpg", "IMG-20260513-WA0036.jpg",
-      "IMG-20260513-WA0037.jpg", "IMG-20260513-WA0038.jpg", "IMG-20260513-WA0039.jpg", "IMG-20260513-WA0040.jpg",
-      "IMG-20260513-WA0041.jpg", "IMG-20260513-WA0044.jpg", "IMG-20260513-WA0047.jpg", "IMG-20260513-WA0067.jpg",
-      "IMG-20260513-WA0082.jpg", "IMG-20260513-WA0083.jpg", "IMG-20260513-WA0087.jpg", "IMG-20260513-WA0088.jpg"
-    ];
-    const namedImagesArray = [
-      "spongebob.jpg", "blackheartdesign.jpg", "cartoon.jpg", "heartdesign.jpg"
-    ];
-    const allWorkImages = [...whatsappImages, ...namedImagesArray];
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import { getFirestore, collection, getDocs, orderBy, query } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-    const hamperImages = [
-      "IMG-20260513-WA0088.jpg",
-      "IMG-20260513-WA0082.jpg",
-      "IMG-20260513-WA0067.jpg"
-    ];
+  const firebaseConfig = {
+    apiKey: "AIzaSyDeIlLNMRkPLqFFSpxn10-mOLidmEWp4tU",
+    authDomain: "makeitsoapplication.firebaseapp.com",
+    projectId: "makeitsoapplication",
+    storageBucket: "makeitsoapplication.firebasestorage.app",
+    messagingSenderId: "563193624067",
+    appId: "1:563193624067:web:2408edc09167099cc28036"
+  };
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
 
-    let currentSlide = 0;
-    let slideInterval;
-    const slideshowContainer = document.getElementById('slideshowContainer');
+  const slideImages = [
+    "IMG-20260513-WA0013.jpg","IMG-20260513-WA0022.jpg","IMG-20260513-WA0023.jpg",
+    "IMG-20260513-WA0026.jpg","IMG-20260513-WA0029.jpg","IMG-20260513-WA0032.jpg",
+    "IMG-20260513-WA0035.jpg","IMG-20260513-WA0036.jpg","IMG-20260513-WA0037.jpg",
+    "IMG-20260513-WA0038.jpg","IMG-20260513-WA0039.jpg","IMG-20260513-WA0040.jpg",
+    "IMG-20260513-WA0041.jpg","IMG-20260513-WA0044.jpg","IMG-20260513-WA0047.jpg",
+    "IMG-20260513-WA0067.jpg","IMG-20260513-WA0082.jpg","IMG-20260513-WA0083.jpg",
+    "IMG-20260513-WA0087.jpg","IMG-20260513-WA0088.jpg","spongebob.jpg",
+    "blackheartdesign.jpg","cartoon.jpg","heartdesign.jpg"
+  ];
+  const hamperImages = ["IMG-20260513-WA0088.jpg","IMG-20260513-WA0082.jpg","IMG-20260513-WA0067.jpg"];
 
-    function buildSlideshow() {
-      if (!slideshowContainer) return;
-      slideshowContainer.innerHTML = '';
-      allWorkImages.forEach((imgSrc, idx) => {
-        const slideDiv = document.createElement('div');
-        slideDiv.className = 'slide';
-        if (idx === 0) slideDiv.classList.add('active');
-        const img = document.createElement('img');
-        img.src = imgSrc;
-        img.alt = `Snoweey custom artwork ${idx+1}`;
-        img.className = 'slide-img';
-        img.onerror = function() {
-          this.src = 'https://placehold.co/1600x900/F3E7DF/A8887B?text=Snoweey+Elegance';
-        };
-        slideDiv.appendChild(img);
-        slideshowContainer.appendChild(slideDiv);
-      });
-
-      const prevBtn = document.createElement('button');
-      prevBtn.className = 'prev';
-      prevBtn.innerHTML = '❮';
-      prevBtn.setAttribute('aria-label', 'Previous slide');
-      const nextBtn = document.createElement('button');
-      nextBtn.className = 'next';
-      nextBtn.innerHTML = '❯';
-      nextBtn.setAttribute('aria-label', 'Next slide');
-      slideshowContainer.appendChild(prevBtn);
-      slideshowContainer.appendChild(nextBtn);
-
-      const dotsDiv = document.createElement('div');
-      dotsDiv.className = 'dots';
-      allWorkImages.forEach((_, idx) => {
-        const dot = document.createElement('span');
-        dot.className = 'dot';
-        if (idx === 0) dot.classList.add('active-dot');
-        dot.dataset.index = idx;
-        dot.setAttribute('role', 'button');
-        dot.setAttribute('aria-label', `Go to slide ${idx+1}`);
-        dotsDiv.appendChild(dot);
-      });
-      slideshowContainer.appendChild(dotsDiv);
-
-      prevBtn.addEventListener('click', () => changeSlide(-1));
-      nextBtn.addEventListener('click', () => changeSlide(1));
-      document.querySelectorAll('.dot').forEach(dot => {
-        dot.addEventListener('click', (e) => {
-          const index = parseInt(e.target.dataset.index, 10);
-          if (!isNaN(index)) goToSlide(index);
-        });
-      });
-      startAutoSlide();
-    }
-
-    function changeSlide(direction) {
-      const slides = document.querySelectorAll('.slide');
-      if (!slides.length) return;
-      slides[currentSlide].classList.remove('active');
-      currentSlide = (currentSlide + direction + slides.length) % slides.length;
-      slides[currentSlide].classList.add('active');
-      updateDots();
-      resetAutoSlide();
-    }
-
-    function goToSlide(index) {
-      const slides = document.querySelectorAll('.slide');
-      if (!slides.length) return;
-      slides[currentSlide].classList.remove('active');
-      currentSlide = index;
-      slides[currentSlide].classList.add('active');
-      updateDots();
-      resetAutoSlide();
-    }
-
-    function updateDots() {
-      const dots = document.querySelectorAll('.dot');
-      dots.forEach((dot, i) => {
-        dot.classList.toggle('active-dot', i === currentSlide);
-      });
-    }
-
-    function startAutoSlide() {
-      if (slideInterval) clearInterval(slideInterval);
-      slideInterval = setInterval(() => changeSlide(1), 4600);
-    }
-    function resetAutoSlide() {
-      if (slideInterval) clearInterval(slideInterval);
-      slideInterval = setInterval(() => changeSlide(1), 4600);
-    }
-
-    function renderGallery() {
-      const grid = document.getElementById('galleryGrid');
-      if (!grid) return;
-      grid.innerHTML = '';
-      allWorkImages.forEach(src => {
-        const item = document.createElement('div');
-        item.className = 'gallery-item';
-        const img = document.createElement('img');
-        img.src = src;
-        img.className = 'gallery-img';
-        img.alt = 'Snoweey custom A4 frame design';
-        img.loading = 'lazy';
-        img.onerror = function() {
-          this.src = 'https://placehold.co/600x600/F3E7DF/B39283?text=Snoweey+Design';
-        };
-        item.appendChild(img);
-        item.addEventListener('click', () => openLightbox(src));
-        grid.appendChild(item);
-      });
-    }
-
-    function renderHampers() {
-      const grid = document.getElementById('hampersGrid');
-      if (!grid) return;
-      grid.innerHTML = '';
-      hamperImages.forEach(src => {
-        const card = document.createElement('div');
-        card.className = 'hamper-card';
-        const img = document.createElement('img');
-        img.src = src;
-        img.alt = 'Snoweey luxury gift hamper';
-        img.className = 'hamper-img';
-        img.loading = 'lazy';
-        img.onerror = function() {
-          this.src = 'https://placehold.co/600x600/F3E7DF/C2A18B?text=Hamper';
-        };
-        card.appendChild(img);
-        card.addEventListener('click', () => openLightbox(src));
-        grid.appendChild(card);
-      });
-    }
-
-    const modal = document.getElementById('lightboxModal');
-    const lightboxImg = document.getElementById('lightboxImage');
-    const closeBtn = document.querySelector('.close-lightbox');
-
-    function openLightbox(src) {
-      if (modal && lightboxImg) {
-        lightboxImg.src = src;
-        modal.style.display = 'flex';
-      }
-    }
-    function closeModal() {
-      if (modal) modal.style.display = 'none';
-    }
-    if (closeBtn) closeBtn.addEventListener('click', closeModal);
-    if (modal) {
-      modal.addEventListener('click', (e) => {
-        if (e.target === modal) closeModal();
-      });
-    }
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && modal && modal.style.display === 'flex') {
-        closeModal();
-      }
+  // Slideshow
+  let currentSlide = 0, slideTimer = null;
+  function buildSlideshow() {
+    const c = document.getElementById('slideshowContainer');
+    if (!c) return;
+    c.innerHTML = '';
+    slideImages.forEach((src, i) => {
+      const s = document.createElement('div');
+      s.className = 'slide' + (i === 0 ? ' active' : '');
+      const img = document.createElement('img');
+      img.className = 'slide-img'; img.src = src; img.loading = i < 2 ? 'eager' : 'lazy';
+      img.onerror = function() { this.src = 'https://placehold.co/1600x900/F3E7DF/A8887B?text=Snoweey'; };
+      s.appendChild(img); c.appendChild(s);
     });
+    const prev = document.createElement('button'); prev.className = 'prev'; prev.innerHTML = '❮';
+    const next = document.createElement('button'); next.className = 'next'; next.innerHTML = '❯';
+    c.appendChild(prev); c.appendChild(next);
+    const dots = document.createElement('div'); dots.className = 'dots';
+    slideImages.forEach((_, i) => {
+      const d = document.createElement('span'); d.className = 'dot' + (i === 0 ? ' active-dot' : ''); d.dataset.i = i;
+      dots.appendChild(d);
+    });
+    c.appendChild(dots);
+    prev.onclick = () => changeSlide(-1);
+    next.onclick = () => changeSlide(1);
+    dots.querySelectorAll('.dot').forEach(d => { d.onclick = () => goToSlide(+d.dataset.i); });
+    startAuto();
+  }
+  function changeSlide(dir) {
+    const s = document.querySelectorAll('.slide'); if (!s.length) return;
+    s[currentSlide].classList.remove('active');
+    currentSlide = (currentSlide + dir + s.length) % s.length;
+    s[currentSlide].classList.add('active');
+    updateDots(); resetAuto();
+  }
+  function goToSlide(i) {
+    const s = document.querySelectorAll('.slide'); if (!s.length) return;
+    s[currentSlide].classList.remove('active'); currentSlide = i; s[currentSlide].classList.add('active');
+    updateDots(); resetAuto();
+  }
+  function updateDots() { document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active-dot', i === currentSlide)); }
+  function startAuto() { if (slideTimer) clearInterval(slideTimer); slideTimer = setInterval(() => changeSlide(1), 4600); }
+  function resetAuto() { if (slideTimer) clearInterval(slideTimer); slideTimer = setInterval(() => changeSlide(1), 4600); }
 
-    document.addEventListener('error', function(e) {
-      const target = e.target;
-      if (target && target.tagName === 'IMG' && !target.hasAttribute('data-fallback')) {
-        target.setAttribute('data-fallback', 'true');
-        if (!target.src.includes('placehold')) {
-          target.src = 'https://placehold.co/800x800/F3E7DF/AB887B?text=Snoweey+Art';
-        }
-      }
-    }, true);
+  function renderGallery() {
+    const g = document.getElementById('galleryGrid'); if (!g) return; g.innerHTML = '';
+    slideImages.forEach(src => {
+      const item = document.createElement('div'); item.className = 'gallery-item';
+      const img = document.createElement('img'); img.src = src; img.className = 'gallery-img'; img.loading = 'lazy'; img.alt = 'Snoweey design';
+      img.onerror = function() { this.src = 'https://placehold.co/600x600/F3E7DF/B39283?text=Snoweey'; };
+      item.appendChild(img); item.onclick = () => openLightbox(src); g.appendChild(item);
+    });
+  }
 
-    buildSlideshow();
-    renderGallery();
-    renderHampers();
-  })();
+  function renderHampers() {
+    const g = document.getElementById('hampersGrid'); if (!g) return; g.innerHTML = '';
+    hamperImages.forEach(src => {
+      const c = document.createElement('div'); c.className = 'hamper-card';
+      const img = document.createElement('img'); img.src = src; img.className = 'hamper-img'; img.loading = 'lazy'; img.alt = 'Snoweey hamper';
+      img.onerror = function() { this.src = 'https://placehold.co/600x600/F3E7DF/C2A18B?text=Hamper'; };
+      c.appendChild(img); c.onclick = () => openLightbox(src); g.appendChild(c);
+    });
+  }
+
+  async function renderNewProducts() {
+    const g = document.getElementById('newProductsGrid'); if (!g) return;
+    try {
+      const q = query(collection(db, "products"), orderBy("createdAt", "desc"));
+      const snap = await getDocs(q);
+      g.innerHTML = '';
+      if (snap.empty) { g.innerHTML = '<p class="loading-text">✨ new drops coming soon — stay tuned!</p>'; return; }
+      snap.forEach(d => {
+        const p = d.data();
+        const card = document.createElement('div'); card.className = 'new-product-card';
+        const img = document.createElement('img'); img.className = 'new-product-img';
+        img.src = p.imageUrl || 'https://placehold.co/600x600/F3E7DF/B39283?text=Snoweey';
+        img.alt = p.name; img.loading = 'lazy';
+        img.onerror = function() { this.src = 'https://placehold.co/600x600/F3E7DF/B39283?text=Snoweey'; };
+        const info = document.createElement('div'); info.className = 'new-product-info';
+        const n = document.createElement('div'); n.className = 'new-product-name'; n.textContent = p.name || 'Untitled';
+        const t = document.createElement('span'); t.className = 'new-product-tag'; t.textContent = p.tag || 'new';
+        info.appendChild(n); info.appendChild(t);
+        card.appendChild(img); card.appendChild(info);
+        card.onclick = () => openLightbox(p.imageUrl);
+        g.appendChild(card);
+      });
+    } catch (err) {
+      console.error(err);
+      g.innerHTML = '<p class="loading-text">could not load products right now.</p>';
+    }
+  }
+
+  const modal = document.getElementById('lightboxModal');
+  const lbImg = document.getElementById('lightboxImage');
+  function openLightbox(src) { if (modal && lbImg && src) { lbImg.src = src; modal.style.display = 'flex'; } }
+  function closeLb() { if (modal) modal.style.display = 'none'; }
+  document.querySelector('.close-lightbox').onclick = closeLb;
+  if (modal) modal.onclick = (e) => { if (e.target === modal) closeLb(); };
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLb(); });
+
+  // Hidden admin access
+  let taps = 0, tapT;
+  const logo = document.getElementById('logo');
+  if (logo) logo.onclick = () => {
+    taps++; clearTimeout(tapT);
+    if (taps >= 3) { taps = 0; window.location.href = 'admin.html'; }
+    tapT = setTimeout(() => { taps = 0; }, 600);
+  };
+  document.addEventListener('keydown', (e) => { if (e.ctrlKey && e.shiftKey && e.altKey && e.key === 'A') window.location.href = 'admin.html'; });
+
+  buildSlideshow(); renderGallery(); renderHampers(); renderNewProducts();
 </script>
 </body>
 </html>

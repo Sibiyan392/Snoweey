@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin · Snoweey</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #fbf8f5; font-family: 'Quicksand', sans-serif; color: #3e332b; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; }
+    .auth-card { background: #fff; border-radius: 38px; padding: 50px 42px; max-width: 440px; width: 100%; box-shadow: 0 28px 48px -20px rgba(110, 65, 40, 0.18); border: 1px solid #efdfd4; text-align: center; }
+    .auth-card h1 { font-family: 'Cormorant Garamond', serif; font-size: 2.6rem; font-weight: 600; color: #5e4638; margin-bottom: 6px; }
+    .auth-card .sub { color: #b3927f; font-size: 0.9rem; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 32px; }
+    .auth-card input { width: 100%; padding: 15px 20px; margin-bottom: 16px; border: 1.5px solid #e0cbbc; border-radius: 50px; font-family: 'Quicksand', sans-serif; font-size: 0.95rem; background: #fbf8f5; outline: none; transition: 0.2s; }
+    .auth-card input:focus { border-color: #b4856b; background: #fff; }
+    .auth-card button.primary { width: 100%; padding: 15px; border-radius: 50px; border: none; background: #7f5d4a; color: #fff; font-weight: 600; font-size: 1rem; cursor: pointer; margin-top: 8px; font-family: 'Quicksand', sans-serif; }
+    .auth-card button.primary:hover { background: #5f4333; }
+    .auth-card button.primary:disabled { opacity: 0.6; cursor: wait; }
+    .auth-card .link { display: inline-block; margin-top: 16px; color: #a06e58; font-size: 0.85rem; cursor: pointer; text-decoration: underline; background: none; border: none; font-family: 'Quicksand', sans-serif; padding: 4px; }
+    .auth-card .tabs { display: flex; gap: 8px; margin-bottom: 24px; background: #f7ede5; padding: 5px; border-radius: 50px; }
+    .auth-card .tabs button { flex: 1; padding: 10px; border-radius: 50px; border: none; background: transparent; color: #8b6b57; font-weight: 600; cursor: pointer; font-family: 'Quicksand', sans-serif; font-size: 0.9rem; }
+    .auth-card .tabs button.active { background: #fff; color: #5e4638; box-shadow: 0 4px 10px rgba(110, 65, 40, 0.08); }
+    .error-msg { color: #c0392b; font-size: 0.85rem; margin-top: 14px; min-height: 20px; }
+    .success-msg { color: #4a7c59; font-size: 0.85rem; margin-top: 14px; min-height: 20px; }
+    .hidden { display: none !important; }
+
+    .dashboard { display: none; max-width: 900px; width: 100%; }
+    .dash-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; margin-bottom: 36px; }
+    .dash-header h1 { font-family: 'Cormorant Garamond', serif; font-size: 2.4rem; font-weight: 600; color: #5e4638; }
+    .dash-header button { padding: 10px 26px; border-radius: 50px; border: 1.5px solid #c9ab97; background: transparent; color: #6b4f40; font-weight: 600; cursor: pointer; font-family: 'Quicksand', sans-serif; font-size: 0.9rem; }
+    .dash-header button:hover { background: #f3e7df; }
+    .add-form { background: #fff; border-radius: 32px; padding: 34px; border: 1px solid #efdfd4; margin-bottom: 40px; }
+    .add-form h2 { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 600; color: #5e4638; margin-bottom: 22px; }
+    .add-form label { display: block; text-align: left; font-size: 0.85rem; font-weight: 600; color: #7f6860; margin-bottom: 6px; letter-spacing: 0.5px; text-transform: uppercase; }
+    .add-form input { width: 100%; padding: 13px 18px; margin-bottom: 18px; border: 1.5px solid #e0cbbc; border-radius: 50px; font-family: 'Quicksand', sans-serif; font-size: 0.95rem; background: #fbf8f5; outline: none; }
+    .add-form input:focus { border-color: #b4856b; background: #fff; }
+    .add-form input[type="file"] { padding: 10px 18px; cursor: pointer; }
+    .add-form .btn-row { display: flex; gap: 12px; flex-wrap: wrap; }
+    .add-form button { padding: 14px 38px; border-radius: 50px; border: none; background: #7f5d4a; color: #fff; font-weight: 600; font-size: 0.95rem; cursor: pointer; font-family: 'Quicksand', sans-serif; }
+    .add-form button:hover { background: #5f4333; }
+    .add-form button:disabled { opacity: 0.6; cursor: wait; }
+    .add-form button.cancel-btn { background: transparent; border: 1.5px solid #c9ab97; color: #6b4f40; }
+    .add-form button.cancel-btn:hover { background: #f3e7df; }
+    .form-note { font-size: 0.8rem; color: #b3927f; margin-top: 12px; font-style: italic; }
+    .preview-img { max-width: 120px; border-radius: 16px; margin-top: 8px; display: none; border: 1px solid #efdfd4; }
+    .status-msg { margin-top: 14px; font-size: 0.9rem; min-height: 22px; }
+    .status-msg.ok { color: #4a7c59; }
+    .status-msg.err { color: #c0392b; }
+    .edit-banner { background: #f7ede5; padding: 12px 20px; border-radius: 20px; margin-bottom: 18px; color: #7f5d4a; font-size: 0.9rem; display: none; align-items: center; gap: 10px; }
+    .edit-banner.show { display: flex; }
+    .products-list h2 { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 600; color: #5e4638; margin-bottom: 22px; }
+    .product-row { display: flex; align-items: center; gap: 18px; background: #fff; border-radius: 24px; padding: 14px 20px; margin-bottom: 12px; border: 1px solid #efdfd4; }
+    .product-row img { width: 54px; height: 54px; border-radius: 16px; object-fit: cover; background: #faf2ed; flex-shrink: 0; }
+    .product-row .info { flex: 1; text-align: left; }
+    .product-row .info .name { font-weight: 600; color: #4e3a2e; font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; }
+    .product-row .info .tag { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: #8b6b57; background: #f7ede5; padding: 3px 10px; border-radius: 20px; display: inline-block; margin-top: 4px; }
+    .product-row .actions { display: flex; gap: 8px; }
+    .product-row .actions button { background: transparent; border: 1.5px solid #e0cbbc; color: #a06e58; width: 38px; height: 38px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+    .product-row .actions button.edit { color: #7f5d4a; }
+    .product-row .actions button.edit:hover { background: #f7ede5; }
+    .product-row .actions button.del:hover { background: #fce8e0; }
+    @media (max-width: 600px) { .auth-card { padding: 36px 24px; } .add-form { padding: 24px 20px; } .dash-header h1 { font-size: 1.9rem; } }
+  </style>
+</head>
+<body>
+
+<div class="auth-card" id="authCard">
+  <h1>snoweey</h1>
+  <div class="sub">admin access</div>
+  <div class="tabs">
+    <button id="tabSignIn" class="active">sign in</button>
+    <button id="tabSignUp">sign up</button>
+  </div>
+
+  <div id="signInForm">
+    <input type="email" id="signInEmail" placeholder="email" autocomplete="email" />
+    <input type="password" id="signInPassword" placeholder="password" autocomplete="current-password" />
+    <button class="primary" id="signInBtn">sign in</button>
+    <button class="link" id="forgotBtn">forgot password?</button>
+    <div class="error-msg" id="signInMsg"></div>
+  </div>
+
+  <div id="signUpForm" class="hidden">
+    <input type="email" id="signUpEmail" placeholder="email" autocomplete="email" />
+    <input type="password" id="signUpPassword" placeholder="password (min 6 chars)" autocomplete="new-password" />
+    <input type="password" id="signUpPassword2" placeholder="confirm password" autocomplete="new-password" />
+    <button class="primary" id="signUpBtn">create account</button>
+    <div class="error-msg" id="signUpMsg"></div>
+  </div>
+
+  <div id="forgotForm" class="hidden">
+    <p style="color:#7f6860; font-size:0.9rem; margin-bottom:18px;">enter your email and we'll send a reset link.</p>
+    <input type="email" id="forgotEmail" placeholder="email" autocomplete="email" />
+    <button class="primary" id="forgotSendBtn">send reset link</button>
+    <button class="link" id="backToSignIn">← back to sign in</button>
+    <div class="success-msg" id="forgotMsg"></div>
+  </div>
+</div>
+
+<div class="dashboard" id="dashboard">
+  <div class="dash-header">
+    <h1>dashboard</h1>
+    <button id="logoutBtn">sign out</button>
+  </div>
+
+  <div class="add-form">
+    <div class="edit-banner" id="editBanner">
+      <i class="fas fa-pen"></i> <span>editing: <strong id="editName"></strong></span>
+    </div>
+    <h2 id="formTitle">add new product</h2>
+    <label>Product name</label>
+    <input type="text" id="pName" placeholder="e.g. Midnight Bloom Frame" />
+    <label>Photo <span style="text-transform:none; font-weight:400; color:#b3927f;">(required for new, optional for edit)</span></label>
+    <input type="file" id="pFile" accept="image/*" />
+    <img id="preview" class="preview-img" alt="preview" />
+    <label>Tag</label>
+    <input type="text" id="pTag" placeholder="e.g. new, limited, bestseller" />
+    <div class="btn-row">
+      <button id="addBtn">+ add product</button>
+      <button id="cancelEditBtn" class="cancel-btn hidden">cancel edit</button>
+    </div>
+    <div class="status-msg" id="statusMsg"></div>
+    <div class="form-note">photo uploads via Netlify — free, fast, appears on homepage instantly.</div>
+  </div>
+
+  <div class="products-list">
+    <h2>current products</h2>
+    <div id="productsList"></div>
+  </div>
+</div>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import {
+    getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword,
+    sendPasswordResetEmail, onAuthStateChanged, signOut
+  } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+  import {
+    getFirestore, collection, addDoc, deleteDoc, doc,
+    getDocs, orderBy, query, serverTimestamp, updateDoc
+  } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyDeIlLNMRkPLqFFSpxn10-mOLidmEWp4tU",
+    authDomain: "makeitsoapplication.firebaseapp.com",
+    projectId: "makeitsoapplication",
+    storageBucket: "makeitsoapplication.firebasestorage.app",
+    messagingSenderId: "563193624067",
+    appId: "1:563193624067:web:2408edc09167099cc28036"
+  };
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db = getFirestore(app);
+
+  const authCard = document.getElementById('authCard');
+  const dashboard = document.getElementById('dashboard');
+  const signInForm = document.getElementById('signInForm');
+  const signUpForm = document.getElementById('signUpForm');
+  const forgotForm = document.getElementById('forgotForm');
+  const tabSignIn = document.getElementById('tabSignIn');
+  const tabSignUp = document.getElementById('tabSignUp');
+  const signInMsg = document.getElementById('signInMsg');
+  const signUpMsg = document.getElementById('signUpMsg');
+  const forgotMsg = document.getElementById('forgotMsg');
+
+  function showSignIn() {
+    signInForm.classList.remove('hidden'); signUpForm.classList.add('hidden'); forgotForm.classList.add('hidden');
+    tabSignIn.classList.add('active'); tabSignUp.classList.remove('active');
+    signInMsg.textContent = ''; signUpMsg.textContent = ''; forgotMsg.textContent = '';
+  }
+  function showSignUp() {
+    signUpForm.classList.remove('hidden'); signInForm.classList.add('hidden'); forgotForm.classList.add('hidden');
+    tabSignUp.classList.add('active'); tabSignIn.classList.remove('active');
+    signInMsg.textContent = ''; signUpMsg.textContent = ''; forgotMsg.textContent = '';
+  }
+  function showForgot() {
+    forgotForm.classList.remove('hidden'); signInForm.classList.add('hidden'); signUpForm.classList.add('hidden');
+    forgotMsg.textContent = '';
+  }
+  tabSignIn.onclick = showSignIn;
+  tabSignUp.onclick = showSignUp;
+  document.getElementById('forgotBtn').onclick = showForgot;
+  document.getElementById('backToSignIn').onclick = showSignIn;
+
+  document.getElementById('signInBtn').onclick = async () => {
+    const email = document.getElementById('signInEmail').value.trim();
+    const pass = document.getElementById('signInPassword').value;
+    signInMsg.textContent = '';
+    if (!email || !pass) { signInMsg.textContent = 'enter email and password.'; return; }
+    const btn = document.getElementById('signInBtn'); btn.disabled = true; btn.textContent = 'signing in…';
+    try { await signInWithEmailAndPassword(auth, email, pass); }
+    catch (e) { signInMsg.textContent = friendlyError(e.code); btn.disabled = false; btn.textContent = 'sign in'; }
+  };
+  document.getElementById('signInPassword').onkeydown = (e) => { if (e.key === 'Enter') document.getElementById('signInBtn').click(); };
+
+  document.getElementById('signUpBtn').onclick = async () => {
+    const email = document.getElementById('signUpEmail').value.trim();
+    const p1 = document.getElementById('signUpPassword').value;
+    const p2 = document.getElementById('signUpPassword2').value;
+    signUpMsg.textContent = '';
+    if (!email || !p1 || !p2) { signUpMsg.textContent = 'fill in all fields.'; return; }
+    if (p1.length < 6) { signUpMsg.textContent = 'password must be at least 6 characters.'; return; }
+    if (p1 !== p2) { signUpMsg.textContent = 'passwords do not match.'; return; }
+    const btn = document.getElementById('signUpBtn'); btn.disabled = true; btn.textContent = 'creating…';
+    try { await createUserWithEmailAndPassword(auth, email, p1); }
+    catch (e) { signUpMsg.textContent = friendlyError(e.code); btn.disabled = false; btn.textContent = 'create account'; }
+  };
+
+  document.getElementById('forgotSendBtn').onclick = async () => {
+    const email = document.getElementById('forgotEmail').value.trim();
+    forgotMsg.textContent = ''; forgotMsg.className = 'success-msg';
+    if (!email) { forgotMsg.className = 'error-msg'; forgotMsg.textContent = 'enter your email.'; return; }
+    const btn = document.getElementById('forgotSendBtn'); btn.disabled = true; btn.textContent = 'sending…';
+    try { await sendPasswordResetEmail(auth, email); forgotMsg.textContent = '✨ reset link sent — check your inbox.'; }
+    catch (e) { forgotMsg.className = 'error-msg'; forgotMsg.textContent = friendlyError(e.code); }
+    finally { btn.disabled = false; btn.textContent = 'send reset link'; }
+  };
+
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      authCard.style.display = 'none';
+      dashboard.style.display = 'block';
+      renderProductsList();
+    } else {
+      authCard.style.display = 'block';
+      dashboard.style.display = 'none';
+      cancelEdit(); showSignIn();
+      ['signInEmail','signInPassword','signUpEmail','signUpPassword','signUpPassword2','forgotEmail'].forEach(id => {
+        const el = document.getElementById(id); if (el) el.value = '';
+      });
+      document.getElementById('signInBtn').disabled = false; document.getElementById('signInBtn').textContent = 'sign in';
+      document.getElementById('signUpBtn').disabled = false; document.getElementById('signUpBtn').textContent = 'create account';
+      document.getElementById('forgotSendBtn').disabled = false; document.getElementById('forgotSendBtn').textContent = 'send reset link';
+    }
+  });
+
+  document.getElementById('logoutBtn').onclick = () => signOut(auth);
+
+  function friendlyError(code) {
+    const map = {
+      'auth/invalid-email': 'that email looks invalid.',
+      'auth/user-not-found': 'no account with that email.',
+      'auth/wrong-password': 'incorrect password.',
+      'auth/invalid-credential': 'email or password is incorrect.',
+      'auth/email-already-in-use': 'that email is already registered.',
+      'auth/weak-password': 'password too weak (min 6 chars).',
+      'auth/too-many-requests': 'too many attempts — try again later.',
+      'auth/network-request-failed': 'network error.'
+    };
+    return map[code] || 'something went wrong. try again.';
+  }
+
+  let editingId = null, editingImageUrl = null;
+  const formTitle = document.getElementById('formTitle');
+  const editBanner = document.getElementById('editBanner');
+  const editName = document.getElementById('editName');
+  const cancelEditBtn = document.getElementById('cancelEditBtn');
+  const addBtn = document.getElementById('addBtn');
+  const pName = document.getElementById('pName');
+  const pTag = document.getElementById('pTag');
+  const pFile = document.getElementById('pFile');
+  const preview = document.getElementById('preview');
+  const statusMsg = document.getElementById('statusMsg');
+
+  function enterEditMode(id, data) {
+    editingId = id; editingImageUrl = data.imageUrl || null;
+    formTitle.textContent = 'edit product';
+    addBtn.textContent = '✓ save changes';
+    cancelEditBtn.classList.remove('hidden');
+    editBanner.classList.add('show');
+    editName.textContent = data.name || 'untitled';
+    pName.value = data.name || ''; pTag.value = data.tag || ''; pFile.value = '';
+    if (data.imageUrl) { preview.src = data.imageUrl; preview.style.display = 'block'; }
+    else preview.style.display = 'none';
+    statusMsg.textContent = ''; statusMsg.className = 'status-msg';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  function cancelEdit() {
+    editingId = null; editingImageUrl = null;
+    formTitle.textContent = 'add new product'; addBtn.textContent = '+ add product';
+    cancelEditBtn.classList.add('hidden'); editBanner.classList.remove('show'); editName.textContent = '';
+    pName.value = ''; pTag.value = ''; pFile.value = '';
+    preview.src = ''; preview.style.display = 'none';
+    statusMsg.textContent = ''; statusMsg.className = 'status-msg';
+  }
+  cancelEditBtn.onclick = cancelEdit;
+
+  pFile.onchange = (e) => {
+    const file = e.target.files[0];
+    if (file) { preview.src = URL.createObjectURL(file); preview.style.display = 'block'; }
+    else if (editingImageUrl) { preview.src = editingImageUrl; preview.style.display = 'block'; }
+    else preview.style.display = 'none';
+  };
+
+  addBtn.onclick = async () => {
+    const name = pName.value.trim();
+    const tag = pTag.value.trim();
+    const file = pFile.files[0];
+    statusMsg.className = 'status-msg'; statusMsg.textContent = '';
+    if (!name) { statusMsg.className = 'status-msg err'; statusMsg.textContent = 'enter a product name.'; return; }
+    if (!editingId && !file) { statusMsg.className = 'status-msg err'; statusMsg.textContent = 'choose a photo.'; return; }
+
+    const btn = addBtn; btn.disabled = true; btn.textContent = editingId ? 'saving…' : 'uploading…';
+    try {
+      let imageUrl = editingImageUrl;
+      if (file) {
+        // Upload to Netlify Blobs via serverless function
+        const formData = new FormData();
+        formData.append('file', file);
+        const res = await fetch('/api/upload', { method: 'POST', body: formData });
+        if (!res.ok) throw new Error('upload failed (' + res.status + ')');
+        const data = await res.json();
+        if (!data.url) throw new Error('no url returned');
+        imageUrl = data.url;
+      }
+      if (editingId) {
+        await updateDoc(doc(db, 'products', editingId), { name, tag: tag || 'new', imageUrl });
+        statusMsg.className = 'status-msg ok'; statusMsg.textContent = '✨ changes saved!';
+        cancelEdit();
+      } else {
+        await addDoc(collection(db, 'products'), { name, tag: tag || 'new', imageUrl, createdAt: serverTimestamp() });
+        statusMsg.className = 'status-msg ok'; statusMsg.textContent = '✨ product added!';
+        pName.value = ''; pTag.value = ''; pFile.value = '';
+        preview.style.display = 'none';
+      }
+      renderProductsList();
+    } catch (err) {
+      console.error(err);
+      statusMsg.className = 'status-msg err'; statusMsg.textContent = 'something went wrong: ' + err.message;
+    } finally {
+      btn.disabled = false;
+      btn.textContent = editingId ? '✓ save changes' : '+ add product';
+    }
+  };
+
+  async function renderProductsList() {
+    const list = document.getElementById('productsList');
+    if (!list) return;
+    list.innerHTML = '<p style="color:#9c8577;font-style:italic;">loading…</p>';
+    try {
+      const q = query(collection(db, 'products'), orderBy('createdAt', 'desc'));
+      const snap = await getDocs(q);
+      list.innerHTML = '';
+      if (snap.empty) { list.innerHTML = '<p style="color:#9c8577;font-style:italic;">no products yet.</p>'; return; }
+      snap.forEach(d => {
+        const p = d.data(); const id = d.id;
+        const row = document.createElement('div'); row.className = 'product-row';
+        const img = document.createElement('img');
+        img.src = p.imageUrl || 'https://placehold.co/100x100/F3E7DF/B39283?text=S'; img.alt = p.name;
+        img.onerror = function() { this.src = 'https://placehold.co/100x100/F3E7DF/B39283?text=S'; };
+        const info = document.createElement('div'); info.className = 'info';
+        info.innerHTML = '<div class="name"></div><span class="tag"></span>';
+        info.querySelector('.name').textContent = p.name;
+        info.querySelector('.tag').textContent = p.tag || 'new';
+        const actions = document.createElement('div'); actions.className = 'actions';
+        const editBtn = document.createElement('button'); editBtn.className = 'edit'; editBtn.innerHTML = '<i class="fas fa-pen"></i>';
+        editBtn.onclick = () => enterEditMode(id, p);
+        const delBtn = document.createElement('button'); delBtn.className = 'del'; delBtn.innerHTML = '<i class="fas fa-trash-alt"></i>';
+        delBtn.onclick = async () => {
+          if (!confirm('remove this product?')) return;
+          try { await deleteDoc(doc(db, 'products', id)); if (editingId === id) cancelEdit(); renderProductsList(); }
+          catch (e) { alert('could not delete.'); }
+        };
+        actions.appendChild(editBtn); actions.appendChild(delBtn);
+        row.appendChild(img); row.appendChild(info); row.appendChild(actions);
+        list.appendChild(row);
+      });
+    } catch (e) {
+      console.error(e); list.innerHTML = '<p style="color:#c0392b;">could not load products.</p>';
+    }
+  }
+</script>
+</body>
+</html>
