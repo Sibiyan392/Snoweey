@@ -7,8 +7,7 @@
 <meta name="robots" content="noindex, nofollow" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <style>
   *{margin:0;padding:0;box-sizing:border-box}
   :root{
@@ -20,6 +19,9 @@
     --shadow-sm:0 8px 18px -8px rgba(120,75,50,.08);
   }
   body{background:var(--bg);font-family:'Quicksand',sans-serif;color:#3e332b;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;-webkit-font-smoothing:antialiased}
+  .hidden{display:none!important}
+
+  /* -------- AUTH -------- */
   .auth-card{background:var(--card);border-radius:var(--radius);padding:50px 42px;max-width:440px;width:100%;box-shadow:var(--shadow);border:1px solid var(--line);text-align:center;animation:fadeUp .5s ease both}
   @keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
   .auth-card h1{font-family:'Cormorant Garamond',serif;font-size:2.6rem;font-weight:600;color:#5e4638;margin-bottom:6px}
@@ -35,13 +37,14 @@
   .auth-card .tabs button.active{background:#fff;color:#5e4638;box-shadow:0 4px 10px rgba(110,65,40,.08)}
   .msg{font-size:.85rem;margin-top:14px;min-height:20px}
   .error-msg{color:var(--err)}.success-msg{color:var(--ok)}
-  .hidden{display:none!important}
 
+  /* -------- DASHBOARD -------- */
   .dashboard{display:none;max-width:900px;width:100%;animation:fadeUp .5s ease both}
   .dash-header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;margin-bottom:36px}
   .dash-header h1{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:600;color:#5e4638}
   .dash-header button{padding:10px 26px;border-radius:50px;border:1.5px solid #c9ab97;background:transparent;color:#6b4f40;font-weight:600;cursor:pointer;font-family:inherit;font-size:.9rem;transition:.2s}
   .dash-header button:hover{background:#f3e7df}
+
   .add-form{background:#fff;border-radius:32px;padding:34px;border:1px solid var(--line);margin-bottom:40px;box-shadow:var(--shadow-sm)}
   .add-form h2{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:600;color:#5e4638;margin-bottom:22px}
   .add-form label{display:block;text-align:left;font-size:.85rem;font-weight:600;color:#7f6860;margin-bottom:6px;letter-spacing:.5px;text-transform:uppercase}
@@ -64,23 +67,55 @@
   .status-msg.ok{color:var(--ok)}.status-msg.err{color:var(--err)}
   .edit-banner{background:var(--soft);padding:12px 20px;border-radius:20px;margin-bottom:18px;color:var(--brown);font-size:.9rem;display:none;align-items:center;gap:10px}
   .edit-banner.show{display:flex}
+
   .products-list h2{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:600;color:#5e4638;margin-bottom:22px}
-  .product-row{display:flex;align-items:center;gap:18px;background:#fff;border-radius:var(--radius-sm);padding:14px 20px;margin-bottom:12px;border:1px solid var(--line);transition:.2s;animation:fadeUp .35s ease both}
+  .product-row{display:flex;align-items:center;gap:18px;background:#fff;border-radius:var(--radius-sm);padding:14px 20px;margin-bottom:12px;border:1px solid var(--line);transition:.25s;animation:fadeUp .35s ease both}
   .product-row:hover{border-color:#dbb59a;box-shadow:var(--shadow-sm);transform:translateY(-1px)}
+  .product-row.removing{opacity:.4;pointer-events:none;transform:scale(.97)}
   .product-row img{width:54px;height:54px;border-radius:16px;object-fit:cover;background:#faf2ed;flex-shrink:0}
   .product-row .info{flex:1;text-align:left;min-width:0}
   .product-row .info .name{font-weight:600;color:var(--brown-deep);font-family:'Cormorant Garamond',serif;font-size:1.1rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .product-row .info .tag{font-size:.7rem;text-transform:uppercase;letter-spacing:1px;color:#8b6b57;background:var(--soft);padding:3px 10px;border-radius:20px;display:inline-block;margin-top:4px}
   .product-row .actions{display:flex;gap:8px}
-  .product-row .actions button{background:transparent;border:1.5px solid var(--line-strong);color:#a06e58;width:38px;height:38px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.2s}
+  .product-row .actions button{background:transparent;border:1.5px solid var(--line-strong);color:#a06e58;width:38px;height:38px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.2s;font-size:.95rem}
   .product-row .actions button.edit{color:var(--brown)}
   .product-row .actions button.edit:hover{background:var(--soft)}
   .product-row .actions button.del:hover{background:#fce8e0;color:#c0392b;border-color:#e8b9a8}
-  @media(max-width:600px){.auth-card{padding:36px 24px}.add-form{padding:24px 20px}.dash-header h1{font-size:1.9rem}}
+  .product-row .actions button:disabled{opacity:.5;cursor:wait}
+
+  /* -------- MODAL -------- */
+  .modal-backdrop{position:fixed;inset:0;background:rgba(22,16,12,.6);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;z-index:2000;padding:20px;opacity:0;transition:opacity .2s}
+  .modal-backdrop.show{display:flex;opacity:1}
+  .modal{background:#fff;border-radius:32px;padding:34px 32px;max-width:420px;width:100%;text-align:center;box-shadow:0 30px 60px -20px rgba(60,30,10,.35);border:1px solid var(--line);animation:pop .3s cubic-bezier(.23,1,.32,1) both}
+  @keyframes pop{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:scale(1)}}
+  .modal h3{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:#5e4638;margin-bottom:10px}
+  .modal p{color:#7f6860;font-size:.9rem;margin-bottom:22px;line-height:1.5}
+  .modal .modal-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+  .modal button{padding:12px 28px;border-radius:50px;border:none;font-family:inherit;font-weight:600;font-size:.9rem;cursor:pointer;transition:.2s}
+  .modal button.danger{background:#c0392b;color:#fff}
+  .modal button.danger:hover{background:#a02e22}
+  .modal button.ghost{background:transparent;border:1.5px solid #c9ab97;color:#6b4f40}
+  .modal button.ghost:hover{background:#f3e7df}
+
+  /* -------- TOASTS -------- */
+  .toast-wrap{position:fixed;top:20px;right:20px;z-index:3000;display:flex;flex-direction:column;gap:10px;pointer-events:none}
+  .toast{background:#4e3a2e;color:#fff;padding:12px 20px;border-radius:50px;font-size:.9rem;font-weight:500;box-shadow:0 10px 24px -8px rgba(60,30,10,.4);display:flex;align-items:center;gap:10px;opacity:0;transform:translateX(20px);transition:.25s;pointer-events:auto;max-width:340px}
+  .toast.show{opacity:1;transform:none}
+  .toast.ok{background:#4a7c59}
+  .toast.err{background:#c0392b}
+
+  @media(max-width:600px){
+    .auth-card{padding:36px 24px}
+    .add-form{padding:24px 20px}
+    .dash-header h1{font-size:1.9rem}
+    .toast-wrap{left:16px;right:16px;top:16px}
+    .toast{max-width:none}
+  }
 </style>
 </head>
 <body>
 
+<!-- ============ AUTH ============ -->
 <div class="auth-card" id="authCard">
   <h1>snoweey</h1>
   <div class="sub">admin access</div>
@@ -114,6 +149,7 @@
   </div>
 </div>
 
+<!-- ============ DASHBOARD ============ -->
 <div class="dashboard" id="dashboard">
   <div class="dash-header">
     <h1>dashboard</h1>
@@ -122,7 +158,7 @@
 
   <div class="add-form">
     <div class="edit-banner" id="editBanner">
-      <i class="fas fa-pen"></i> <span>editing: <strong id="editName"></strong></span>
+      <span>✎ editing: <strong id="editName"></strong></span>
     </div>
     <h2 id="formTitle">add new product</h2>
     <label>Product name</label>
@@ -149,6 +185,21 @@
   </div>
 </div>
 
+<!-- ============ CONFIRM MODAL ============ -->
+<div class="modal-backdrop" id="confirmModal">
+  <div class="modal">
+    <h3 id="confirmTitle">remove this product?</h3>
+    <p id="confirmText">This cannot be undone.</p>
+    <div class="modal-btns">
+      <button class="ghost" id="confirmCancel">cancel</button>
+      <button class="danger" id="confirmOk">delete</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ TOASTS ============ -->
+<div class="toast-wrap" id="toastWrap"></div>
+
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 import {
@@ -173,6 +224,35 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 
 const $ = (id) => document.getElementById(id);
+
+/* ---------- TOASTS ---------- */
+const toastWrap = $('toastWrap');
+function toast(msg, type = 'ok'){
+  const el = document.createElement('div');
+  el.className = 'toast ' + type;
+  el.textContent = msg;
+  toastWrap.appendChild(el);
+  requestAnimationFrame(() => el.classList.add('show'));
+  setTimeout(() => {
+    el.classList.remove('show');
+    setTimeout(() => el.remove(), 300);
+  }, 2800);
+}
+
+/* ---------- CONFIRM MODAL ---------- */
+const confirmModal = $('confirmModal');
+let confirmResolve = null;
+function askConfirm(title, text){
+  $('confirmTitle').textContent = title;
+  $('confirmText').textContent = text;
+  confirmModal.classList.add('show');
+  return new Promise((resolve) => { confirmResolve = resolve; });
+}
+$('confirmOk').onclick = () => { confirmModal.classList.remove('show'); confirmResolve && confirmResolve(true); confirmResolve = null; };
+$('confirmCancel').onclick = () => { confirmModal.classList.remove('show'); confirmResolve && confirmResolve(false); confirmResolve = null; };
+confirmModal.onclick = (e) => { if (e.target === confirmModal){ confirmModal.classList.remove('show'); confirmResolve && confirmResolve(false); confirmResolve = null; } };
+
+/* ---------- AUTH SCREENS ---------- */
 const authCard = $('authCard'), dashboard = $('dashboard');
 const signInForm = $('signInForm'), signUpForm = $('signUpForm'), forgotForm = $('forgotForm');
 const tabSignIn = $('tabSignIn'), tabSignUp = $('tabSignUp');
@@ -188,31 +268,31 @@ $('backToSignIn').onclick = showSignIn;
 $('signInBtn').onclick = async () => {
   const email = $('signInEmail').value.trim(), pass = $('signInPassword').value;
   const msg = $('signInMsg'); msg.textContent = '';
-  if (!email || !pass){msg.textContent = 'enter email and password.';return;}
+  if (!email || !pass){ msg.textContent = 'enter email and password.'; return; }
   const btn = $('signInBtn'); btn.disabled = true; btn.textContent = 'signing in…';
   try { await signInWithEmailAndPassword(auth, email, pass); }
-  catch (e){msg.textContent = friendlyError(e.code);btn.disabled = false;btn.textContent = 'sign in';}
+  catch (e){ msg.textContent = friendlyError(e.code); btn.disabled = false; btn.textContent = 'sign in'; }
 };
 $('signInPassword').onkeydown = (e) => { if (e.key === 'Enter') $('signInBtn').click(); };
 
 $('signUpBtn').onclick = async () => {
   const email = $('signUpEmail').value.trim(), p1 = $('signUpPassword').value, p2 = $('signUpPassword2').value;
   const msg = $('signUpMsg'); msg.textContent = '';
-  if (!email || !p1 || !p2){msg.textContent = 'fill in all fields.';return;}
-  if (p1.length < 6){msg.textContent = 'password must be at least 6 characters.';return;}
-  if (p1 !== p2){msg.textContent = 'passwords do not match.';return;}
+  if (!email || !p1 || !p2){ msg.textContent = 'fill in all fields.'; return; }
+  if (p1.length < 6){ msg.textContent = 'password must be at least 6 characters.'; return; }
+  if (p1 !== p2){ msg.textContent = 'passwords do not match.'; return; }
   const btn = $('signUpBtn'); btn.disabled = true; btn.textContent = 'creating…';
   try { await createUserWithEmailAndPassword(auth, email, p1); }
-  catch (e){msg.textContent = friendlyError(e.code);btn.disabled = false;btn.textContent = 'create account';}
+  catch (e){ msg.textContent = friendlyError(e.code); btn.disabled = false; btn.textContent = 'create account'; }
 };
 
 $('forgotSendBtn').onclick = async () => {
   const email = $('forgotEmail').value.trim();
   const msg = $('forgotMsg'); msg.textContent = ''; msg.className = 'success-msg msg';
-  if (!email){msg.className = 'error-msg msg'; msg.textContent = 'enter your email.'; return;}
+  if (!email){ msg.className = 'error-msg msg'; msg.textContent = 'enter your email.'; return; }
   const btn = $('forgotSendBtn'); btn.disabled = true; btn.textContent = 'sending…';
   try { await sendPasswordResetEmail(auth, email); msg.textContent = '✨ reset link sent — check your inbox.'; }
-  catch (e){msg.className = 'error-msg msg'; msg.textContent = friendlyError(e.code); }
+  catch (e){ msg.className = 'error-msg msg'; msg.textContent = friendlyError(e.code); }
   finally { btn.disabled = false; btn.textContent = 'send reset link'; }
 };
 
@@ -244,66 +324,51 @@ function friendlyError(code){
     'auth/email-already-in-use':'that email is already registered.',
     'auth/weak-password':'password too weak (min 6 chars).',
     'auth/too-many-requests':'too many attempts — try again later.',
-    'auth/network-request-failed':'network error.'
+    'auth/network-request-failed':'network error.',
+    'permission-denied':'permission denied — check Firestore rules.'
   };
   return map[code] || 'something went wrong. try again.';
 }
 
 /* ---------- IMAGE COMPRESSION ---------- */
-/**
- * Compress an image file to a base64 JPEG data URL, targeting < 700 KB.
- * Iteratively lowers quality if needed, and shrinks dimensions as a fallback.
- */
-async function compressImage(file, maxDimension = 1400, initialQuality = 0.82){
-  const bitmap = await loadImage(file);
-  let { width, height } = bitmap;
-
-  // Fit inside maxDimension while preserving aspect ratio
-  if (width > height && width > maxDimension){
-    height = Math.round(height * (maxDimension / width));
-    width = maxDimension;
-  } else if (height > maxDimension){
-    width = Math.round(width * (maxDimension / height));
-    height = maxDimension;
-  }
+async function compressImage(file, maxDim = 1200, initialQ = 0.78){
+  const img = await loadImage(file);
+  let { width, height } = img;
+  if (width > height && width > maxDim){ height = Math.round(height * (maxDim / width)); width = maxDim; }
+  else if (height > maxDim){ width = Math.round(width * (maxDim / height)); height = maxDim; }
 
   const canvas = document.createElement('canvas');
   canvas.width = width; canvas.height = height;
   const ctx = canvas.getContext('2d');
   ctx.imageSmoothingEnabled = true;
   ctx.imageSmoothingQuality = 'high';
-  ctx.drawImage(bitmap, 0, 0, width, height);
+  ctx.drawImage(img, 0, 0, width, height);
 
-  let quality = initialQuality;
+  let quality = initialQ;
   let dataUrl = canvas.toDataURL('image/jpeg', quality);
+  const TARGET = 650 * 1024; // ~650 KB → safely under Firestore 1 MB doc limit
 
-  // Firestore doc limit ~1MB. Base64 adds ~33%. Target < 700KB raw.
-  const TARGET = 700 * 1024;
   let tries = 0;
-  while (dataUrl.length > TARGET && tries < 6){
-    quality -= 0.12;
-    if (quality < 0.35){
-      // Shrink dimensions instead of going below usable quality
-      canvas.width = Math.round(canvas.width * 0.8);
-      canvas.height = Math.round(canvas.height * 0.8);
-      const tmp = ctx.canvas;
-      // Redraw scaled
+  while (dataUrl.length > TARGET && tries < 8){
+    quality -= 0.1;
+    if (quality < 0.4){
+      // Shrink and retry
       const small = document.createElement('canvas');
-      small.width = canvas.width; small.height = canvas.height;
+      small.width = Math.max(400, Math.round(canvas.width * 0.75));
+      small.height = Math.max(400, Math.round(canvas.height * 0.75));
       const sctx = small.getContext('2d');
       sctx.imageSmoothingQuality = 'high';
-      sctx.drawImage(bitmap, 0, 0, small.width, small.height);
-      dataUrl = small.toDataURL('image/jpeg', 0.75);
-      quality = 0.75;
+      sctx.drawImage(img, 0, 0, small.width, small.height);
+      canvas.width = small.width; canvas.height = small.height;
+      ctx.drawImage(small, 0, 0);
+      dataUrl = canvas.toDataURL('image/jpeg', 0.72);
+      quality = 0.72;
     } else {
       dataUrl = canvas.toDataURL('image/jpeg', quality);
     }
     tries++;
   }
-
-  // Revoke object URL to free memory
-  if (bitmap.src && bitmap.src.startsWith('blob:')) URL.revokeObjectURL(bitmap.src);
-
+  if (img.src && img.src.startsWith('blob:')) URL.revokeObjectURL(img.src);
   return dataUrl;
 }
 
@@ -373,29 +438,24 @@ addBtn.onclick = async () => {
   const btn = addBtn; btn.disabled = true; btn.textContent = editingId ? 'saving…' : 'processing…';
   try {
     let imageData = editingImageData;
-
     if (file){
       uploadBar.classList.add('show');
-      uploadFill.style.width = '20%';
-      // Compress
+      uploadFill.style.width = '30%';
       imageData = await compressImage(file);
-      uploadFill.style.width = '70%';
-      // Safety check
-      if (imageData.length > 950000){
-        throw new Error('image too large after compression — try a smaller photo.');
-      }
-      uploadFill.style.width = '90%';
+      uploadFill.style.width = '75%';
+      if (imageData.length > 950000) throw new Error('image too large after compression — try a smaller photo.');
+      uploadFill.style.width = '95%';
     }
 
     if (editingId){
       await updateDoc(doc(db, 'products', editingId), { name, tag: tag || 'new', imageData });
-      statusMsg.className = 'status-msg ok'; statusMsg.textContent = '✨ changes saved!';
+      toast('✨ changes saved!', 'ok');
       cancelEdit();
     } else {
       await addDoc(collection(db, 'products'), {
         name, tag: tag || 'new', imageData, createdAt: serverTimestamp()
       });
-      statusMsg.className = 'status-msg ok'; statusMsg.textContent = '✨ product added!';
+      toast('✨ product added!', 'ok');
       pName.value = ''; pTag.value = ''; pFile.value = '';
       previewWrap.style.display = 'none';
       uploadBar.classList.remove('show');
@@ -404,8 +464,12 @@ addBtn.onclick = async () => {
     renderProductsList();
   } catch (err){
     console.error(err);
+    const msg = err.code === 'permission-denied'
+      ? 'permission denied — check Firestore rules.'
+      : (err.message || 'unknown error');
     statusMsg.className = 'status-msg err';
-    statusMsg.textContent = 'something went wrong: ' + (err.message || 'unknown error');
+    statusMsg.textContent = 'something went wrong: ' + msg;
+    toast('❌ ' + msg, 'err');
   } finally {
     btn.disabled = false;
     btn.textContent = editingId ? '✓ save changes' : '+ add product';
@@ -413,6 +477,7 @@ addBtn.onclick = async () => {
   }
 };
 
+/* ---------- PRODUCTS LIST ---------- */
 async function renderProductsList(){
   const list = $('productsList');
   if (!list) return;
@@ -426,36 +491,72 @@ async function renderProductsList(){
     snap.forEach(d => {
       const p = d.data(), id = d.id;
       const row = document.createElement('div'); row.className = 'product-row';
+      row.dataset.id = id;
+
       const img = document.createElement('img');
       img.src = p.imageData || 'https://placehold.co/100x100/F3E7DF/B39283?text=S';
-      img.alt = p.name;
+      img.alt = p.name || 'product';
       img.loading = 'lazy';
-      img.onerror = function(){ this.src = 'https://placehold.co/100x100/F3E7DF/B39283?text=S'; };
+      img.onerror = function(){ this.onerror = null; this.src = 'https://placehold.co/100x100/F3E7DF/B39283?text=S'; };
+
       const info = document.createElement('div'); info.className = 'info';
       info.innerHTML = '<div class="name"></div><span class="tag"></span>';
-      info.querySelector('.name').textContent = p.name;
+      info.querySelector('.name').textContent = p.name || 'Untitled';
       info.querySelector('.tag').textContent = p.tag || 'new';
+
       const actions = document.createElement('div'); actions.className = 'actions';
-      const editBtn = document.createElement('button'); editBtn.className = 'edit';
-      editBtn.innerHTML = '<i class="fas fa-pen"></i>';
+
+      const editBtn = document.createElement('button');
+      editBtn.className = 'edit'; editBtn.type = 'button';
+      editBtn.innerHTML = '✎'; editBtn.title = 'edit';
       editBtn.onclick = () => enterEditMode(id, p);
-      const delBtn = document.createElement('button'); delBtn.className = 'del';
-      delBtn.innerHTML = '<i class="fas fa-trash-alt"></i>';
+
+      const delBtn = document.createElement('button');
+      delBtn.className = 'del'; delBtn.type = 'button';
+      delBtn.innerHTML = '🗑'; delBtn.title = 'delete';
       delBtn.onclick = async () => {
-        if (!confirm('remove this product?')) return;
+        const ok = await askConfirm(
+          'remove this product?',
+          `"${p.name || 'Untitled'}" will be permanently deleted from your shop.`
+        );
+        if (!ok) return;
+
+        delBtn.disabled = true;
+        row.classList.add('removing');
+
         try {
+          console.log('[DELETE] attempting to delete', id);
           await deleteDoc(doc(db, 'products', id));
+          console.log('[DELETE] success', id);
+          toast('🗑 product deleted', 'ok');
+          row.remove();
+          // If we were editing this one, cancel the edit
           if (editingId === id) cancelEdit();
-          renderProductsList();
-        } catch (e){ alert('could not delete.'); }
+          // If list becomes empty, show empty state
+          if (!list.querySelector('.product-row')){
+            list.innerHTML = '<p style="color:#9c8577;font-style:italic;">no products yet.</p>';
+          }
+        } catch (err){
+          console.error('[DELETE] failed', err);
+          row.classList.remove('removing');
+          delBtn.disabled = false;
+          const msg = err.code === 'permission-denied'
+            ? 'permission denied — check Firestore rules.'
+            : (err.message || 'unknown error');
+          toast('❌ delete failed: ' + msg, 'err');
+        }
       };
+
       actions.appendChild(editBtn); actions.appendChild(delBtn);
       row.appendChild(img); row.appendChild(info); row.appendChild(actions);
       list.appendChild(row);
     });
   } catch (e){
-    console.error(e);
-    list.innerHTML = '<p style="color:#c0392b;">could not load products.</p>';
+    console.error('renderProductsList error:', e);
+    const msg = e.code === 'permission-denied'
+      ? 'permission denied — check Firestore rules.'
+      : 'could not load products.';
+    list.innerHTML = `<p style="color:#c0392b;">${msg}</p>`;
   }
 }
 </script>
