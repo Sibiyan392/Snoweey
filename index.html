@@ -7,7 +7,7 @@
 <!-- ═══════════ PRIMARY SEO ═══════════ -->
 <title>Snoweey ✧ Custom A4 Photo Frames & Luxury Gift Hampers | Nkomazi, South Africa</title>
 <meta name="description" content="Snoweey crafts exquisite custom A4 photo frames and luxury gift hampers in Nkomazi, South Africa. Personalised keepsakes, birthday gifts, wedding frames & curated hampers — delivered nationwide." />
-<meta name="keywords" content="custom photo frames South Africa, A4 frames Nkomazi, gift hampers Mpumalanga, personalised gifts, wedding frames, birthday hampers, Snoweey, custom frames South Africa, luxury gift hampers, Malelane frames, Komatipoort gifts, Mbombela hampers" />
+<meta name="keywords" content="custom photo frames South Africa, A4 frames Nkomazi, gift hampers Mpumalanga, personalised gifts, wedding frames, birthday hampers, Snoweey, custom frames South Africa, luxury gift hampers, photo frame gifts, Malelane frames, Komatipoort gifts, Mbombela hampers" />
 <meta name="author" content="Snoweey" />
 <meta name="robots" content="index, follow, max-image-preview:large" />
 <meta name="theme-color" content="#fbf8f5" />
@@ -15,14 +15,14 @@
 <meta name="geo.placename" content="Nkomazi, Mpumalanga" />
 <meta name="geo.position" content="-25.5;31.9" />
 <meta name="ICBM" content="-25.5, 31.9" />
-<link rel="canonical" href="https://snoweey.netlify.app/" />
+<link rel="canonical" href="https://snoweey.co.za/" />
 
 <!-- ═══════════ OPEN GRAPH ═══════════ -->
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Snoweey" />
 <meta property="og:title" content="Snoweey ✧ Custom A4 Frames & Luxury Gift Hampers" />
 <meta property="og:description" content="Every memory, artfully framed ✧ Handcrafted custom A4 photo frames & luxury gift hampers. Based in Nkomazi, delivered nationwide across South Africa." />
-<meta property="og:url" content="https://snoweey.netlify.app/" />
+<meta property="og:url" content="https://snoweey.co.za/" />
 <meta property="og:locale" content="en_ZA" />
 
 <!-- ═══════════ TWITTER CARD ═══════════ -->
@@ -30,7 +30,7 @@
 <meta name="twitter:title" content="Snoweey ✧ Custom A4 Frames & Luxury Gift Hampers" />
 <meta name="twitter:description" content="Handcrafted custom frames & curated hampers. Based in Nkomazi · Delivered nationwide." />
 
-<!-- ═══════════ FAVICON (inline SVG — zero requests) ═══════════ -->
+<!-- ═══════════ FAVICON ═══════════ -->
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' font-family='serif'>✧</text></svg>" />
 
 <!-- ═══════════ PERFORMANCE ═══════════ -->
@@ -39,6 +39,18 @@
 <link rel="preconnect" href="https://firestore.googleapis.com" />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
+<!-- ═══════════ GOOGLE ANALYTICS (GA4) ═══════════
+     Replace G-XXXXXXXXXX below with your real Measurement ID from
+     https://analytics.google.com → Admin → Data Streams → your stream.
+     Loaded async so it never blocks the page.                                -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX', { anonymize_ip: true });
+</script>
+
 <!-- ═══════════ STRUCTURED DATA ═══════════ -->
 <script type="application/ld+json">
 {
@@ -46,26 +58,17 @@
   "@type": "LocalBusiness",
   "name": "Snoweey",
   "description": "Custom A4 photo frames and luxury gift hampers, handcrafted in Nkomazi, South Africa. Delivered nationwide.",
-  "image": "https://snoweey.netlify.app/IMG-20260513-WA0013.jpg",
-  "url": "https://snoweey.netlify.app/",
+  "image": "https://snoweey.co.za/IMG-20260513-WA0013.jpg",
+  "url": "https://snoweey.co.za/",
   "telephone": "+27764261311",
   "priceRange": "R150 - R1500",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Nkomazi",
-    "addressRegion": "Mpumalanga",
-    "addressCountry": "ZA"
-  },
+  "address": { "@type": "PostalAddress", "addressLocality": "Nkomazi", "addressRegion": "Mpumalanga", "addressCountry": "ZA" },
   "geo": { "@type": "GeoCoordinates", "latitude": -25.5, "longitude": 31.9 },
   "areaServed": { "@type": "Country", "name": "South Africa" },
   "sameAs": [
     "https://www.instagram.com/sinokubonga_snoweey",
     "https://www.facebook.com/sinokubonga.nkosi.2025",
     "https://www.tiktok.com/@sinokubongasnoweey"
-  ],
-  "makesOffer": [
-    { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Custom A4 Photo Frame", "description": "Personalised A4 photo frames designed with your theme, colours and quote." } },
-    { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Luxury Gift Hamper", "description": "Curated gift hampers for birthdays, weddings, anniversaries and special occasions." } }
   ]
 }
 </script>
@@ -203,9 +206,11 @@
   footer .foot-brand{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:#5e4638;margin-bottom:8px}
   footer .foot-tag{font-style:italic;margin-bottom:20px;font-size:.95rem}
   footer .foot-loc{font-size:.8rem;letter-spacing:1px;text-transform:uppercase;color:#a08b7c;margin-bottom:20px}
-  footer .foot-links{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;font-size:.82rem}
-  footer .foot-links a{color:#8b7365;text-decoration:none;transition:.2s}
-  footer .foot-links a:hover{color:var(--brown)}
+  footer .foot-links{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;font-size:.82rem;margin-bottom:20px}
+  footer .foot-links a,footer .foot-links button{color:#8b7365;text-decoration:none;transition:.2s;background:none;border:none;font-family:inherit;font-size:inherit;cursor:pointer;padding:0}
+  footer .foot-links a:hover,footer .foot-links button:hover{color:var(--brown)}
+  footer .foot-legal{font-size:.72rem;color:#a08b7c;line-height:1.7;max-width:720px;margin:0 auto;padding:0 12px}
+  footer .foot-copy{margin-top:16px;font-size:.7rem;color:#b09888;letter-spacing:.3px}
 
   /* LIGHTBOX */
   .lightbox-modal{display:none;position:fixed;inset:0;background:rgba(22,16,12,.94);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);justify-content:center;align-items:center;z-index:1000;cursor:zoom-out;opacity:0;transition:opacity .25s}
@@ -222,6 +227,42 @@
   .wa-float{position:fixed;bottom:28px;right:24px;width:58px;height:58px;border-radius:50%;background:#25D366;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 24px -8px rgba(37,211,102,.5);z-index:99;transition:.3s;text-decoration:none}
   .wa-float:hover{transform:scale(1.08);box-shadow:0 16px 30px -8px rgba(37,211,102,.65)}
   .wa-float svg{width:28px;height:28px;fill:#fff}
+
+  /* MODALS (POPUPS) */
+  .popup-backdrop{position:fixed;inset:0;background:rgba(22,16,12,.65);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:none;justify-content:center;align-items:center;z-index:2000;padding:20px;opacity:0;transition:opacity .25s}
+  .popup-backdrop.show{display:flex;opacity:1}
+  .popup{background:#fff;border-radius:32px;max-width:680px;width:100%;max-height:85vh;display:flex;flex-direction:column;box-shadow:0 40px 80px -20px rgba(60,30,10,.45);border:1px solid var(--line);animation:popIn .3s cubic-bezier(.23,1,.32,1) both;overflow:hidden}
+  @keyframes popIn{from{opacity:0;transform:scale(.94) translateY(8px)}to{opacity:1;transform:none}}
+  .popup-head{display:flex;justify-content:space-between;align-items:center;padding:24px 28px 16px;border-bottom:1px solid var(--line);flex-shrink:0}
+  .popup-head h3{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:600;color:#5e4638;letter-spacing:.3px}
+  .popup-head .popup-close{background:none;border:none;font-size:1.6rem;color:#a08b7c;cursor:pointer;line-height:1;padding:4px 10px;border-radius:50%;transition:.2s;font-family:inherit}
+  .popup-head .popup-close:hover{background:var(--soft);color:var(--brown)}
+  .popup-body{padding:20px 28px 28px;overflow-y:auto;color:#5e4638;font-size:.92rem;line-height:1.7}
+  .popup-body h4{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:600;color:var(--brown-deep);margin:18px 0 6px}
+  .popup-body h4:first-child{margin-top:0}
+  .popup-body p{margin-bottom:12px}
+  .popup-body ul{margin:6px 0 12px 22px}
+  .popup-body li{margin-bottom:6px}
+  .popup-body a{color:var(--brown);text-decoration:underline}
+  .popup-body strong{color:var(--brown-deep);font-weight:600}
+  .popup-body .updated{font-size:.78rem;color:#a08b7c;font-style:italic;margin-top:18px;padding-top:12px;border-top:1px solid var(--line)}
+
+  /* COOKIE BANNER */
+  .cookie-banner{position:fixed;left:16px;right:16px;bottom:16px;background:#fff;border-radius:24px;padding:18px 22px;box-shadow:0 24px 48px -16px rgba(60,30,10,.3);border:1px solid var(--line);z-index:1500;display:none;align-items:center;gap:16px;flex-wrap:wrap;max-width:720px;margin:0 auto;animation:slideUp .4s cubic-bezier(.23,1,.32,1) both}
+  .cookie-banner.show{display:flex}
+  @keyframes slideUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+  .cookie-banner .cb-text{flex:1;min-width:200px;font-size:.85rem;color:#5e4638;line-height:1.5}
+  .cookie-banner .cb-text a{color:var(--brown);text-decoration:underline;cursor:pointer}
+  .cookie-banner .cb-actions{display:flex;gap:8px;flex-wrap:wrap}
+  .cookie-banner button{padding:10px 22px;border-radius:50px;font-size:.82rem;font-weight:600;cursor:pointer;border:none;font-family:inherit;transition:.2s}
+  .cookie-banner .cb-accept{background:var(--brown);color:#fff}
+  .cookie-banner .cb-accept:hover{background:var(--brown-dark);transform:translateY(-1px)}
+  .cookie-banner .cb-decline{background:transparent;color:#7f6860;border:1.5px solid var(--line-strong)}
+  .cookie-banner .cb-decline:hover{background:var(--soft)}
+  @media(max-width:600px){
+    .cookie-banner{left:12px;right:12px;bottom:12px;padding:16px;flex-direction:column;align-items:stretch}
+    .cookie-banner .cb-actions{justify-content:flex-end}
+  }
 
   /* REVEAL */
   .reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s cubic-bezier(.23,1,.32,1)}
@@ -268,6 +309,10 @@
     .wa-float{bottom:24px;right:18px;width:52px;height:52px}
     .wa-float svg{width:24px;height:24px}
     footer{padding:40px 20px 32px}
+    .popup{border-radius:24px;max-height:88vh}
+    .popup-head{padding:20px 22px 14px}
+    .popup-head h3{font-size:1.4rem}
+    .popup-body{padding:16px 22px 22px;font-size:.88rem}
   }
   @media(max-width:480px){
     .gallery-grid,.hampers-grid,.new-products-grid{grid-template-columns:1fr}
@@ -439,7 +484,14 @@
     <a href="#hampers">hampers</a>
     <a href="#order">custom orders</a>
     <a href="https://wa.me/27764261311" target="_blank" rel="noopener noreferrer">whatsapp</a>
+    <button type="button" data-open="privacy">privacy</button>
+    <button type="button" data-open="terms">terms</button>
+    <button type="button" data-open="disclaimer">disclaimer</button>
   </div>
+  <div class="foot-legal">
+    <strong>Disclaimer:</strong> Snoweey is a small South African business based in Nkomazi, Mpumalanga. Product colours, frames, wrapping and hamper contents may vary slightly from images as every item is handcrafted. Prices and availability are subject to change without notice. Custom orders are made to order and are non-refundable once production begins. Delays may occur due to courier or supply issues outside our control.
+  </div>
+  <div class="foot-copy">© <span id="year"></span> Snoweey. All rights reserved. Proudly handmade in South Africa 🇿🇦</div>
 </footer>
 
 <button class="scroll-top" id="scrollTop" aria-label="back to top">↑</button>
@@ -447,9 +499,175 @@
   <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
 </a>
 
+<!-- LIGHTBOX -->
 <div id="lightboxModal" class="lightbox-modal">
   <button class="close-lightbox" aria-label="close">&times;</button>
   <img class="lightbox-img-full" id="lightboxImage" alt="enlarged view" loading="lazy" />
+</div>
+
+<!-- ═══════ PRIVACY POLICY POPUP ═══════ -->
+<div class="popup-backdrop" id="popupPrivacy" data-popup>
+  <div class="popup" role="dialog" aria-modal="true" aria-labelledby="privacyTitle">
+    <div class="popup-head">
+      <h3 id="privacyTitle">Privacy Policy</h3>
+      <button class="popup-close" data-close aria-label="close">×</button>
+    </div>
+    <div class="popup-body">
+      <p><strong>Snoweey</strong> ("we", "us", "our") respects your privacy and is committed to protecting your personal information in line with the <strong>Protection of Personal Information Act (POPIA)</strong> of South Africa.</p>
+
+      <h4>1. Information We Collect</h4>
+      <p>We only collect information you voluntarily provide when you contact us via WhatsApp, Instagram, Facebook or TikTok, or when you place a custom order. This may include:</p>
+      <ul>
+        <li>Your name and contact number</li>
+        <li>Delivery address (for physical orders)</li>
+        <li>Photos you share for personalisation</li>
+        <li>Order details and preferences</li>
+      </ul>
+      <p>We also collect anonymous usage statistics (see "Analytics" below) to understand how visitors use our website.</p>
+
+      <h4>2. How We Use Your Information</h4>
+      <ul>
+        <li>To design and create your custom frame or hamper</li>
+        <li>To arrange delivery or collection</li>
+        <li>To communicate with you about your order</li>
+        <li>To respond to your enquiries</li>
+      </ul>
+      <p>We <strong>never sell, rent or share</strong> your personal information with third parties for marketing purposes.</p>
+
+      <h4>3. Photos You Share</h4>
+      <p>Photos you send for personalisation are used only to create your order. They are not published on our website or social media unless you give us explicit permission.</p>
+
+      <h4>4. Analytics (Google Analytics)</h4>
+      <p>Our website uses <strong>Google Analytics</strong> to understand anonymous visitor behaviour — pages viewed, time on site, device type and approximate location. This data is aggregated and cannot identify you personally. IP addresses are anonymised. You can opt out using your browser's cookie settings or the Google Analytics Opt-out Browser Add-on.</p>
+
+      <h4>5. Cookies</h4>
+      <p>Our website may use cookies to remember your preferences and for analytics purposes. You can disable cookies at any time in your browser settings; the website will still function.</p>
+
+      <h4>6. Your Rights</h4>
+      <p>Under POPIA, you have the right to:</p>
+      <ul>
+        <li>Access the personal information we hold about you</li>
+        <li>Request correction or deletion of your information</li>
+        <li>Withdraw consent at any time</li>
+        <li>Lodge a complaint with the Information Regulator</li>
+      </ul>
+
+      <h4>7. Data Retention</h4>
+      <p>We keep order-related information only for as long as necessary to fulfil your order and comply with any legal obligations. Photos are deleted on request.</p>
+
+      <h4>8. Contact Us</h4>
+      <p>For any privacy-related questions or requests, message us on WhatsApp: <strong>+27 76 426 1311</strong>.</p>
+
+      <div class="updated">Last updated: <span id="updatedDate"></span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ TERMS & CONDITIONS POPUP ═══════ -->
+<div class="popup-backdrop" id="popupTerms" data-popup>
+  <div class="popup" role="dialog" aria-modal="true" aria-labelledby="termsTitle">
+    <div class="popup-head">
+      <h3 id="termsTitle">Terms &amp; Conditions</h3>
+      <button class="popup-close" data-close aria-label="close">×</button>
+    </div>
+    <div class="popup-body">
+      <p>Welcome to <strong>Snoweey</strong>. By browsing our website or placing an order with us, you agree to these terms.</p>
+
+      <h4>1. Our Products</h4>
+      <p>Snoweey specialises in <strong>custom A4 photo frames</strong> and <strong>curated luxury gift hampers</strong>. Every item is handcrafted to order in Nkomazi, Mpumalanga, and delivered nationwide across South Africa.</p>
+
+      <h4>2. Orders &amp; Payment</h4>
+      <ul>
+        <li>All orders are placed and confirmed via WhatsApp.</li>
+        <li>A <strong>50% deposit</strong> is required before production begins on custom items.</li>
+        <li>The remaining balance is due before delivery or collection.</li>
+        <li>Bank transfer (EFT) and mobile payment (e.g. SnapScan, Capitec Pay) are accepted.</li>
+      </ul>
+
+      <h4>3. Production Time</h4>
+      <p>Standard turnaround is <strong>3–7 working days</strong> for frames and <strong>5–10 working days</strong> for hampers, depending on complexity and stock. Rush orders may be accommodated on request (extra fee may apply).</p>
+
+      <h4>4. Delivery</h4>
+      <ul>
+        <li>Deliveries are handled by trusted couriers.</li>
+        <li>Delivery fees depend on the destination — quoted on order.</li>
+        <li>Snoweey is <strong>not liable for delays</strong> caused by courier strikes, weather, or other events outside our control.</li>
+      </ul>
+
+      <h4>5. Custom Orders</h4>
+      <ul>
+        <li>Custom work is <strong>made to order and non-refundable</strong> once production has started.</li>
+        <li>Please check all spelling, dates, photos, and colour choices carefully — we are not responsible for errors supplied by the customer.</li>
+        <li>Minor differences in colour or finish may occur due to materials and screens.</li>
+      </ul>
+
+      <h4>6. Returns</h4>
+      <p>If an item arrives damaged or defective, notify us <strong>within 48 hours of delivery</strong> with photos. We will do our best to repair, replace or refund at our discretion.</p>
+
+      <h4>7. Intellectual Property</h4>
+      <p>All designs, photos, logos and content on this website belong to Snoweey and may not be copied, reproduced or used without our written permission.</p>
+
+      <h4>8. Changes</h4>
+      <p>We reserve the right to update these terms at any time. Continued use of our website or services means you accept the latest version.</p>
+
+      <h4>9. Contact</h4>
+      <p>WhatsApp: <strong>+27 76 426 1311</strong></p>
+
+      <div class="updated">Last updated: <span class="updatedDate"></span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ DISCLAIMER POPUP ═══════ -->
+<div class="popup-backdrop" id="popupDisclaimer" data-popup>
+  <div class="popup" role="dialog" aria-modal="true" aria-labelledby="disclaimerTitle">
+    <div class="popup-head">
+      <h3 id="disclaimerTitle">Disclaimer</h3>
+      <button class="popup-close" data-close aria-label="close">×</button>
+    </div>
+    <div class="popup-body">
+      <h4>1. General Information</h4>
+      <p>The content on this website is provided for general information about Snoweey's custom frames and gift hampers. While we try to keep everything accurate and up to date, we make <strong>no guarantees</strong> about completeness, reliability or accuracy.</p>
+
+      <h4>2. Product Images</h4>
+      <p>Photos shown on this website are examples of past work. Because every item is handcrafted, <strong>colour, frame style, wrapping, ribbon and hamper contents may differ slightly</strong> from the images displayed.</p>
+
+      <h4>3. Pricing</h4>
+      <p>All prices are quoted via WhatsApp and may change without notice. Website content should not be treated as a binding price list.</p>
+
+      <h4>4. External Links</h4>
+      <p>This website links to third-party platforms such as WhatsApp, Instagram, Facebook and TikTok. Snoweey is <strong>not responsible</strong> for the content, privacy practices, or availability of these external services.</p>
+
+      <h4>5. Availability</h4>
+      <p>Products and materials are subject to availability. If an item cannot be sourced, we will offer a similar alternative or a full refund of any deposit paid.</p>
+
+      <h4>6. Delivery Risk</h4>
+      <p>Once an order has been handed to the courier, Snoweey is <strong>not liable for loss, theft, or damage in transit</strong>. We will however assist with any claims as best we can.</p>
+
+      <h4>7. Not Professional Advice</h4>
+      <p>Nothing on this website constitutes legal, financial, or professional advice of any kind.</p>
+
+      <h4>8. Limitation of Liability</h4>
+      <p>To the maximum extent permitted by South African law, Snoweey shall not be liable for any indirect, incidental, or consequential damages arising from the use of this website or our products.</p>
+
+      <h4>9. Contact</h4>
+      <p>For any questions: WhatsApp <strong>+27 76 426 1311</strong></p>
+
+      <div class="updated">Last updated: <span class="updatedDate"></span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ COOKIE / ANALYTICS BANNER ═══════ -->
+<div class="cookie-banner" id="cookieBanner" role="region" aria-label="cookie notice">
+  <div class="cb-text">
+    🍪 We use cookies and <strong>Google Analytics</strong> to understand how visitors use Snoweey.
+    See our <a data-open="privacy" href="#">Privacy Policy</a> for details.
+  </div>
+  <div class="cb-actions">
+    <button class="cb-decline" id="cookieDecline" type="button">Decline</button>
+    <button class="cb-accept" id="cookieAccept" type="button">Accept</button>
+  </div>
 </div>
 
 <script>
@@ -470,7 +688,7 @@ const slideFiles = [
   "blackheartdesign.jpg","cartoon.jpg","heartdesign.jpg"
 ];
 const hamperFiles = ["IMG-20260513-WA0088.jpg","IMG-20260513-WA0082.jpg","IMG-20260513-WA0067.jpg"];
-const HERO_IMAGE = "IMG-20260513-WA0013.jpg"; // change to your favourite
+const HERO_IMAGE = "IMG-20260513-WA0013.jpg";
 const PLACEHOLDER = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 600'><rect width='600' height='600' fill='%23F3E7DF'/><text x='50%' y='50%' font-family='serif' font-size='42' fill='%23B39283' text-anchor='middle' dominant-baseline='middle'>Snoweey</text></svg>";
 
 /* ---------- LAZY LOADING ---------- */
@@ -663,7 +881,52 @@ function closeLb(){
 }
 document.querySelector('.close-lightbox').onclick = closeLb;
 if (modal) modal.onclick = (e) => { if (e.target === modal) closeLb(); };
-document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLb(); });
+
+/* ---------- POPUPS (Privacy / Terms / Disclaimer) ---------- */
+function openPopup(name){
+  const id = 'popup' + name.charAt(0).toUpperCase() + name.slice(1);
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.classList.add('show');
+  document.body.style.overflow = 'hidden';
+  // Track in GA (if loaded)
+  if (typeof gtag === 'function') gtag('event', 'open_popup', { popup_name: name });
+}
+function closeAllPopups(){
+  document.querySelectorAll('[data-popup].show').forEach(el => el.classList.remove('show'));
+  document.body.style.overflow = '';
+}
+document.querySelectorAll('[data-open]').forEach(el => {
+  el.addEventListener('click', (e) => {
+    e.preventDefault();
+    openPopup(el.getAttribute('data-open'));
+  });
+});
+document.querySelectorAll('[data-close]').forEach(el => {
+  el.addEventListener('click', closeAllPopups);
+});
+document.querySelectorAll('[data-popup]').forEach(el => {
+  el.addEventListener('click', (e) => { if (e.target === el) closeAllPopups(); });
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape'){ closeLb(); closeAllPopups(); }
+});
+
+/* ---------- COOKIE BANNER ---------- */
+const cookieBanner = document.getElementById('cookieBanner');
+const COOKIE_KEY = 'snoweey_cookie_choice_v1';
+function showCookieBanner(){
+  if (!localStorage.getItem(COOKIE_KEY)){
+    setTimeout(() => cookieBanner.classList.add('show'), 1200);
+  }
+}
+function dismissCookie(choice){
+  localStorage.setItem(COOKIE_KEY, choice);
+  cookieBanner.classList.remove('show');
+  if (typeof gtag === 'function') gtag('event', 'cookie_choice', { choice });
+}
+document.getElementById('cookieAccept').onclick = () => dismissCookie('accept');
+document.getElementById('cookieDecline').onclick = () => dismissCookie('decline');
 
 /* ---------- HIDDEN ADMIN ---------- */
 let taps = 0, tapT;
@@ -726,12 +989,19 @@ if ('IntersectionObserver' in window && navLinks.length){
   sections.forEach(s => navObs.observe(s));
 }
 
+/* ---------- YEAR + LAST UPDATED ---------- */
+document.getElementById('year').textContent = new Date().getFullYear();
+document.querySelectorAll('#updatedDate, .updatedDate').forEach(el => {
+  el.textContent = new Date().toLocaleDateString('en-ZA', { year: 'numeric', month: 'long', day: 'numeric' });
+});
+
 /* ---------- BOOT ---------- */
 setHeroImage();
 renderStrip();
 renderGallery();
 renderHampers();
 attachReveal();
+showCookieBanner();
 
 if ('requestIdleCallback' in window){
   requestIdleCallback(() => renderNewProducts(), { timeout: 2000 });
