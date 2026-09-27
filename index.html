@@ -13,10 +13,8 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="preconnect" href="https://www.gstatic.com" />
 <link rel="preconnect" href="https://firestore.googleapis.com" />
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet" />
 
 <style>
   *{margin:0;padding:0;box-sizing:border-box}
@@ -44,11 +42,11 @@
   .logo:hover{color:var(--brown)}
   .logo span{font-size:.9rem;font-weight:400;color:var(--muted);margin-left:4px}
   .nav-links{display:flex;gap:36px;align-items:center;flex-wrap:wrap}
-  .nav-links a{text-decoration:none;font-weight:500;color:#6b5848;font-size:.85rem;text-transform:uppercase;letter-spacing:1.6px;padding-bottom:4px;border-bottom:2px solid transparent;transition:.2s;position:relative}
+  .nav-links a{text-decoration:none;font-weight:500;color:#6b5848;font-size:.85rem;text-transform:uppercase;letter-spacing:1.6px;padding-bottom:4px;border-bottom:2px solid transparent;transition:.2s}
   .nav-links a:hover{color:#b4856b;border-bottom-color:#dbb094}
   .nav-links a.active{color:var(--brown);border-bottom-color:var(--brown)}
 
-  /* ---------- HERO SLIDESHOW ---------- */
+  /* ---------- HERO ---------- */
   .hero-slideshow{width:100%;margin:36px 0 42px;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);background:#f7ede5;border:1px solid #e7cfbf;position:relative;animation:fadeUp .6s ease both}
   @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
   .slideshow-container{position:relative;width:100%;aspect-ratio:16 / 9}
@@ -71,9 +69,7 @@
 
   /* ---------- NEW PRODUCTS ---------- */
   .new-products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:26px;margin:15px 0 40px}
-  .new-product-card{background:#fff;border-radius:var(--radius-md);overflow:hidden;border:1px solid #f0e2d7;box-shadow:var(--shadow-sm);transition:.3s cubic-bezier(.23,1,.32,1);cursor:pointer;position:relative;opacity:0;animation:cardIn .5s ease forwards}
-  @keyframes cardIn{to{opacity:1;transform:none}}
-  .new-product-card{transform:translateY(14px)}
+  .new-product-card{background:#fff;border-radius:var(--radius-md);overflow:hidden;border:1px solid #f0e2d7;box-shadow:var(--shadow-sm);transition:.3s cubic-bezier(.23,1,.32,1);cursor:pointer;position:relative}
   .new-product-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-hover);border-color:#dbb59a}
   .new-product-img{width:100%;aspect-ratio:1/1;object-fit:cover;background:#faf2ed;display:block;transition:transform .5s cubic-bezier(.23,1,.32,1)}
   .new-product-card:hover .new-product-img{transform:scale(1.06)}
@@ -81,38 +77,32 @@
   .new-product-name{font-weight:600;font-size:1.1rem;color:var(--brown-deep);font-family:'Cormorant Garamond',serif}
   .new-product-tag{background:var(--soft);color:#8b6b57;font-size:.7rem;text-transform:uppercase;letter-spacing:1px;padding:4px 12px;border-radius:30px;display:inline-block;font-weight:600;margin-top:8px}
 
-  /* ---------- GALLERY & HAMPERS ---------- */
-  .gallery-grid,.hampers-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:30px;margin:15px 0 50px}
-  .gallery-item,.hamper-card{border-radius:var(--radius-md);overflow:hidden;cursor:pointer;transition:.35s cubic-bezier(.23,1,.32,1);background:#fff;box-shadow:var(--shadow-sm);border:1px solid var(--line);position:relative}
+  /* ---------- GALLERY + HAMPERS ---------- */
+  .gallery-grid,.hampers-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:30px;margin:15px 0 50px;content-visibility:auto;contain-intrinsic-size:800px}
+  .gallery-item,.hamper-card{border-radius:var(--radius-md);overflow:hidden;cursor:pointer;transition:.35s cubic-bezier(.23,1,.32,1);background:#fff;box-shadow:var(--shadow-sm);border:1px solid var(--line);position:relative;aspect-ratio:1/1}
   .gallery-item:hover,.hamper-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-hover);border-color:#dbb59a}
-  .gallery-img,.hamper-img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;transition:transform .55s cubic-bezier(.23,1,.32,1)}
+  .gallery-img,.hamper-img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .55s cubic-bezier(.23,1,.32,1);background:#faf2ed}
   .gallery-item:hover .gallery-img,.hamper-card:hover .hamper-img{transform:scale(1.06)}
-
-  /* Skeleton shimmer while loading */
-  .loading-text{text-align:center;color:var(--muted);padding:40px;font-style:italic;grid-column:1/-1}
-  .skeleton{background:linear-gradient(90deg,#f3e7df 0%,#faf2ed 50%,#f3e7df 100%);background-size:200% 100%;animation:shimmer 1.4s infinite;border-radius:var(--radius-md);aspect-ratio:1/1}
-  @keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
 
   /* ---------- CTA ---------- */
   .cta-section{background:linear-gradient(105deg,#f9f0e9 0%,#f3e2d7 100%);border-radius:48px;margin:45px 0 55px;padding:54px 38px;text-align:center;border:1px solid #e3cdbb;position:relative;overflow:hidden}
-  .cta-section:before{content:'';position:absolute;top:-50%;right:-10%;width:400px;height:400px;background:radial-gradient(circle,rgba(255,255,255,.5),transparent 70%);pointer-events:none}
-  .cta-section h3{font-size:2rem;margin-bottom:12px;font-weight:500;color:#5b4336;font-family:'Cormorant Garamond',serif;position:relative}
-  .wa-button{background:var(--brown);color:#fff;display:inline-flex;align-items:center;gap:14px;padding:18px 50px;border-radius:60px;font-weight:600;text-decoration:none;font-size:1.05rem;margin-top:20px;box-shadow:0 12px 22px -10px rgba(110,65,35,.3);transition:.25s;position:relative}
-  .wa-button:hover{background:var(--brown-dark);transform:translateY(-2px);box-shadow:0 16px 28px -12px rgba(110,65,35,.4)}
+  .cta-section h3{font-size:2rem;margin-bottom:12px;font-weight:500;color:#5b4336;font-family:'Cormorant Garamond',serif}
+  .wa-button{background:var(--brown);color:#fff;display:inline-flex;align-items:center;gap:14px;padding:18px 50px;border-radius:60px;font-weight:600;text-decoration:none;font-size:1.05rem;margin-top:20px;box-shadow:0 12px 22px -10px rgba(110,65,35,.3);transition:.25s}
+  .wa-button:hover{background:var(--brown-dark);transform:translateY(-2px)}
 
   /* ---------- SOCIAL ---------- */
   .social-row{display:flex;justify-content:center;gap:22px;flex-wrap:wrap;margin:30px 0 40px}
-  .social-icon-link{display:flex;align-items:center;gap:12px;text-decoration:none;background:#fff;padding:12px 28px;border-radius:50px;border:1px solid var(--line-strong);font-weight:500;color:#6f5342;font-size:.95rem;transition:.25s}
-  .social-icon-link i{font-size:1.4rem;transition:.25s}
+  .social-icon-link{display:flex;align-items:center;gap:10px;text-decoration:none;background:#fff;padding:12px 28px;border-radius:50px;border:1px solid var(--line-strong);font-weight:500;color:#6f5342;font-size:.95rem;transition:.25s}
+  .social-icon-link svg{width:20px;height:20px;fill:#b5846b;transition:.25s}
   .social-icon-link:hover{background:#fefbf8;border-color:#c79d83;color:#ab7055;transform:translateY(-3px)}
-  .social-icon-link:hover i{transform:scale(1.15)}
+  .social-icon-link:hover svg{transform:scale(1.15)}
 
   footer{background:#f2e7de;color:#8b7365;padding:40px 20px;text-align:center;border-radius:48px 48px 0 0;margin-top:30px}
 
   /* ---------- LIGHTBOX ---------- */
   .lightbox-modal{display:none;position:fixed;inset:0;background:rgba(22,16,12,.93);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);justify-content:center;align-items:center;z-index:1000;cursor:zoom-out;opacity:0;transition:opacity .25s}
   .lightbox-modal.show{display:flex;opacity:1}
-  .lightbox-img-full{max-width:86%;max-height:86%;border-radius:32px;object-fit:contain;animation:zoomIn .35s cubic-bezier(.23,1,.32,1) both;box-shadow:0 40px 80px -20px rgba(0,0,0,.6)}
+  .lightbox-img-full{max-width:86%;max-height:86%;border-radius:32px;object-fit:contain;animation:zoomIn .35s cubic-bezier(.23,1,.32,1) both}
   @keyframes zoomIn{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:scale(1)}}
   .close-lightbox{position:absolute;top:24px;right:36px;font-size:2.6rem;color:#f0dbce;cursor:pointer;line-height:1;transition:.2s;user-select:none}
   .close-lightbox:hover{color:#fff;transform:rotate(90deg)}
@@ -122,9 +112,14 @@
   .scroll-top.show{opacity:1;pointer-events:auto}
   .scroll-top:hover{background:var(--brown-dark);transform:translateY(-3px)}
 
-  /* ---------- REVEAL ON SCROLL ---------- */
+  /* ---------- REVEAL ---------- */
   .reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s cubic-bezier(.23,1,.32,1)}
   .reveal.visible{opacity:1;transform:none}
+
+  /* ---------- SKELETON ---------- */
+  .skeleton{background:linear-gradient(90deg,#f3e7df 0%,#faf2ed 50%,#f3e7df 100%);background-size:200% 100%;animation:shimmer 1.4s infinite;border-radius:var(--radius-md);aspect-ratio:1/1}
+  @keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+  .loading-text{text-align:center;color:var(--muted);padding:40px;font-style:italic;grid-column:1/-1}
 
   /* ---------- RESPONSIVE ---------- */
   @media(max-width:760px){
@@ -135,6 +130,7 @@
     .section-title{font-size:2rem;margin:50px 0 6px}
     .gallery-grid,.hampers-grid,.new-products-grid{grid-template-columns:1fr 1fr;gap:16px}
     .hero-slideshow{border-radius:32px;margin:24px 0 30px}
+    .slideshow-container{aspect-ratio:4/5}
     .prev,.next{width:38px;height:38px;font-size:1.1rem}
     .prev{left:12px}.next{right:12px}
     .cta-section{padding:36px 22px;border-radius:36px}
@@ -166,9 +162,7 @@
 
   <main>
     <section class="hero-slideshow">
-      <div class="slideshow-container" id="slideshowContainer">
-        <div class="skeleton" style="border-radius:0;aspect-ratio:16/9;position:absolute;inset:0"></div>
-      </div>
+      <div class="slideshow-container" id="slideshowContainer"></div>
     </section>
 
     <div id="new"></div>
@@ -190,19 +184,25 @@
 
     <section id="order" class="cta-section reveal">
       <h3>design your own keepsake</h3>
-      <p style="margin-bottom:20px;color:#7e6558;position:relative">themes, names, colour stories — crafted into an exquisite A4 frame or hamper.</p>
+      <p style="margin-bottom:20px;color:#7e6558">themes, names, colour stories — crafted into an exquisite A4 frame or hamper.</p>
       <a href="https://wa.me/27764261311?text=Hello%20Snoweey!%20I'd%20love%20a%20custom%20frame%20or%20hamper%20%F0%9F%8E%80" target="_blank" rel="noopener noreferrer" class="wa-button">
-        <i class="fab fa-whatsapp" style="font-size:1.5rem"></i> Chat on WhatsApp · +27 76 426 1311
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg> Chat on WhatsApp · +27 76 426 1311
       </a>
-      <p style="margin-top:24px;font-size:.85rem;color:#aa8e7c;position:relative">✨ personal quotes · rush orders · gift-ready wrapping ✨</p>
+      <p style="margin-top:24px;font-size:.85rem;color:#aa8e7c">✨ personal quotes · rush orders · gift-ready wrapping ✨</p>
     </section>
 
     <div id="connect"></div>
     <h2 class="section-title reveal">✧ stay inspired ✧</h2>
     <div class="social-row reveal">
-      <a href="https://www.instagram.com/sinokubonga_snoweey?igsh=MXcya2cwMGJpdW9rdw==" target="_blank" rel="noopener noreferrer" class="social-icon-link"><i class="fab fa-instagram" style="color:#b5846b"></i> Instagram</a>
-      <a href="https://www.facebook.com/sinokubonga.nkosi.2025" target="_blank" rel="noopener noreferrer" class="social-icon-link"><i class="fab fa-facebook" style="color:#b5846b"></i> Facebook</a>
-      <a href="https://www.tiktok.com/@sinokubongasnoweey?_r=1&_t=ZS-96Ke8N2ZnLJ" target="_blank" rel="noopener noreferrer" class="social-icon-link"><i class="fab fa-tiktok"></i> TikTok</a>
+      <a href="https://www.instagram.com/sinokubonga_snoweey?igsh=MXcya2cwMGJpdW9rdw==" target="_blank" rel="noopener noreferrer" class="social-icon-link">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg> Instagram
+      </a>
+      <a href="https://www.facebook.com/sinokubonga.nkosi.2025" target="_blank" rel="noopener noreferrer" class="social-icon-link">
+        <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg> Facebook
+      </a>
+      <a href="https://www.tiktok.com/@sinokubongasnoweey?_r=1&_t=ZS-96Ke8N2ZnLJ" target="_blank" rel="noopener noreferrer" class="social-icon-link">
+        <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg> TikTok
+      </a>
     </div>
   </main>
 </div>
@@ -212,30 +212,27 @@
   <p style="margin-top:8px;font-style:italic">every memory, artfully framed ✧</p>
 </footer>
 
-<button class="scroll-top" id="scrollTop" aria-label="back to top"><i class="fas fa-arrow-up"></i></button>
+<button class="scroll-top" id="scrollTop" aria-label="back to top">↑</button>
 
 <div id="lightboxModal" class="lightbox-modal">
   <span class="close-lightbox">&times;</span>
-  <img class="lightbox-img-full" id="lightboxImage" alt="enlarged view" />
+  <img class="lightbox-img-full" id="lightboxImage" alt="enlarged view" loading="lazy" />
 </div>
 
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getFirestore, collection, getDocs, orderBy, query } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyDeIlLNMRkPLqFFSpxn10-mOLidmEWp4tU",
-  authDomain: "makeitsoapplication.firebaseapp.com",
-  projectId: "makeitsoapplication",
-  storageBucket: "makeitsoapplication.firebasestorage.app",
-  messagingSenderId: "563193624067",
-  appId: "1:563193624067:web:2408edc09167099cc28036"
-};
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+<script>
+/* ---------- NETLIFY IMAGE CDN HELPER ---------- */
+/**
+ * Generates a Netlify Image CDN URL for a given local image.
+ * Automatically resizes, converts to WebP, and compresses.
+ * Falls back to original URL if Image CDN not available.
+ */
+function imgUrl(file, width = 800, quality = 75){
+  // Netlify Image CDN: /.netlify/images?url=<path>&w=<width>&q=<quality>&fm=webp
+  return `/.netlify/images?url=${encodeURIComponent('/' + file)}&w=${width}&q=${quality}&fm=webp`;
+}
 
 /* ---------- STATIC IMAGE POOLS ---------- */
-const slideImages = [
+const slideFiles = [
   "IMG-20260513-WA0013.jpg","IMG-20260513-WA0022.jpg","IMG-20260513-WA0023.jpg",
   "IMG-20260513-WA0026.jpg","IMG-20260513-WA0029.jpg","IMG-20260513-WA0032.jpg",
   "IMG-20260513-WA0035.jpg","IMG-20260513-WA0036.jpg","IMG-20260513-WA0037.jpg",
@@ -245,8 +242,8 @@ const slideImages = [
   "IMG-20260513-WA0087.jpg","IMG-20260513-WA0088.jpg","spongebob.jpg",
   "blackheartdesign.jpg","cartoon.jpg","heartdesign.jpg"
 ];
-const hamperImages = ["IMG-20260513-WA0088.jpg","IMG-20260513-WA0082.jpg","IMG-20260513-WA0067.jpg"];
-const PLACEHOLDER = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 600'><rect width='600' height='600' fill='%23F3E7DF'/><text x='50%' y='50%' font-family='serif' font-size='48' fill='%23B39283' text-anchor='middle' dominant-baseline='middle'>Snoweey</text></svg>";
+const hamperFiles = ["IMG-20260513-WA0088.jpg","IMG-20260513-WA0082.jpg","IMG-20260513-WA0067.jpg"];
+const PLACEHOLDER = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 600'><rect width='600' height='600' fill='%23F3E7DF'/><text x='50%' y='50%' font-family='serif' font-size='42' fill='%23B39283' text-anchor='middle' dominant-baseline='middle'>Snoweey</text></svg>";
 
 /* ---------- LAZY LOADING OBSERVER ---------- */
 const imgObserver = 'IntersectionObserver' in window
@@ -258,7 +255,7 @@ const imgObserver = 'IntersectionObserver' in window
           imgObserver.unobserve(img);
         }
       });
-    }, { rootMargin: '200px' })
+    }, { rootMargin: '300px' })
   : null;
 
 function lazyLoad(img, src){
@@ -268,27 +265,45 @@ function lazyLoad(img, src){
   img.onerror = function(){ this.onerror = null; this.src = PLACEHOLDER; };
 }
 
-/* ---------- SLIDESHOW ---------- */
+/* ---------- SLIDESHOW (only loads on demand) ---------- */
 let currentSlide = 0, slideTimer = null;
+const slideEls = [];
+
 function buildSlideshow(){
   const c = document.getElementById('slideshowContainer');
   if (!c) return;
   c.innerHTML = '';
-  slideImages.forEach((src, i) => {
+  slideEls.length = 0;
+
+  // Create all slide wrappers, but only give the first one a real image
+  slideFiles.forEach((file, i) => {
     const s = document.createElement('div');
     s.className = 'slide' + (i === 0 ? ' active' : '');
     const img = document.createElement('img');
     img.className = 'slide-img';
     img.alt = 'Snoweey design ' + (i + 1);
-    if (i < 2){ img.src = src; img.loading = 'eager'; }
-    else { lazyLoad(img, src); }
+    // Use srcset for responsive: 600px on mobile, 1200px on desktop
+    img.srcset = `${imgUrl(file, 600)} 600w, ${imgUrl(file, 1200)} 1200w`;
+    img.sizes = '(max-width: 760px) 100vw, 1350px';
+    if (i === 0){
+      img.src = imgUrl(file, 1200);
+      img.fetchPriority = 'high';
+      img.loading = 'eager';
+    } else {
+      // Placeholder; real src set when slide becomes active
+      img.src = PLACEHOLDER;
+      img.dataset.file = file;
+      img.loading = 'lazy';
+    }
     s.appendChild(img); c.appendChild(s);
+    slideEls.push(s);
   });
+
   const prev = document.createElement('button'); prev.className = 'prev'; prev.innerHTML = '❮'; prev.setAttribute('aria-label','previous');
   const next = document.createElement('button'); next.className = 'next'; next.innerHTML = '❯'; next.setAttribute('aria-label','next');
   c.appendChild(prev); c.appendChild(next);
   const dots = document.createElement('div'); dots.className = 'dots';
-  slideImages.forEach((_, i) => {
+  slideFiles.forEach((_, i) => {
     const d = document.createElement('span');
     d.className = 'dot' + (i === 0 ? ' active-dot' : '');
     d.dataset.i = i;
@@ -299,7 +314,7 @@ function buildSlideshow(){
   next.onclick = () => changeSlide(1);
   dots.querySelectorAll('.dot').forEach(d => { d.onclick = () => goToSlide(+d.dataset.i); });
 
-  // Swipe support
+  // Swipe
   let startX = 0;
   c.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
   c.addEventListener('touchend', e => {
@@ -307,41 +322,63 @@ function buildSlideshow(){
     if (Math.abs(dx) > 50) changeSlide(dx > 0 ? -1 : 1);
   }, { passive: true });
 
+  // Preload slide 2 for smooth first transition
+  preloadSlide(1);
   startAuto();
 }
+
+function preloadSlide(index){
+  const s = slideEls[index];
+  if (!s) return;
+  const img = s.querySelector('img');
+  if (img && img.dataset.file && img.src === PLACEHOLDER){
+    img.src = imgUrl(img.dataset.file, 1200);
+    img.removeAttribute('data-file');
+  }
+}
+
 function changeSlide(dir){
-  const s = document.querySelectorAll('.slide'); if (!s.length) return;
+  const s = slideEls; if (!s.length) return;
   s[currentSlide].classList.remove('active');
   currentSlide = (currentSlide + dir + s.length) % s.length;
   s[currentSlide].classList.add('active');
   updateDots(); resetAuto();
+  preloadSlide((currentSlide + 1) % s.length);
 }
 function goToSlide(i){
-  const s = document.querySelectorAll('.slide'); if (!s.length) return;
+  const s = slideEls; if (!s.length) return;
   s[currentSlide].classList.remove('active');
   currentSlide = i;
   s[currentSlide].classList.add('active');
   updateDots(); resetAuto();
+  preloadSlide((currentSlide + 1) % s.length);
 }
 function updateDots(){ document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active-dot', i === currentSlide)); }
-function startAuto(){ if (slideTimer) clearInterval(slideTimer); slideTimer = setInterval(() => changeSlide(1), 4800); }
-function resetAuto(){ if (slideTimer) clearInterval(slideTimer); slideTimer = setInterval(() => changeSlide(1), 4800); }
+function startAuto(){ if (slideTimer) clearInterval(slideTimer); slideTimer = setInterval(() => changeSlide(1), 5000); }
+function resetAuto(){ if (slideTimer) clearInterval(slideTimer); slideTimer = setInterval(() => changeSlide(1), 5000); }
 
 /* ---------- GALLERY ---------- */
 function renderGallery(){
   const g = document.getElementById('galleryGrid'); if (!g) return;
   g.innerHTML = '';
-  slideImages.forEach((src, i) => {
+  slideFiles.forEach((file, i) => {
     const item = document.createElement('div');
     item.className = 'gallery-item reveal';
-    item.style.animationDelay = (i % 8) * 40 + 'ms';
     const img = document.createElement('img');
     img.className = 'gallery-img';
     img.alt = 'Snoweey design';
-    lazyLoad(img, src);
+    // srcset for responsive loading
+    img.dataset.srcset = `${imgUrl(file, 400)} 400w, ${imgUrl(file, 800)} 800w`;
+    img.sizes = '(max-width: 480px) 100vw, (max-width: 760px) 50vw, 300px';
+    lazyLoad(img, imgUrl(file, 800));
+    img.onerror = function(){ this.onerror = null; this.src = PLACEHOLDER; };
     item.appendChild(img);
-    item.onclick = () => openLightbox(src);
+    item.onclick = () => openLightbox(imgUrl(file, 1600));
     g.appendChild(item);
+  });
+  // Apply srcset after lazyLoad sets src
+  g.querySelectorAll('.gallery-img').forEach(img => {
+    if (img.dataset.srcset) img.srcset = img.dataset.srcset;
   });
 }
 
@@ -349,44 +386,69 @@ function renderGallery(){
 function renderHampers(){
   const g = document.getElementById('hampersGrid'); if (!g) return;
   g.innerHTML = '';
-  hamperImages.forEach((src, i) => {
+  hamperFiles.forEach((file) => {
     const c = document.createElement('div');
     c.className = 'hamper-card reveal';
-    c.style.animationDelay = i * 80 + 'ms';
     const img = document.createElement('img');
     img.className = 'hamper-img';
     img.alt = 'Snoweey hamper';
-    lazyLoad(img, src);
+    img.dataset.srcset = `${imgUrl(file, 400)} 400w, ${imgUrl(file, 800)} 800w`;
+    img.sizes = '(max-width: 480px) 100vw, (max-width: 760px) 50vw, 300px';
+    lazyLoad(img, imgUrl(file, 800));
+    img.onerror = function(){ this.onerror = null; this.src = PLACEHOLDER; };
     c.appendChild(img);
-    c.onclick = () => openLightbox(src);
+    c.onclick = () => openLightbox(imgUrl(file, 1600));
     g.appendChild(c);
+  });
+  g.querySelectorAll('.hamper-img').forEach(img => {
+    if (img.dataset.srcset) img.srcset = img.dataset.srcset;
   });
 }
 
-/* ---------- NEW PRODUCTS FROM FIRESTORE ---------- */
+/* ---------- FIREBASE (loaded lazily) ---------- */
+let db = null;
+async function initFirebase(){
+  if (db) return db;
+  try {
+    const { initializeApp } = await import("https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js");
+    const { getFirestore } = await import("https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js");
+    const firebaseConfig = {
+      apiKey: "AIzaSyDeIlLNMRkPLqFFSpxn10-mOLidmEWp4tU",
+      authDomain: "makeitsoapplication.firebaseapp.com",
+      projectId: "makeitsoapplication",
+      storageBucket: "makeitsoapplication.firebasestorage.app",
+      messagingSenderId: "563193624067",
+      appId: "1:563193624067:web:2408edc09167099cc28036"
+    };
+    const app = initializeApp(firebaseConfig);
+    db = getFirestore(app);
+    return db;
+  } catch (e){ console.error('Firebase init failed', e); return null; }
+}
+
+/* ---------- NEW PRODUCTS ---------- */
 async function renderNewProducts(){
   const g = document.getElementById('newProductsGrid'); if (!g) return;
   try {
-    const q = query(collection(db, 'products'), orderBy('createdAt', 'desc'));
+    const database = await initFirebase();
+    if (!database){ g.innerHTML = '<p class="loading-text">could not load products.</p>'; return; }
+    const { collection, getDocs, orderBy, query } = await import("https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js");
+    const q = query(collection(database, 'products'), orderBy('createdAt', 'desc'));
     const snap = await getDocs(q);
     g.innerHTML = '';
     if (snap.empty){
       g.innerHTML = '<p class="loading-text">✨ new drops coming soon — stay tuned!</p>';
       return;
     }
-    snap.forEach((d, i) => {
+    snap.forEach((d) => {
       const p = d.data();
       const card = document.createElement('div');
       card.className = 'new-product-card';
-      card.style.animationDelay = i * 60 + 'ms';
       const img = document.createElement('img');
       img.className = 'new-product-img';
       img.alt = p.name || 'Snoweey product';
       img.loading = 'lazy';
-      const src = p.imageData || PLACEHOLDER;
-      img.src = PLACEHOLDER;
-      // For base64 images, no need for lazy observer — they're inline
-      img.src = src;
+      img.src = p.imageData || PLACEHOLDER;
       img.onerror = function(){ this.onerror = null; this.src = PLACEHOLDER; };
       const info = document.createElement('div'); info.className = 'new-product-info';
       const n = document.createElement('div'); n.className = 'new-product-name'; n.textContent = p.name || 'Untitled';
@@ -420,7 +482,7 @@ document.querySelector('.close-lightbox').onclick = closeLb;
 if (modal) modal.onclick = (e) => { if (e.target === modal) closeLb(); };
 document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLb(); });
 
-/* ---------- HIDDEN ADMIN ACCESS ---------- */
+/* ---------- HIDDEN ADMIN ---------- */
 let taps = 0, tapT;
 const logo = document.getElementById('logo');
 if (logo) logo.onclick = () => {
@@ -449,7 +511,7 @@ window.addEventListener('scroll', () => {
 }, { passive: true });
 if (scrollTopBtn) scrollTopBtn.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
-/* ---------- REVEAL ON SCROLL ---------- */
+/* ---------- REVEAL ---------- */
 if ('IntersectionObserver' in window){
   const revealObs = new IntersectionObserver((entries) => {
     entries.forEach(e => {
@@ -464,25 +526,17 @@ if ('IntersectionObserver' in window){
   document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
 }
 
-/* ---------- NAV ACTIVE LINK ---------- */
-const navLinks = document.querySelectorAll('.nav-links a');
-if ('IntersectionObserver' in window && navLinks.length){
-  const sections = ['gallery','hampers','new','connect','order'].map(id => document.getElementById(id)).filter(Boolean);
-  const navObs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting){
-        navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
-      }
-    });
-  }, { rootMargin: '-40% 0px -55% 0px' });
-  sections.forEach(s => navObs.observe(s));
-}
-
 /* ---------- BOOT ---------- */
 buildSlideshow();
 renderGallery();
 renderHampers();
-renderNewProducts();
+
+// Load Firebase + products AFTER page has painted
+if ('requestIdleCallback' in window){
+  requestIdleCallback(() => renderNewProducts(), { timeout: 2000 });
+} else {
+  setTimeout(renderNewProducts, 800);
+}
 </script>
 </body>
 </html>
